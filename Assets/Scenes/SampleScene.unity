@@ -638,6 +638,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423290829}
   m_CullTransparentMesh: 1
+--- !u!1 &1490080298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 271260264027092187, guid: 7203151d128217b4d8018746349089d6, type: 3}
+  m_PrefabInstance: {fileID: 490422163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1490080299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 871648845661300426, guid: 7203151d128217b4d8018746349089d6, type: 3}
+  m_PrefabInstance: {fileID: 490422163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1490080300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490080298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53fbe7d6fd154e44b9f0e2403601c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 1490080299}
+  currentWeaponModel: {fileID: 0}
 --- !u!1 &1652337445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,3 +1060,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statistics: {fileID: 1989739172}
   HealthBar: {fileID: 612359345}
+--- !u!114 &1989739178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989739167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6da0d22d13d5f24fb27f8fb974571ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponItem: {fileID: 11400000, guid: ba3e0f47e0d729948acef64509078f5a, type: 2}
