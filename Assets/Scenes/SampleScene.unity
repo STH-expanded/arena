@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1340168467716624557, guid: 7203151d128217b4d8018746349089d6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1860809847115450903, guid: 7203151d128217b4d8018746349089d6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -356,6 +360,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+--- !u!1 &1004803308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 271260264027092187, guid: 7203151d128217b4d8018746349089d6, type: 3}
+  m_PrefabInstance: {fileID: 490422163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1004803309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 871648845661300426, guid: 7203151d128217b4d8018746349089d6, type: 3}
+  m_PrefabInstance: {fileID: 490422163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1004803310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004803308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53fbe7d6fd154e44b9f0e2403601c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 1004803309}
+  currentWeaponModel: {fileID: 0}
 --- !u!1 &1652337445
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +517,7 @@ MonoBehaviour:
   rollSpeed: 8
   rotationSpeed: 24
   isRolling: 0
+  isAttacking: 0
 --- !u!114 &1989739170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteracting: 0
+  isAttacking: 0
   isRolling: 0
 --- !u!143 &1989739171
 CharacterController:
@@ -521,6 +551,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &1989739172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989739167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6da0d22d13d5f24fb27f8fb974571ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponItem: {fileID: 11400000, guid: ba3e0f47e0d729948acef64509078f5a, type: 2}
 --- !u!95 &1989739173
 Animator:
   serializedVersion: 3
@@ -556,5 +599,7 @@ MonoBehaviour:
   moveAmount: 0
   verticalInput: 0
   horizontalInput: 0
+  a_Input: 0
   b_Input: 0
   rollFlag: 0
+  attackFlag: 0

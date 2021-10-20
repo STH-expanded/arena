@@ -12,8 +12,10 @@ public class InputManager : MonoBehaviour
     public float verticalInput;
     public float horizontalInput;
 
+    public bool a_Input;
     public bool b_Input;
     public bool rollFlag;
+    public bool attackFlag;
 
     private void Awake()
     {
@@ -41,7 +43,7 @@ public class InputManager : MonoBehaviour
     {
         HandleMovementInput();
         HandleRollInput();
-        //HandleAttackInput();
+        HandleAttackInput();
     }
 
     private void HandleMovementInput()
@@ -59,6 +61,16 @@ public class InputManager : MonoBehaviour
         if (b_Input)
         {
             rollFlag = true;
+        }
+    }
+
+    private void HandleAttackInput()
+    {
+        a_Input = playerControls.PlayerActions.Attack.phase == UnityEngine.InputSystem.InputActionPhase.Started;
+
+        if (a_Input)
+        {
+            attackFlag = true;
         }
     }
 }

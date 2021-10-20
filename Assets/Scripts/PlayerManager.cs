@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Player flags")]
     public bool isInteracting;
+    public bool isAttacking;
     public bool isRolling;
 
     private void Awake()
@@ -22,6 +23,8 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         isInteracting = animator.GetBool("isInteracting");
+        isAttacking = animator.GetBool("isAttacking");
+        isRolling = animator.GetBool("isRolling");
 
         inputManager.HandleAllInputs();
         playerMovement.HandleAllMovement();
@@ -30,5 +33,6 @@ public class PlayerManager : MonoBehaviour
     private void LateUpdate()
     {
         inputManager.rollFlag = false;
+        inputManager.attackFlag = false;
     }
 }

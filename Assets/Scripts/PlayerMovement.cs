@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed = 15f;
 
     public bool isRolling;
+    public bool isAttacking;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         HandleRotation();
         HandleRoll();
+        HandleAttack();
     }
 
     private void HandleMovement()
@@ -35,7 +37,10 @@ public class PlayerMovement : MonoBehaviour
         if (playerManager.isInteracting)
         {
             Vector3 direction = transform.forward;
-            controller.Move(direction * rollSpeed * Time.deltaTime);
+            if (playerManager.isRolling)
+            {
+                controller.Move(direction * rollSpeed * Time.deltaTime);
+            }
         }
         else
         {
@@ -79,6 +84,19 @@ public class PlayerMovement : MonoBehaviour
 
             animatorManager.PlayTargetAnimation("Roll", true);
 
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
+    }
+
+    private void HandleAttack()
+    {
+        if (animatorManager.animator.GetBool("isInteracting"))
+            return;
+
+        if (inputManager.attackFlag)
+        {
+            Vector3 direction = transform.forward;
+            animatorManager.PlayTargetAnimation("Attack", true);
             transform.rotation = Quaternion.LookRotation(direction);
         }
     }
