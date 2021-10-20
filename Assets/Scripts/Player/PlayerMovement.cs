@@ -10,17 +10,22 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
 
-    public float movementSpeed = 2f;
-    public float rollSpeed = 8f;
+    public float movementSpeed;
+    public float rollSpeed;
     public float rotationSpeed = 15f;
 
     public bool isRolling;
+    public PlayerStatistics statistics; 
 
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         playerManager = GetComponent<PlayerManager>();
         animatorManager = GetComponent<AnimatorManager>();
+        statistics = GetComponent<PlayerStatistics>();
+
+        movementSpeed = statistics.Speed * 1.2f;
+        rollSpeed = statistics.Speed * 1.5f;
     }
 
     public void HandleAllMovement()
