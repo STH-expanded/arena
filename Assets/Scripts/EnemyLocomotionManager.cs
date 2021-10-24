@@ -16,7 +16,7 @@ public class EnemyLocomotionManager : MonoBehaviour
     public float distanceFromTarget;
     public float stoppingDistance = 1f;
 
-    public float rotationSpeed = 15; 
+    public float rotationSpeed; 
 
     private void Awake()
     {

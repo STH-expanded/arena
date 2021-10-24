@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CardDisplay : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class CardDisplay : MonoBehaviour
 
     void SelectAction()
     {
-        Debug.Log("You have clicked the button!");
+        DataSaver.saveData(unitStatistics, "enemy");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

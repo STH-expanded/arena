@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     PlayerMovement playerMovement;
     Animator animator;
 
+    public UnitStatistics stats = new UnitStatistics(1);
+
     [Header("Player flags")]
     public bool isInteracting;
     public bool isAttacking;

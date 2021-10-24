@@ -16,17 +16,15 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isRolling;
     public bool isAttacking;
-    public PlayerStatistics statistics; 
 
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         playerManager = GetComponent<PlayerManager>();
         animatorManager = GetComponent<AnimatorManager>();
-        statistics = GetComponent<PlayerStatistics>();
 
-        movementSpeed = statistics.Speed * 1.2f;
-        rollSpeed = statistics.Speed * 1.5f;
+        movementSpeed = playerManager.stats.Speed * 1.2f;
+        rollSpeed = playerManager.stats.Speed * 1.5f;
     }
 
     public void HandleAllMovement()

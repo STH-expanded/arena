@@ -3,21 +3,32 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[Serializable]
 public class UnitStatistics
 {
-    public int Level = 1;
+    private int level = 1;
 
-    public int Health = 20;
-    public float HealthGrowth = 0.5f;
+    private int health = 20;
+    private float healthGrowth = 0.5f;
 
-    public int Attack = 4;
-    public float AttackGrowth = 0.25f;
+    private int attack = 4;
+    private float attackGrowth = 0.25f;
 
-    public int Defense = 4;
-    public float DefenseGrowth = 0.1f;
+    private int defense = 4;
+    private float defenseGrowth = 0.1f;
 
-    public int Speed = 6;
-    public float SpeedGrowth = 0.2f;
+    private int speed = 6;
+    private float speedGrowth = 0.2f;
+
+    public int Level { get => level; set => level = value; }
+    public int Health { get => health; set => health = value; }
+    public float HealthGrowth { get => healthGrowth; set => healthGrowth = value; }
+    public int Attack { get => attack; set => attack = value; }
+    public float AttackGrowth { get => attackGrowth; set => attackGrowth = value; }
+    public int Defense { get => defense; set => defense = value; }
+    public float DefenseGrowth { get => defenseGrowth; set => defenseGrowth = value; }
+    public int Speed { get => speed; set => speed = value; }
+    public float SpeedGrowth { get => speedGrowth; set => speedGrowth = value; }
 
     public UnitStatistics(int baseLevel)
     {

@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     EnemyLocomotionManager enemyLocomotionManager;
     public bool isPreformingAction;
-
+    public UnitStatistics unitStatistics;
 
     [Header("A,I Settings")]
     public float detectionRadius = 20;
@@ -17,6 +17,7 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
+        unitStatistics = DataSaver.loadData<UnitStatistics>("enemy");
     }
 
     // Update is called once per frame
