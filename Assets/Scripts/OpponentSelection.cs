@@ -5,72 +5,22 @@ using UnityEngine.UIElements;
 
 public class OpponentSelection : MonoBehaviour
 {
-    public int opponentsToGenerate = 3;
-    public const string
-        EASY_LEVEL_OPPONENT = "easy",
-        MEDIUM_LEVEL_OPPONENT = "medium",
-        HARD_LEVEL_OPPONENT = "hard"
-    ;
+    public int playerRank = 1;
 
-    public List<Button> ButtonsArrayList;
+    public GameObject card1;
+    public GameObject card2;
+    public GameObject card3;
 
-    [SerializeField] private Canvas _opponentSelectionCanvas;
-
-    // Start is called before the first frame update
     void Start()
     {
-        _opponentSelectionCanvas.transform.SetParent(this.transform);
-
-        string[] opponentLevels = GetOpponentLevels();
-
-
-        if (opponentLevels.Length == opponentsToGenerate)
+        GameObject[] cards = { card1, card2, card3 };
+        int i = 0;
+        foreach (GameObject card in cards)
         {
-            foreach (string opponentLevel in opponentLevels)
-            {
-                GeneratePlayer(opponentLevel);
-            }
+            int level = Random.Range(playerRank + i * 5, playerRank + (i + 1) * 5);
+            CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
+            cardDisplay.setCardValues(level);
+            i++;
         }
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void GeneratePlayer(string level)
-    {
-        switch (level)
-        {
-            case EASY_LEVEL_OPPONENT:
-                Debug.Log(level);
-
-                break;
-            case MEDIUM_LEVEL_OPPONENT:
-                Debug.Log(level);
-
-                break;
-            case HARD_LEVEL_OPPONENT:
-                Debug.Log(level);
-
-                break;
-            default:
-                Debug.Log("Unknown opponent player.");
-                break;
-        }
-    }
-
-    static string[] GetOpponentLevels()
-    {
-        string[] opponentLevels = {
-            EASY_LEVEL_OPPONENT,
-            MEDIUM_LEVEL_OPPONENT,
-            HARD_LEVEL_OPPONENT
-        };
-
-        return opponentLevels;
     }
 }

@@ -4,31 +4,38 @@ using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
-    public OpponentCard card;
-
     [SerializeField] public Text levelText;
     [SerializeField] public Text nameText;
-
     [SerializeField] public Image artwork;
 
     public Slider healthSlider;
-    public Slider speedSlider;
     public Slider attackSlider;
     public Slider defenseSlider;
+    public Slider speedSlider;
 
-    // Use this for initialization
+    public UnitStatistics unitStatistics;
+
+    public Button selectButton;
     void Start()
     {
-        setCardValues();
+        Button btn = selectButton.GetComponent<Button>();
+        btn.onClick.AddListener(SelectAction);
     }
 
-    private void setCardValues()
+    public void setCardValues(int level)
     {
-        levelText.text = card.level.ToString();
-        nameText.text = card.name;
-        healthSlider.value = card.health;
-        speedSlider.value = card.speed;
-        attackSlider.value = card.attack;
-        defenseSlider.value = card.defense;
+        unitStatistics = new UnitStatistics(level);
+
+        levelText.text = "Level " + level;
+        nameText.text = "Enemy";
+        healthSlider.value = unitStatistics.Health;
+        attackSlider.value = unitStatistics.Attack;
+        defenseSlider.value = unitStatistics.Defense;
+        speedSlider.value = unitStatistics.Speed;
+    }
+
+    void SelectAction()
+    {
+        Debug.Log("You have clicked the button!");
     }
 }
