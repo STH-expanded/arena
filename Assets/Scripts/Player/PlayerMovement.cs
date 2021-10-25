@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float movementSpeed;
     public float rollSpeed;
-    public float rotationSpeed = 15f;
+    public float rotationSpeed;
 
     public bool isRolling;
     public bool isAttacking;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         animatorManager = GetComponent<AnimatorManager>();
 
-        movementSpeed = playerManager.stats.Speed * 1.2f;
+        movementSpeed = playerManager.stats.Speed;
         rollSpeed = playerManager.stats.Speed * 1.5f;
     }
 

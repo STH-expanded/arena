@@ -42,4 +42,14 @@ public class EnemyManager : MonoBehaviour
             enemyLocomotionManager.HandleMoveToTarget();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        PlayerManager playerManager = other.GetComponent<PlayerManager>();
+
+        if (playerManager != null)
+        {
+            playerManager.stats.TakeDamage(4);
+        }
+    }
 }

@@ -16,6 +16,9 @@ public class UserInterface : MonoBehaviour
 
     void Update()
     {
-        //check health changes
+        if (playerManager.stats.CurrentHealth != healthBar.value)
+        {
+            healthBar.value = Mathf.Lerp(healthBar.value, playerManager.stats.CurrentHealth, 0.05f);
+        }
     }
 }

@@ -255,7 +255,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10881299}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -526,8 +526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 262174268}
-  movementSpeed: 6
-  rollSpeed: 8
+  movementSpeed: 0
+  rollSpeed: 0
   rotationSpeed: 30
   isRolling: 0
   isAttacking: 0
