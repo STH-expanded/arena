@@ -49,7 +49,7 @@ public class EnemyManager : MonoBehaviour
 
         if (playerManager != null)
         {
-            playerManager.stats.TakeDamage(4);
+            playerManager.TakeDamage(4);
         }
     }
 }

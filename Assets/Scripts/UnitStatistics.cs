@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -51,10 +48,5 @@ public class UnitStatistics
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            SceneManager.LoadScene("MainMenu");
-        }
     }
 }

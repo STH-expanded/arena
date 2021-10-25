@@ -14,9 +14,6 @@ public class PlayerMovement : MonoBehaviour
     public float rollSpeed;
     public float rotationSpeed;
 
-    public bool isRolling;
-    public bool isAttacking;
-
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
@@ -29,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void HandleAllMovement()
     {
+        if (playerManager.isHit || playerManager.stats.CurrentHealth == 0)
+            return;
         HandleMovement();
         HandleRotation();
         HandleRoll();
