@@ -16,10 +16,13 @@ public class InputManager : MonoBehaviour
     public float horizontalInput;
 
     public bool a_Input;
+    public bool a_Buffer;
     public bool b_Input;
     public bool rollFlag;
-    public bool attackFlag;
-    public bool comboFlag;
+    public bool attack1Flag;
+    public bool attack2Buffer;
+    public bool attack3Buffer;
+    public bool stabBuffer;
 
     private void Awake()
     {
@@ -75,22 +78,24 @@ public class InputManager : MonoBehaviour
     {
         a_Input = playerControls.PlayerActions.Attack.phase == UnityEngine.InputSystem.InputActionPhase.Started;
 
-        if (a_Input)
+        if (playerManager.canAttack3 && a_Input && !a_Buffer)
         {
-            if (playerManager.canCombo)
-            {
-                comboFlag = true;
-            }
-            else
-            {
-                if (playerManager.isInteracting)
-                    return;
-
-                if (playerManager.canCombo)
-                    return;
-
-                attackFlag = true;
-            }
+            attack3Buffer = true;
         }
+        else if (playerManager.canAttack2 && a_Input && !a_Buffer)
+        {
+            attack2Buffer = true;
+        }
+        else
+        {
+            attack1Flag = a_Input && !a_Buffer;
+        }
+
+        if (playerManager.isRolling && a_Input && !a_Buffer)
+        {
+            stabBuffer = true;
+        }
+
+        a_Buffer = a_Input;
     }
 }

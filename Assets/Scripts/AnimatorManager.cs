@@ -87,14 +87,24 @@ public class AnimatorManager : MonoBehaviour
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
 
-    public void EnableCombo()
+    public void EnableCombo1()
     {
-        animator.SetBool("canCombo", true);
+        animator.SetBool("canAttack2", true);
     }
 
-    public void DisableCombo()
+    public void DisableCombo1()
     {
-        animator.SetBool("canCombo", false);
+        animator.SetBool("canAttack2", false);
+    }
+
+    public void EnableCombo2()
+    {
+        animator.SetBool("canAttack3", true);
+    }
+
+    public void DisableCombo2()
+    {
+        animator.SetBool("canAttack3", false);
     }
 
     private void OnAnimatorMove()

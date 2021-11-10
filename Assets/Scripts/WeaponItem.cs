@@ -11,4 +11,5 @@ public class WeaponItem : Item
     [Header("Attack Animations")]
     public string Attack1;
     public string Attack2;
+    public string Attack3;
 }

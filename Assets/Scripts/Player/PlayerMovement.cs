@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         movementSpeed = playerManager.unitStatisticsManager.unitStatistics.Speed;
-        rollSpeed = playerManager.unitStatisticsManager.unitStatistics.Speed * 1.5f;
+        rollSpeed = playerManager.unitStatisticsManager.unitStatistics.Speed * 1.2f;
     }
 
     public void HandleAllMovement()
@@ -42,9 +42,8 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         HandleRotation();
-        HandleRoll();
-        HandleWeaponCombo();
         HandleAttack();
+        HandleRoll();
     }
 
     private void HandleMovement()
@@ -55,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
             if (playerManager.isRolling)
             {
                 controller.Move(direction * rollSpeed * Time.deltaTime);
+            }
+            if (playerManager.isStabbing)
+            {
+                controller.Move(direction * rollSpeed * 0.25f * Time.deltaTime);
             }
         }
         else
@@ -97,29 +100,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void HandleWeaponCombo()
-    {
-        if (inputManager.comboFlag)
-        {
-            inputManager.comboFlag = false;
-            animatorManager.animator.SetBool("canCombo", false);
-
-            if (lastAttack == weaponSlotManager.weaponItem.Attack1)
-            {
-                lastAttack = weaponSlotManager.weaponItem.Attack2;
-                animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack2, true);
-            }
-        }
-    }
 
     private void HandleAttack()
     {
-        if (inputManager.attackFlag)
+        if (inputManager.stabBuffer)
+        {
+            inputManager.stabBuffer = false;
+            animatorManager.PlayTargetAnimation("Stab", true);
+        }
+        else if (inputManager.attack3Buffer)
+        {
+            inputManager.attack3Buffer = false;
+            animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack3, true);
+        }
+        else if (inputManager.attack2Buffer)
+        {
+            inputManager.attack2Buffer = false;
+            animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack2, true);
+        }
+        if (inputManager.attack1Flag)
         {
             Vector3 direction = transform.forward;
             transform.rotation = Quaternion.LookRotation(direction);
-
-            lastAttack = weaponSlotManager.weaponItem.Attack1;
             animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack1, true);
         }
     }
