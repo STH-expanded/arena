@@ -8,6 +8,8 @@ public class UnitStatisticsManager : MonoBehaviour
     Animator animator;
     public CameraHandle cameraHandle;
 
+    [SerializeField] private GameObject player;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -44,6 +46,7 @@ public class UnitStatisticsManager : MonoBehaviour
         {
             unitStatistics.CurrentHealth = 0;
             animator.Play("Death");
+            OpponentSelection.DisplayOpponentMenu();
         }
         else
         {
