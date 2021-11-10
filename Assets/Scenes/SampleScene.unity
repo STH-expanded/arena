@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraHandle: {fileID: 963194229}
+  player: {fileID: 0}
 --- !u!1 &17967677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraHandle: {fileID: 963194229}
+  player: {fileID: 0}
 --- !u!114 &262174273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2419,6 +2421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRank: 1
+  opponentMenu: {fileID: 527188482}
   card1: {fileID: 1968547282}
   card2: {fileID: 727288948}
   card3: {fileID: 1615225889}
@@ -3817,7 +3820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: 7}
+  m_AnchoredPosition: {x: 3, y: 0}
   m_SizeDelta: {x: 249, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727288950
@@ -3833,6 +3836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraHandle: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &727288951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6901,6 +6905,7 @@ GameObject:
   - component: {fileID: 1615225893}
   - component: {fileID: 1615225892}
   - component: {fileID: 1615225891}
+  - component: {fileID: 1615225896}
   m_Layer: 5
   m_Name: Card3
   m_TagString: Untagged
@@ -6933,7 +6938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 274.5, y: 7}
+  m_AnchoredPosition: {x: 274.5, y: 0}
   m_SizeDelta: {x: 249, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615225891
@@ -6949,6 +6954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraHandle: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1615225892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7031,6 +7037,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!95 &1615225896
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615225889}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f8a3ca39eba445e18169907fe2dcc33, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1652337445
 GameObject:
   m_ObjectHideFlags: 0
@@ -8757,7 +8782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267.51398, y: 7}
+  m_AnchoredPosition: {x: -267.51398, y: 0}
   m_SizeDelta: {x: 249, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968547284
@@ -8773,6 +8798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraHandle: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1968547285
 MonoBehaviour:
   m_ObjectHideFlags: 0
