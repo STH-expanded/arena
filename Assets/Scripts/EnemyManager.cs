@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     EnemyLocomotionManager enemyLocomotionManager;
     public bool isPreformingAction;
-    public UnitStatistics unitStatistics;
+    public UnitStatisticsManager unitStatisticsManager;
 
     [Header("A,I Settings")]
     public float detectionRadius = 20;
@@ -17,17 +17,16 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
-        unitStatistics = DataSaver.loadData<UnitStatistics>("enemy");
+        unitStatisticsManager = GetComponent<UnitStatisticsManager>();
+        unitStatisticsManager.InitStats(DataSaver.loadData<UnitStatistics>("enemy"));
+        Debug.Log(unitStatisticsManager.unitStatistics.Health);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        HandleCurrentAction();
-    }
-
-    private void FixedUpdate()
-    {
+        if (unitStatisticsManager.unitStatistics.CurrentHealth <= 0)
+            return;
         HandleCurrentAction();
     }
 
@@ -49,7 +48,7 @@ public class EnemyManager : MonoBehaviour
 
         if (playerManager != null)
         {
-            playerManager.TakeDamage(4);
+            playerManager.unitStatisticsManager.TakeDamage(4);
         }
     }
 }

@@ -1,52 +1,20 @@
 using System;
-using Random = UnityEngine.Random;
 
 [Serializable]
 public class UnitStatistics
 {
-    private int level = 1;
+    public int Level { get; set; } = 1;
 
-    private int health = 20;
-    private int currentHealth;
-    private float healthGrowth = 0.5f;
+    public int Health { get; set; } = 20;
+    public float HealthGrowth { get; set; }  = 0.5f;
+    public int CurrentHealth { get; set; }
 
-    private int attack = 4;
-    private float attackGrowth = 0.25f;
+    public int Attack { get; set; } = 4;
+    public float AttackGrowth { get; set; } = 0.25f;
 
-    private int defense = 4;
-    private float defenseGrowth = 0.1f;
+    public int Defense { get; set; } = 4;
+    public float DefenseGrowth { get; set; } = 0.1f;
 
-    private int speed = 6;
-    private float speedGrowth = 0.2f;
-
-    public int Level { get => level; set => level = value; }
-    public int Health { get => health; set => health = value; }
-    public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    public float HealthGrowth { get => healthGrowth; set => healthGrowth = value; }
-    public int Attack { get => attack; set => attack = value; }
-    public float AttackGrowth { get => attackGrowth; set => attackGrowth = value; }
-    public int Defense { get => defense; set => defense = value; }
-    public float DefenseGrowth { get => defenseGrowth; set => defenseGrowth = value; }
-    public int Speed { get => speed; set => speed = value; }
-    public float SpeedGrowth { get => speedGrowth; set => speedGrowth = value; }
-
-    public UnitStatistics(int baseLevel)
-    {
-        while (Level < baseLevel) LevelUp();
-        currentHealth = health;
-    }
-
-    public void LevelUp()
-    {
-        if (HealthGrowth > Random.Range(0.0f, 1.0f)) Health++;
-        if (AttackGrowth > Random.Range(0.0f, 1.0f)) Attack++;
-        if (DefenseGrowth > Random.Range(0.0f, 1.0f)) Defense++;
-        if (SpeedGrowth > Random.Range(0.0f, 1.0f)) Speed++;
-        Level++;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-    }
+    public int Speed { get; set; } = 6;
+    public float SpeedGrowth { get; set; } = 0.2f;
 }

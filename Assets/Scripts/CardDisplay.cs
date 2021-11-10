@@ -14,9 +14,15 @@ public class CardDisplay : MonoBehaviour
     public Slider defenseSlider;
     public Slider speedSlider;
 
-    public UnitStatistics unitStatistics;
+    public UnitStatisticsManager unitStatisticsManager;
 
     public Button selectButton;
+
+    private void Awake()
+    {
+        unitStatisticsManager = GetComponent<UnitStatisticsManager>();
+    }
+
     void Start()
     {
         Button btn = selectButton.GetComponent<Button>();
@@ -25,19 +31,25 @@ public class CardDisplay : MonoBehaviour
 
     public void setCardValues(int level)
     {
-        unitStatistics = new UnitStatistics(level);
+        unitStatisticsManager.InitLevelUp(level);
+        UnitStatistics stats = unitStatisticsManager.unitStatistics;
 
         levelText.text = "Level " + level;
         nameText.text = "Enemy";
-        healthSlider.value = unitStatistics.Health;
-        attackSlider.value = unitStatistics.Attack;
-        defenseSlider.value = unitStatistics.Defense;
-        speedSlider.value = unitStatistics.Speed;
+        healthSlider.value = stats.Health;
+        attackSlider.value = stats.Attack;
+        defenseSlider.value = stats.Defense;
+        speedSlider.value = stats.Speed;
     }
 
     void SelectAction()
     {
-        DataSaver.saveData(unitStatistics, "enemy");
+        Debug.Log(unitStatisticsManager.unitStatistics.Health);
+        DataSaver.saveData(unitStatisticsManager.unitStatistics, "enemy");
+
+        unitStatisticsManager.InitStats(DataSaver.loadData<UnitStatistics>("enemy"));
+        Debug.Log(unitStatisticsManager.unitStatistics.Health);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

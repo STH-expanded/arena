@@ -8,21 +8,23 @@ public class PlayerManager : MonoBehaviour
     InputManager inputManager;
     PlayerMovement playerMovement;
     Animator animator;
+    public UnitStatisticsManager unitStatisticsManager;
 
-    public UnitStatistics stats = new UnitStatistics(1);
-
-    [Header("Player flags")]
+   [Header("Player flags")]
     public bool isInteracting;
     public bool isAttacking;
     public bool isRolling;
     public bool isHit;
+    public bool canCombo;
 
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
-    }
+        unitStatisticsManager = GetComponent<UnitStatisticsManager>();
+        unitStatisticsManager.InitLevelUp(1);
+}
 
     private void Update()
     {
@@ -30,6 +32,7 @@ public class PlayerManager : MonoBehaviour
         isAttacking = animator.GetBool("isAttacking");
         isRolling = animator.GetBool("isRolling");
         isHit = animator.GetBool("isHit");
+        canCombo = animator.GetBool("canCombo");
 
         inputManager.HandleAllInputs();
         playerMovement.HandleAllMovement();
@@ -39,20 +42,5 @@ public class PlayerManager : MonoBehaviour
     {
         inputManager.rollFlag = false;
         inputManager.attackFlag = false;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        stats.TakeDamage(damage);
-
-        if (stats.CurrentHealth <= 0)
-        {
-            stats.CurrentHealth = 0;
-            animator.Play("Death");
-        }
-        else
-        {
-            animator.Play("Hit");
-        }
     }
 }

@@ -6,6 +6,9 @@ public class InputManager : MonoBehaviour
 {
     PlayerControls playerControls;
     AnimatorManager animatorManager;
+    PlayerManager playerManager;
+    PlayerMovement playerMovement;
+    WeaponSlotManager weaponSlotManager;
 
     public Vector2 movementInput;
     public float moveAmount;
@@ -16,10 +19,14 @@ public class InputManager : MonoBehaviour
     public bool b_Input;
     public bool rollFlag;
     public bool attackFlag;
+    public bool comboFlag;
 
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
+        playerManager = GetComponent<PlayerManager>();
+        playerMovement = GetComponent<PlayerMovement>();
+        weaponSlotManager = GetComponent<WeaponSlotManager>();
     }
 
     private void OnEnable()
@@ -70,7 +77,20 @@ public class InputManager : MonoBehaviour
 
         if (a_Input)
         {
-            attackFlag = true;
+            if (playerManager.canCombo)
+            {
+                comboFlag = true;
+            }
+            else
+            {
+                if (playerManager.isInteracting)
+                    return;
+
+                if (playerManager.canCombo)
+                    return;
+
+                attackFlag = true;
+            }
         }
     }
 }

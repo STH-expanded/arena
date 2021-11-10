@@ -7,30 +7,42 @@ public class PlayerMovement : MonoBehaviour
     InputManager inputManager;
     PlayerManager playerManager;
     AnimatorManager animatorManager;
+    WeaponSlotManager weaponSlotManager;
 
     public CharacterController controller;
 
     public float movementSpeed;
     public float rollSpeed;
     public float rotationSpeed;
+    public string lastAttack;
 
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
         playerManager = GetComponent<PlayerManager>();
         animatorManager = GetComponent<AnimatorManager>();
+        weaponSlotManager = GetComponent<WeaponSlotManager>();
+    }
 
-        movementSpeed = playerManager.stats.Speed;
-        rollSpeed = playerManager.stats.Speed * 1.5f;
+    private void Start()
+    {
+        movementSpeed = playerManager.unitStatisticsManager.unitStatistics.Speed;
+        rollSpeed = playerManager.unitStatisticsManager.unitStatistics.Speed * 1.5f;
     }
 
     public void HandleAllMovement()
     {
-        if (playerManager.isHit || playerManager.stats.CurrentHealth == 0)
+        if (playerManager.isHit || playerManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
             return;
+
         HandleMovement();
+
+        if (playerManager.isInteracting)
+            return;
+
         HandleRotation();
         HandleRoll();
+        HandleWeaponCombo();
         HandleAttack();
     }
 
@@ -60,9 +72,6 @@ public class PlayerMovement : MonoBehaviour
         if (inputManager.rollFlag)
             return;
 
-        if (playerManager.isInteracting)
-            return;
-
         Vector3 targetDirection = new Vector3(inputManager.horizontalInput, 0f, inputManager.verticalInput).normalized;
 
         if (targetDirection == Vector3.zero)
@@ -74,9 +83,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleRoll()
     {
-        if (animatorManager.animator.GetBool("isInteracting"))
-            return;
-
         if (inputManager.rollFlag)
         {
             Vector3 direction = new Vector3(inputManager.horizontalInput, 0f, inputManager.verticalInput).normalized;
@@ -90,16 +96,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void HandleWeaponCombo()
+    {
+        if (inputManager.comboFlag)
+        {
+            inputManager.comboFlag = false;
+            animatorManager.animator.SetBool("canCombo", false);
+
+            if (lastAttack == weaponSlotManager.weaponItem.Attack1)
+            {
+                lastAttack = weaponSlotManager.weaponItem.Attack2;
+                animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack2, true);
+            }
+        }
+    }
+
     private void HandleAttack()
     {
-        if (animatorManager.animator.GetBool("isInteracting"))
-            return;
-
         if (inputManager.attackFlag)
         {
             Vector3 direction = transform.forward;
-            animatorManager.PlayTargetAnimation("Attack", true);
             transform.rotation = Quaternion.LookRotation(direction);
+
+            lastAttack = weaponSlotManager.weaponItem.Attack1;
+            animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack1, true);
         }
     }
 }

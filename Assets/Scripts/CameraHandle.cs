@@ -9,9 +9,14 @@ public class CameraHandle : MonoBehaviour
 
     void Update()
     {
-        Vector3 p = transform.position;
-        p.x = player.transform.position.x + (enemy.transform.position.x - player.transform.position.x) / 2;
-        p.z = player.transform.position.z + (enemy.transform.position.z - player.transform.position.z) / 2 - 5;
-        transform.position = p;
+        Vector3 center = (player.transform.position + enemy.transform.position) / 2;
+        float dist = Vector3.Distance(player.transform.position, enemy.transform.position) + 2;
+        if (dist < 8) dist = 8;
+        transform.position = Vector3.Lerp(transform.position, center + transform.forward * -dist, 0.1f);
+    }
+
+    public void Shake()
+    {
+        transform.position += Random.insideUnitSphere * 0.5f;
     }
 }

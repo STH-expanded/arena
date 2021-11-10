@@ -5,20 +5,31 @@ using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour
 {
-    public Slider healthBar;
+    public Slider playerHealthBar;
     public PlayerManager playerManager;
+
+    public Slider enemyHealthBar;
+    public EnemyManager enemyManager;
 
     void Start()
     {
-        healthBar.maxValue = playerManager.stats.Health;
-        healthBar.value = playerManager.stats.Health;
+        playerHealthBar.maxValue = playerManager.unitStatisticsManager.unitStatistics.Health;
+        playerHealthBar.value = playerManager.unitStatisticsManager.unitStatistics.Health;
+
+        enemyHealthBar.maxValue = enemyManager.unitStatisticsManager.unitStatistics.Health;
+        enemyHealthBar.value = enemyManager.unitStatisticsManager.unitStatistics.Health;
     }
 
     void Update()
     {
-        if (playerManager.stats.CurrentHealth != healthBar.value)
+        if (playerManager.unitStatisticsManager.unitStatistics.CurrentHealth != playerHealthBar.value)
         {
-            healthBar.value = Mathf.Lerp(healthBar.value, playerManager.stats.CurrentHealth, 0.05f);
+            playerHealthBar.value = Mathf.Lerp(playerHealthBar.value, playerManager.unitStatisticsManager.unitStatistics.CurrentHealth, 0.05f);
+        }
+
+        if (enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth != enemyHealthBar.value)
+        {
+            enemyHealthBar.value = Mathf.Lerp(enemyHealthBar.value, enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth, 0.05f);
         }
     }
 }
