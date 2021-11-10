@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OpponentSelectionCanvas
   - Enemy
+  - OpponentSelectionBtn
   layers:
   - Default
   - TransparentFX

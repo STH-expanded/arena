@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class OpponentSelection : MonoBehaviour
 {
     public int playerRank = 1;
+
+    public GameObject opponentMenu;
 
     public GameObject card1;
     public GameObject card2;
@@ -22,5 +25,10 @@ public class OpponentSelection : MonoBehaviour
             cardDisplay.setCardValues(level);
             i++;
         }
+    }
+
+    public static void DisplayOpponentMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

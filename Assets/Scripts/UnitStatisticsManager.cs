@@ -8,6 +8,8 @@ public class UnitStatisticsManager : MonoBehaviour
     Animator animator;
     public CameraHandle cameraHandle;
 
+    [SerializeField] private GameObject player;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -43,7 +45,6 @@ public class UnitStatisticsManager : MonoBehaviour
         if (unitStatistics.CurrentHealth <= 0) {
             unitStatistics.CurrentHealth = 0;
             animator.Play("Death");
-            
             if (CompareTag("Enemy")) {
                 GameData gameData;
                 string path = Application.persistentDataPath + "/gameData.save";
@@ -59,6 +60,7 @@ public class UnitStatisticsManager : MonoBehaviour
 
                 SaveLoad.SaveData(gameData);
             }
+            OpponentSelection.DisplayOpponentMenu();
         }
         else
         {
