@@ -44,6 +44,20 @@ public class UnitStatisticsManager : MonoBehaviour
         {
             unitStatistics.CurrentHealth = 0;
             animator.Play("Death");
+
+
+            if (this.tag == "Enemy")
+            {
+                GameData gameData = new GameData();
+                gameData.killCount = 1;
+                gameData.unitStatistics = unitStatistics;
+
+                SaveLoad.SaveData(gameData);
+
+
+                GameData newGameData = SaveLoad.LoadData();
+                Debug.Log(newGameData.killCount);
+            }
         }
         else
         {

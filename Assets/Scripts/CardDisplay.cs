@@ -44,12 +44,7 @@ public class CardDisplay : MonoBehaviour
 
     void SelectAction()
     {
-        Debug.Log(unitStatisticsManager.unitStatistics.Health);
-        DataSaver.saveData(unitStatisticsManager.unitStatistics, "enemy");
 
-        unitStatisticsManager.InitStats(DataSaver.loadData<UnitStatistics>("enemy"));
-        Debug.Log(unitStatisticsManager.unitStatistics.Health);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        /*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);*/
     }
 }
