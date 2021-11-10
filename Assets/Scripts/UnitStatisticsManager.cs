@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -40,23 +40,24 @@ public class UnitStatisticsManager : MonoBehaviour
         unitStatistics.CurrentHealth -= damage;
         cameraHandle.Shake();
 
-        if (unitStatistics.CurrentHealth <= 0)
-        {
+        if (unitStatistics.CurrentHealth <= 0) {
             unitStatistics.CurrentHealth = 0;
             animator.Play("Death");
+            
+            if (CompareTag("Enemy")) {
+                GameData gameData;
+                string path = Application.persistentDataPath + "/gameData.save";
 
-
-            if (this.tag == "Enemy")
-            {
-                GameData gameData = new GameData();
-                gameData.killCount = 1;
-                gameData.unitStatistics = unitStatistics;
+                if (File.Exists(path)) {
+                    gameData = SaveLoad.LoadData();
+                    gameData.killCount += 1;
+                } else {
+                    gameData = new GameData();
+                    gameData.unitStatistics = unitStatistics;
+                    gameData.killCount += 1;
+                }
 
                 SaveLoad.SaveData(gameData);
-
-
-                GameData newGameData = SaveLoad.LoadData();
-                Debug.Log(newGameData.killCount);
             }
         }
         else
