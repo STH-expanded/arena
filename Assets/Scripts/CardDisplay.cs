@@ -50,6 +50,6 @@ public class CardDisplay : MonoBehaviour
         unitStatisticsManager.InitStats(DataSaver.loadData<UnitStatistics>("enemy"));
         Debug.Log(unitStatisticsManager.unitStatistics.Health);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
