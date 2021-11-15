@@ -8,6 +8,10 @@ public class EnemyManager : MonoBehaviour
     public bool isPreformingAction;
     public UnitStatisticsManager unitStatisticsManager;
 
+    private Vector3 defPos;
+    private Quaternion defRot;
+    private Vector3 defScale;
+
     [Header("A,I Settings")]
     public float detectionRadius = 20;
     public float maximumDetectionAngle = 50;
@@ -18,14 +22,16 @@ public class EnemyManager : MonoBehaviour
     {
         enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
         unitStatisticsManager = GetComponent<UnitStatisticsManager>();
-        unitStatisticsManager.InitStats(DataSaver.loadData<UnitStatistics>("enemy"));
-        Debug.Log(unitStatisticsManager.unitStatistics.Health);
+
+        defPos = transform.position;
+        defRot = transform.localRotation;
+        defScale = transform.localScale;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (unitStatisticsManager.unitStatistics.CurrentHealth <= 0)
+        if (unitStatisticsManager.unitStatistics.CurrentHealth == 0)
             return;
         HandleCurrentAction();
     }
@@ -50,5 +56,12 @@ public class EnemyManager : MonoBehaviour
         {
             playerManager.unitStatisticsManager.TakeDamage(4);
         }
+    }
+
+    public void ResetTransform()
+    {
+        transform.position = defPos;
+        transform.localRotation = defRot;
+        transform.localScale = defScale;
     }
 }

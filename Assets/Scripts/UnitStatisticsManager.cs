@@ -16,7 +16,7 @@ public class UnitStatisticsManager : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void InitLevelUp(int baseLevel)
+    public void InitLevel(int baseLevel)
     {
         unitStatistics = new UnitStatistics();
         while (unitStatistics.Level < baseLevel) LevelUp();
@@ -46,42 +46,6 @@ public class UnitStatisticsManager : MonoBehaviour
         if (unitStatistics.CurrentHealth <= 0) {
             unitStatistics.CurrentHealth = 0;
             animator.Play("Death");
-            if (CompareTag("Enemy")) {
-                GameData gameData;
-                string path = Application.persistentDataPath + "/gameData.save";
-
-                if (File.Exists(path)) {
-                    gameData = SaveLoad.LoadData();
-                    gameData.killCount += 1;
-                } else {
-                    gameData = new GameData();
-                    gameData.unitStatistics = unitStatistics;
-                    gameData.killCount += 1;
-                }
-
-                SaveLoad.SaveData(gameData);
-                OpponentSelection.DisplayOpponentMenu();
-            }
-            else
-            {
-                GameData gameData;
-                string path = Application.persistentDataPath + "/gameData.save";
-
-                if (File.Exists(path))
-                {
-                    gameData = SaveLoad.LoadData();
-                    gameData.killCount = 0;
-                }
-                else
-                {
-                    gameData = new GameData();
-                    gameData.unitStatistics = null;
-                    gameData.killCount = 0;
-                }
-
-                SaveLoad.SaveData(gameData);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-            }
         }
         else
         {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a21a856f5ff584fb84b04320d11b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLoop: {fileID: 1087937710}
   isPreformingAction: 0
   unitStatisticsManager: {fileID: 0}
   detectionRadius: 20
@@ -1250,10 +1251,13 @@ MonoBehaviour:
   verticalInput: 0
   horizontalInput: 0
   a_Input: 0
+  a_Buffer: 0
   b_Input: 0
   rollFlag: 0
-  attackFlag: 0
-  comboFlag: 0
+  attack1Flag: 0
+  attack2Buffer: 0
+  attack3Buffer: 0
+  stabBuffer: 0
 --- !u!114 &262174274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,12 +1287,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84553c861bf99eb4b8102b107df45974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLoop: {fileID: 1087937710}
   unitStatisticsManager: {fileID: 0}
   isInteracting: 0
-  isAttacking: 0
   isRolling: 0
+  isStabbing: 0
   isHit: 0
-  canCombo: 0
+  isAttack1: 0
+  isAttack2: 0
+  isAttack3: 0
+  canAttack2: 0
+  canAttack3: 0
 --- !u!114 &262174276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2421,10 +2430,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRank: 1
-  opponentMenu: {fileID: 527188482}
   card1: {fileID: 1968547282}
   card2: {fileID: 727288948}
   card3: {fileID: 1615225889}
+  isActive: 1
+  player: {fileID: 262174266}
+  enemy: {fileID: 10881299}
 --- !u!1 &564888582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,11 +3863,13 @@ MonoBehaviour:
   levelText: {fileID: 1313283038}
   nameText: {fileID: 1790972648}
   artwork: {fileID: 634450546}
+  cardManager: {fileID: 527188487}
   healthSlider: {fileID: 74979253}
   attackSlider: {fileID: 1698834224}
   defenseSlider: {fileID: 17967679}
   speedSlider: {fileID: 637917624}
   unitStatisticsManager: {fileID: 0}
+  enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 1203369575}
 --- !u!114 &727288952
 MonoBehaviour:
@@ -5112,6 +5125,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074556879}
   m_CullTransparentMesh: 1
+--- !u!1 &1087937709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087937711}
+  - component: {fileID: 1087937710}
+  m_Layer: 0
+  m_Name: GameLoop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1087937710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087937709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70527b23ad028e04b9660158c2bb619d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardManager: {fileID: 527188487}
+  playerManager: {fileID: 262174275}
+  enemyManager: {fileID: 10881303}
+--- !u!4 &1087937711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087937709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.94553, y: -9.984567, z: 0.7991988}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089047520
 GameObject:
   m_ObjectHideFlags: 0
@@ -6970,11 +7029,13 @@ MonoBehaviour:
   levelText: {fileID: 1030251353}
   nameText: {fileID: 233104283}
   artwork: {fileID: 295834732}
+  cardManager: {fileID: 527188487}
   healthSlider: {fileID: 1817746910}
   attackSlider: {fileID: 694470343}
   defenseSlider: {fileID: 1294585761}
   speedSlider: {fileID: 1910032214}
   unitStatisticsManager: {fileID: 0}
+  enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 1979593870}
 --- !u!114 &1615225893
 MonoBehaviour:
@@ -8814,11 +8875,13 @@ MonoBehaviour:
   levelText: {fileID: 1971142841}
   nameText: {fileID: 1571889739}
   artwork: {fileID: 954385932}
+  cardManager: {fileID: 527188487}
   healthSlider: {fileID: 564888584}
   attackSlider: {fileID: 1089047522}
   defenseSlider: {fileID: 1110993585}
   speedSlider: {fileID: 1934710873}
   unitStatisticsManager: {fileID: 0}
+  enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 663698801}
 --- !u!114 &1968547286
 MonoBehaviour:

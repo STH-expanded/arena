@@ -9,12 +9,15 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Text nameText;
     [SerializeField] public Image artwork;
 
+    public CardManager cardManager;
+
     public Slider healthSlider;
     public Slider attackSlider;
     public Slider defenseSlider;
     public Slider speedSlider;
 
     public UnitStatisticsManager unitStatisticsManager;
+    public UnitStatisticsManager enemyStatsManager;
 
     public Button selectButton;
 
@@ -31,7 +34,7 @@ public class CardDisplay : MonoBehaviour
 
     public void setCardValues(int level)
     {
-        unitStatisticsManager.InitLevelUp(level);
+        unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
 
         levelText.text = "Level " + level;
@@ -44,10 +47,11 @@ public class CardDisplay : MonoBehaviour
 
     void SelectAction()
     {
-        Debug.Log(unitStatisticsManager.unitStatistics.Health);
-        DataSaver.saveData(unitStatisticsManager.unitStatistics, "enemy");
+        Debug.Log("Start fight");
 
-        unitStatisticsManager.InitStats(DataSaver.loadData<UnitStatistics>("enemy"));
-        Debug.Log(unitStatisticsManager.unitStatistics.Health);
+        enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
+        cardManager.isActive = false;
+
+        cardManager.ResetUnits();
     }
 }

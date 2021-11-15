@@ -4,5 +4,7 @@ using System;
 public class GameData
 {
     public UnitStatistics unitStatistics;
-    public int killCount;
+    public int highScore;
+    public int score;
+    public int level;
 }
