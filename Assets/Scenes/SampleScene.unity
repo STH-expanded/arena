@@ -1176,7 +1176,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -4440,7 +4440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a274281ca624670a22d414aacac8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inDelay: 0.4
+  inDelay: 0.45
   inDuration: 0.5
   outDelay: 0.35
   outDuration: 0.5
@@ -8567,7 +8567,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -8779,7 +8779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a274281ca624670a22d414aacac8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inDelay: 0.5
+  inDelay: 0.6
   inDuration: 0.5
   outDelay: 0.35
   outDuration: 0.5
@@ -9609,7 +9609,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2

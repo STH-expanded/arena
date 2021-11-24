@@ -45,6 +45,8 @@ public class MainCardTween : MonoBehaviour
 
     void DestroyMe()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        unselectedCard1.SetActive(false);
+        unselectedCard2.SetActive(false);
     }
 }

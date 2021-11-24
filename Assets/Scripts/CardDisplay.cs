@@ -10,16 +10,16 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Image artwork;
 
     [SerializeField] public Text healthText;
+    [SerializeField] public Text speedText;
     [SerializeField] public Text attackText;
     [SerializeField] public Text defenseText;
-    [SerializeField] public Text speedText;
 
     public CardManager cardManager;
 
     public Slider healthSlider;
+    public Slider speedSlider;
     public Slider attackSlider;
     public Slider defenseSlider;
-    public Slider speedSlider;
 
     public UnitStatisticsManager unitStatisticsManager;
     public UnitStatisticsManager enemyStatsManager;
@@ -37,13 +37,13 @@ public class CardDisplay : MonoBehaviour
         btn.onClick.AddListener(SelectAction);
     }
 
-    public void setCardValues(int level)
+    public void setCardValues(int level, string enemyName)
     {
         unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
 
         levelText.text = string.Format("Level {0}", level);
-        nameText.text = "Enemy";
+        nameText.text = enemyName;
 
         healthSlider.value = stats.Health;
         healthText.text = stats.Health.ToString();
