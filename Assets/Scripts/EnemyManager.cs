@@ -13,9 +13,8 @@ public class EnemyManager : MonoBehaviour
     public PlayerManager currentTarget;
     public bool isPreformingAction;
     public UnitStatisticsManager unitStatisticsManager;
-    public float distanceFromTarget;
     public float rotationSpeed;
-    public float maximumAttackRange = 0.5f;
+    public float maximumAggroRadius = 0.5f;
     public Rigidbody enemyRigidBody;
 
     private Vector3 defPos;
@@ -26,7 +25,6 @@ public class EnemyManager : MonoBehaviour
     public float detectionRadius = 20;
     public float maximumDetectionAngle = 50;
     public float minimumDetectionAngle = -50;
-    public float viewableAngle;
 
     public float currentRecoveryTime = 0;
 

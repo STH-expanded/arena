@@ -286,14 +286,12 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   isPreformingAction: 0
   unitStatisticsManager: {fileID: 0}
-  distanceFromTarget: 0
   rotationSpeed: 20
-  maximumAttackRange: 1.5
+  maximumAggroRadius: 1
   enemyRigidBody: {fileID: 10881305}
   detectionRadius: 20
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
-  viewableAngle: 0
   currentRecoveryTime: 0
 --- !u!95 &10881304
 Animator:
@@ -2657,6 +2655,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackState: {fileID: 1145343738}
+  enemyAttacks:
+  - {fileID: 11400000, guid: 4b21ca1ad50c0134296f5968e232819f, type: 2}
+  - {fileID: 11400000, guid: 1bbba39cca344c84a9c4c872c9e0979f, type: 2}
   pursueTargetState: {fileID: 2132931909}
 --- !u!1 &581570121
 GameObject:
@@ -3571,7 +3572,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 500
   m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -5638,10 +5639,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 576277527}
-  enemyAttacks:
-  - {fileID: 11400000, guid: 4b21ca1ad50c0134296f5968e232819f, type: 2}
-  - {fileID: 11400000, guid: 1bbba39cca344c84a9c4c872c9e0979f, type: 2}
+  pursueTargetState: {fileID: 2132931909}
   currentAttack: {fileID: 0}
+  hasPerformedAttack: 0
 --- !u!1 &1203369573
 GameObject:
   m_ObjectHideFlags: 0
