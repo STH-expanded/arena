@@ -15,6 +15,7 @@ public class EnemyManager : MonoBehaviour
     public float rotationSpeed;
     public float maximumAttackRange = 0.5f;
     public Rigidbody enemyRigidBody;
+    public EnemyManager enemyManager;
 
     private Vector3 defPos;
     private Quaternion defRot;
@@ -105,7 +106,7 @@ public class EnemyManager : MonoBehaviour
     {
         PlayerManager playerManager = other.GetComponent<PlayerManager>();
 
-        if (playerManager != null)
+        if (playerManager != null && enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth > 0)
         {
             playerManager.unitStatisticsManager.TakeDamage(4);
         }
