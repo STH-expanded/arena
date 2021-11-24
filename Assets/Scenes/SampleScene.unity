@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4705,6 +4705,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 262174266}
   enemy: {fileID: 10881299}
+  isEnemyDead: 0
+  isPlayerDead: 0
 --- !u!1 &966599414
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,6 +5291,7 @@ MonoBehaviour:
   cardManager: {fileID: 527188487}
   playerManager: {fileID: 262174275}
   enemyManager: {fileID: 10881303}
+  cameraHandle: {fileID: 963194229}
 --- !u!4 &1087937711
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class UnitStatisticsManager : MonoBehaviour
@@ -42,61 +40,14 @@ public class UnitStatisticsManager : MonoBehaviour
     {
         unitStatistics.CurrentHealth -= damage;
         cameraHandle.Shake();
+
         if (unitStatistics.CurrentHealth <= 0) {
             unitStatistics.CurrentHealth = 0;
             animator.Play("Death");
-            if (CompareTag("Enemy")) {
-                GameData gameData;
-                string path = Application.persistentDataPath + "/gameData.save";
-
-                if (File.Exists(path)) {
-                    gameData = SaveLoad.LoadData();
-                    gameData.killCount += 1;
-                } else {
-                    gameData = new GameData();
-                    gameData.unitStatistics = unitStatistics;
-                    gameData.killCount += 1;
-                }
-
-                SaveLoad.SaveData(gameData);
-
-                cameraHandle.isEnemyDead = true;
-                Invoke("ReloadCards", 5);
-            }
-            else
-            {
-                GameData gameData;
-                string path = Application.persistentDataPath + "/gameData.save";
-
-                if (File.Exists(path))
-                {
-                    gameData = SaveLoad.LoadData();
-                    gameData.killCount = 0;
-                }
-                else
-                {
-                    gameData = new GameData();
-                    gameData.unitStatistics = null;
-                    gameData.killCount = 0;
-                }
-
-                SaveLoad.SaveData(gameData);
-                
-                Invoke("DeathCountdown", 5);
-            }
         }
         else
         {
             animator.Play("Hit");
         }
-    }
-    
-    private void DeathCountdown()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-    }
-    private void ReloadCards()
-    {
-        OpponentSelection.DisplayOpponentMenu();
     }
 }
