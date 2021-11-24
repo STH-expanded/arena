@@ -24,7 +24,10 @@ public class PlayerManager : MonoBehaviour
     public bool isAttack3;
     public bool canAttack2;
     public bool canAttack3;
-
+    
+    public int startGameBuffer = 0;
+    public bool isIntro = true;
+    
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
@@ -49,8 +52,11 @@ public class PlayerManager : MonoBehaviour
         canAttack2 = animator.GetBool("canAttack2");
         canAttack3 = animator.GetBool("canAttack3");
 
-        inputManager.HandleAllInputs();
-        playerMovement.HandleAllMovement();
+        if (!isIntro)
+        {
+            inputManager.HandleAllInputs();
+            playerMovement.HandleAllMovement();
+        }
     }
 
     private void LateUpdate()
