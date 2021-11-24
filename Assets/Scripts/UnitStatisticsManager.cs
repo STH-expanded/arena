@@ -16,7 +16,7 @@ public class UnitStatisticsManager : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void InitLevelUp(int baseLevel)
+    public void InitLevel(int baseLevel)
     {
         unitStatistics = new UnitStatistics();
         while (unitStatistics.Level < baseLevel) LevelUp();

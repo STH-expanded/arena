@@ -1,44 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
     EnemyLocomotionManager enemyLocomotionManager;
+    EnemyAnimatorManager enemyAnimationManager;
+    public NavMeshAgent navMeshAgent;
+
+    public State currentState;
+    public PlayerManager currentTarget;
     public bool isPreformingAction;
     public UnitStatisticsManager unitStatisticsManager;
+    public float distanceFromTarget;
+    public float rotationSpeed;
+    public float maximumAttackRange = 0.5f;
+    public Rigidbody enemyRigidBody;
+
+    private Vector3 defPos;
+    private Quaternion defRot;
+    private Vector3 defScale;
 
     [Header("A,I Settings")]
     public float detectionRadius = 20;
     public float maximumDetectionAngle = 50;
     public float minimumDetectionAngle = -50;
+    public float viewableAngle;
+
+    public float currentRecoveryTime = 0;
 
     // Start is called before the first frame update
     private void Awake()
     {
         enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
+        enemyAnimationManager = GetComponentInChildren<EnemyAnimatorManager>();
+        navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         unitStatisticsManager = GetComponent<UnitStatisticsManager>();
-        unitStatisticsManager.InitStats(DataSaver.loadData<UnitStatistics>("enemy"));
-        Debug.Log(unitStatisticsManager.unitStatistics.Health);
+        navMeshAgent.enabled = false;
+        enemyRigidBody = GetComponent<Rigidbody>();
+
+        defPos = transform.position;
+        defRot = transform.localRotation;
+        defScale = transform.localScale;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (unitStatisticsManager.unitStatistics.CurrentHealth <= 0)
+        if (unitStatisticsManager.unitStatistics.CurrentHealth == 0)
             return;
-        HandleCurrentAction();
+        HandleRecoveryTimer();
+        HandleStateMachine();
     }
 
-    private void HandleCurrentAction()
+    private void HandleStateMachine()
     {
-        if (enemyLocomotionManager.currentTarget == null)
+        if (currentState != null)
         {
-            enemyLocomotionManager.HandleDetection();
+            State nextState = currentState.Tick(this, unitStatisticsManager.unitStatistics, enemyAnimationManager);
+
+            if (nextState != null)
+            {
+                SwitchToNextState(nextState);
+            }
         }
-        else
+    }
+
+    private void SwitchToNextState(State state)
+    {
+        currentState = state;
+    }
+
+    private void HandleRecoveryTimer()
+    {
+        if (currentRecoveryTime > 0)
         {
-            enemyLocomotionManager.HandleMoveToTarget();
+            currentRecoveryTime -= Time.deltaTime;
+        }
+
+        if (isPreformingAction)
+        {
+            if (currentRecoveryTime <= 0)
+            {
+                isPreformingAction = false;
+            }
         }
     }
 
@@ -50,5 +96,12 @@ public class EnemyManager : MonoBehaviour
         {
             playerManager.unitStatisticsManager.TakeDamage(4);
         }
+    }
+
+    public void ResetTransform()
+    {
+        transform.position = defPos;
+        transform.localRotation = defRot;
+        transform.localScale = defScale;
     }
 }

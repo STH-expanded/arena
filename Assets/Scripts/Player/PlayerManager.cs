@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    private Vector3 defPos;
+    private Quaternion defRot;
+    private Vector3 defScale;
+
     InputManager inputManager;
     PlayerMovement playerMovement;
     Animator animator;
@@ -27,8 +31,11 @@ public class PlayerManager : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         unitStatisticsManager = GetComponent<UnitStatisticsManager>();
-        unitStatisticsManager.InitLevelUp(1);
-}
+
+        defPos = transform.position;
+        defRot = transform.localRotation;
+        defScale = transform.localScale;
+    }
 
     private void Update()
     {
@@ -49,5 +56,12 @@ public class PlayerManager : MonoBehaviour
     private void LateUpdate()
     {
         inputManager.rollFlag = false;
+    }
+
+    public void ResetTransform()
+    {
+        transform.position = defPos;
+        transform.localRotation = defRot;
+        transform.localScale = defScale;
     }
 }
