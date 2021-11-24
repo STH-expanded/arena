@@ -35,6 +35,8 @@ public class GameLoop : MonoBehaviour
         if (cardManager.isActive)
             return;
 
+        playerManager.isIntro = enemyManager.isIntro;
+
         if (playerManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {
             Lose();
@@ -42,9 +44,11 @@ public class GameLoop : MonoBehaviour
         else if (enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {
             cameraHandle.isEnemyDead = true;
-            if (winBuffer < 720)
+            if (winBuffer < 620)
             {
                 winBuffer += 1;
+                playerManager.startGameBuffer = 0;
+                enemyManager.startGameBuffer = 0;
             }
             else
             {
@@ -66,7 +70,10 @@ public class GameLoop : MonoBehaviour
         SaveLoad.SaveData(gameData);
         
         cardManager.InitCards(gameData.level);
+        // reset for the next game :
         cameraHandle.isEnemyDead = false;
+        enemyManager.isIntro = true;
+        playerManager.isIntro = true;
     }
 
     void Lose()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,8 +25,10 @@ public class EnemyManager : MonoBehaviour
     public float maximumDetectionAngle = 50;
     public float minimumDetectionAngle = -50;
     public float viewableAngle;
-
+    
     public float currentRecoveryTime = 0;
+    public int startGameBuffer = 0;
+    public bool isIntro = true;
 
     // Start is called before the first frame update
     private void Awake()
@@ -50,8 +50,21 @@ public class EnemyManager : MonoBehaviour
     {
         if (unitStatisticsManager.unitStatistics.CurrentHealth == 0)
             return;
-        HandleRecoveryTimer();
-        HandleStateMachine();
+        
+        if (isIntro)
+        {
+            enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // move forward
+        }
+        else
+        {
+            HandleRecoveryTimer();
+            HandleStateMachine();
+        }
+
+        if (transform.position.z < 5)
+        {
+            isIntro = false;
+        }
     }
 
     private void HandleStateMachine()
