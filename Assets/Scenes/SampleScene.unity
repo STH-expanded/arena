@@ -1339,6 +1339,7 @@ MonoBehaviour:
   isAttack3: 0
   canAttack2: 0
   canAttack3: 0
+  isInvulnerable: 0
 --- !u!114 &262174276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4000,6 +4001,7 @@ MonoBehaviour:
   attackSlider: {fileID: 1698834224}
   defenseSlider: {fileID: 17967679}
   speedSlider: {fileID: 637917624}
+  userInterface: {fileID: 104319412}
   unitStatisticsManager: {fileID: 0}
   enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 1203369575}
@@ -7214,6 +7216,7 @@ MonoBehaviour:
   attackSlider: {fileID: 694470343}
   defenseSlider: {fileID: 1294585761}
   speedSlider: {fileID: 1910032214}
+  userInterface: {fileID: 104319412}
   unitStatisticsManager: {fileID: 0}
   enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 1979593870}
@@ -9094,6 +9097,7 @@ MonoBehaviour:
   attackSlider: {fileID: 1089047522}
   defenseSlider: {fileID: 1110993585}
   speedSlider: {fileID: 1934710873}
+  userInterface: {fileID: 104319412}
   unitStatisticsManager: {fileID: 0}
   enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 663698801}

@@ -87,6 +87,16 @@ public class AnimatorManager : MonoBehaviour
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
 
+    public void EnableIsInvulnerable()
+    {
+        animator.SetBool("isInvulnerable", true);
+    }
+
+    public void DisableIsInvulnerable()
+    {
+        animator.SetBool("isInvulnerable", false);
+    }
+
     public void EnableCombo1()
     {
         animator.SetBool("canAttack2", true);

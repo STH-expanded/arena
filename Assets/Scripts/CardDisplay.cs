@@ -16,6 +16,8 @@ public class CardDisplay : MonoBehaviour
     public Slider defenseSlider;
     public Slider speedSlider;
 
+    public UserInterface userInterface;
+
     public UnitStatisticsManager unitStatisticsManager;
     public UnitStatisticsManager enemyStatsManager;
 
@@ -50,6 +52,9 @@ public class CardDisplay : MonoBehaviour
         Debug.Log("Start fight");
 
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
+        GameObject.Find("Canvas").SetActive(true);
+        userInterface.InitHealthBars();
+
         cardManager.isActive = false;
 
         cardManager.ResetUnits();

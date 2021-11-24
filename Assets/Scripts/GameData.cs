@@ -7,4 +7,6 @@ public class GameData
     public int highScore;
     public int score;
     public int level;
+
+    public bool[] achievements = { false, false, false, false, false, false };
 }

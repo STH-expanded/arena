@@ -40,6 +40,16 @@ public class UnitStatisticsManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (gameObject.name == "Player")
+        {
+            if (gameObject.GetComponent<PlayerManager>().isInvulnerable)
+                return;
+        }
+        else if (gameObject.name == "Enemy")
+        {
+
+        }
+
         unitStatistics.CurrentHealth -= damage;
         cameraHandle.Shake();
 

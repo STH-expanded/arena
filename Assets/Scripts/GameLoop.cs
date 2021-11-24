@@ -53,8 +53,17 @@ public class GameLoop : MonoBehaviour
         if (gameData.score > gameData.highScore) gameData.highScore = gameData.score;
         gameData.unitStatistics = playerManager.unitStatisticsManager.unitStatistics;
 
+        // Achievements
+        if (gameData.score == 1) gameData.achievements[0] = true;
+        if (gameData.score == 2) gameData.achievements[1] = true;
+        if (gameData.score == 3) gameData.achievements[2] = true;
+        if (gameData.score == 4) gameData.achievements[3] = true;
+        if (gameData.score == 5) gameData.achievements[4] = true;
+        if (gameData.score == 6) gameData.achievements[5] = true;
+
         SaveLoad.SaveData(gameData);
 
+        GameObject.Find("Canvas").SetActive(false);
         cardManager.InitCards(gameData.level);
     }
 

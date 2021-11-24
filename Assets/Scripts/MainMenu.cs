@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public GameData gameData;
 
+    public GameObject achievementList;
+
     public void Start()
     {
         string path = Application.persistentDataPath + "/gameData.save";
@@ -25,6 +27,14 @@ public class MainMenu : MonoBehaviour
 
             SaveLoad.SaveData(gameData);
         }
+
+        for (int i = 1; i < 7; i++)
+        {
+            bool a = gameData.achievements[i - 1];
+            GameObject obj = GameObject.Find("Achievement" + i);
+            obj.GetComponentInChildren<UnityEngine.UI.Text>().color = a ? Color.white : Color.grey;
+        }
+        GameObject.Find("AchievementsMenu").SetActive(false);
     }
 
     public void PlayGame()
