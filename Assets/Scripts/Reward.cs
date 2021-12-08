@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class Reward
 {
+	public int id;
 	public String name;
 	public Func<GameObject, int> applyReward;
 
-	public Reward(string nameReward, Func<GameObject, int> applyRewardFunction)
+	public Reward(int idReward, string nameReward, Func<GameObject, int> applyRewardFunction)
 	{
+		id = idReward;
 		name = nameReward;
 		applyReward = applyRewardFunction;
 		

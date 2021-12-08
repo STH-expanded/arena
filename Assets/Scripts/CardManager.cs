@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
 {
@@ -24,10 +25,10 @@ public class CardManager : MonoBehaviour
         "Samy", "Henry", "Léo", "Maxime", "Hugo", "Erwan", "Mathis", "Alex", "Geoffrey", "Paul", "Adrien", "Mattéo", "Tanguy"
     };
     private readonly Reward[] rewardAvailble = {
-        new Reward("HP +1", applyRewardHP), 
-        new Reward("ATK +1",applyRewardATK), 
-        new Reward("SPD +1",applyRewardSPD),
-        new Reward("DEF +1",applyRewardDEF)
+        new Reward(0,"HP +1", applyRewardHP), 
+        new Reward(1,"ATK +1",applyRewardATK), 
+        new Reward(2,"SPD +1",applyRewardSPD),
+        new Reward(3,"DEF +1",applyRewardDEF)
     };
     public void InitCards(int level)
     {
@@ -46,14 +47,14 @@ public class CardManager : MonoBehaviour
         {
             int enemyLevel = Random.Range(level + i * 5, level + (i + 1) * 5);
             CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
+            cardDisplay.reward = rewardAvailble[Random.Range(0, rewardAvailble.Length)];
             string opponentTitle = opponentTitles[Random.Range(0, opponentTitles.Length)];
-            Reward rewardSelected = rewardAvailble[Random.Range(0, rewardAvailble.Length)];
-            string rewardTextToDisplay = string.Format ("{0} : {1}", rewardSelected.name, rewardSelected.applyReward(player));
             string opponentName = opponentNames[Random.Range(0, opponentNames.Length)];
             string opponentFullName = string.Format("{0} {1}", opponentTitle, opponentName);
-            cardDisplay.setCardValues(enemyLevel, opponentFullName, rewardTextToDisplay);
+            cardDisplay.setCardValues(enemyLevel, opponentFullName);
             i++;
         }
+
 
         gameObject.SetActive(true);
     }

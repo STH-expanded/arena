@@ -1579,6 +1579,7 @@ MonoBehaviour:
   isAttack3: 0
   canAttack2: 0
   canAttack3: 0
+  rewardId: 0
   startGameBuffer: 0
   isIntro: 1
 --- !u!114 &262174276
@@ -4541,6 +4542,7 @@ MonoBehaviour:
   unitStatisticsManager: {fileID: 0}
   enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 1203369575}
+  playerManager: {fileID: 262174275}
 --- !u!114 &727288952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8993,6 +8995,7 @@ MonoBehaviour:
   unitStatisticsManager: {fileID: 0}
   enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 1979593870}
+  playerManager: {fileID: 262174275}
 --- !u!114 &1615225893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11226,6 +11229,7 @@ MonoBehaviour:
   unitStatisticsManager: {fileID: 0}
   enemyStatsManager: {fileID: 10881307}
   selectButton: {fileID: 663698801}
+  playerManager: {fileID: 262174275}
 --- !u!114 &1968547286
 MonoBehaviour:
   m_ObjectHideFlags: 0
