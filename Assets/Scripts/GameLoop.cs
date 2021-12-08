@@ -47,6 +47,7 @@ public class GameLoop : MonoBehaviour
 
         if (playerManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {
+            cameraHandle.isPlayerDead = true;
             enemyManager.isOutro = true;
             Lose();
         }

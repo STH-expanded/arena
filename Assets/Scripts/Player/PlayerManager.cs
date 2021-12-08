@@ -57,6 +57,7 @@ public class PlayerManager : MonoBehaviour
         if (isIntro || isOutro)
         {
             Debug.Log("Dans l'intro, Dans l'outro");
+            inputManager.HandleAllInputs();
         } else
         {
             inputManager.HandleAllInputs();
