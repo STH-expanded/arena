@@ -56,8 +56,7 @@ public class PlayerManager : MonoBehaviour
 
         if (isIntro || isOutro)
         {
-            Debug.Log("Dans l'intro, Dans l'outro");
-            inputManager.HandleAllInputs();
+            animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
         } else
         {
             inputManager.HandleAllInputs();
