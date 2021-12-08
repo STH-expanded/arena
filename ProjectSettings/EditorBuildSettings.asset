@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: e746d21a71d4a4e8bb9e1d053f29bfde
+  - enabled: 0
+    path: Assets/Scenes/OpponentSelection.unity
+    guid: 466326faac74644cb9baf11d7c4b91cb
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

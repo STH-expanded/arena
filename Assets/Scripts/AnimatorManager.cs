@@ -11,9 +11,14 @@ public class AnimatorManager : MonoBehaviour
     int horizontal;
     int vertical;
 
-    private void Awake()
+    void Start()
     {
         animator = GetComponent<Animator>();
+        animator.speed = 0;
+    }
+
+    private void Awake()
+    {
         playerManager = GetComponent<PlayerManager>();
         playerMovement = GetComponent<PlayerMovement>();
         horizontal = Animator.StringToHash("Horizontal");
@@ -80,6 +85,26 @@ public class AnimatorManager : MonoBehaviour
 
         animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
+    }
+
+    public void EnableCombo1()
+    {
+        animator.SetBool("canAttack2", true);
+    }
+
+    public void DisableCombo1()
+    {
+        animator.SetBool("canAttack2", false);
+    }
+
+    public void EnableCombo2()
+    {
+        animator.SetBool("canAttack3", true);
+    }
+
+    public void DisableCombo2()
+    {
+        animator.SetBool("canAttack3", false);
     }
 
     private void OnAnimatorMove()

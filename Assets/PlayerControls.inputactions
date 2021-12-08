@@ -138,13 +138,21 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "92b2a9e1-b3d9-4b9f-8d02-a310a7188b46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "c28fc4ae-c67b-4ada-9540-5a07880725bb",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "e974bada-74db-4da5-aadf-c165d92221c8",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -154,8 +162,30 @@
                 },
                 {
                     "name": "",
-                    "id": "e974bada-74db-4da5-aadf-c165d92221c8",
-                    "path": "<Keyboard>/leftShift",
+                    "id": "69fb3aa1-0498-4b19-851d-7e7b54389a0b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00a62cd6-d152-4375-ac60-a48389510d1b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7615ed4d-1fa9-41b1-9f98-2bf52d315da4",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
