@@ -13,6 +13,8 @@ public class GameLoop : MonoBehaviour
     public CameraHandle cameraHandle;
     private int winBuffer = 0;
 
+    public bool isIntro = true;
+
     void Start()
     {
         string path = Application.persistentDataPath + "/gameData.save";

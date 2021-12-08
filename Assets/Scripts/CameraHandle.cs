@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraHandle : MonoBehaviour
 {
+    public GameLoop gameLoop;
     public GameObject player;
     public GameObject enemy;
     public bool isEnemyDead;
@@ -11,10 +12,16 @@ public class CameraHandle : MonoBehaviour
     
     void Update()
     {
+        if (gameLoop.isIntro)
+        {
+            Debug.Log("IS INTRO!!!");
+        }
+
         if (isEnemyDead)
         {
             ZoomOnEnemy();
-        } else if (isPlayerDead) {
+        }
+        else if (isPlayerDead) {
             
         }
         else

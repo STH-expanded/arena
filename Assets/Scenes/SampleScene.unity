@@ -5341,6 +5341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62550ad59a93a554fa885c0d49a9a9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLoop: {fileID: 1087937710}
   player: {fileID: 262174266}
   enemy: {fileID: 10881299}
   isEnemyDead: 0
@@ -6167,6 +6168,7 @@ MonoBehaviour:
   playerManager: {fileID: 262174275}
   enemyManager: {fileID: 10881303}
   cameraHandle: {fileID: 963194229}
+  isIntro: 0
 --- !u!4 &1087937711
 Transform:
   m_ObjectHideFlags: 0
