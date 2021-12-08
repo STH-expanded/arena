@@ -23,7 +23,12 @@ public class CardManager : MonoBehaviour
     private readonly string[] opponentNames = {
         "Samy", "Henry", "Léo", "Maxime", "Hugo", "Erwan", "Mathis", "Alex", "Geoffrey", "Paul", "Adrien", "Mattéo", "Tanguy"
     };
-
+    private readonly Reward[] rewardAvailble = {
+        new Reward("HP +1", applyRewardHP), 
+        new Reward("ATK +1",applyRewardATK), 
+        new Reward("SPD +1",applyRewardSPD),
+        new Reward("DEF +1",applyRewardDEF)
+    };
     public void InitCards(int level)
     {
 
@@ -42,9 +47,11 @@ public class CardManager : MonoBehaviour
             int enemyLevel = Random.Range(level + i * 5, level + (i + 1) * 5);
             CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
             string opponentTitle = opponentTitles[Random.Range(0, opponentTitles.Length)];
+            Reward rewardSelected = rewardAvailble[Random.Range(0, rewardAvailble.Length)];
+            string rewardTextToDisplay = string.Format ("{0} : {1}", rewardSelected.name, rewardSelected.applyReward(player));
             string opponentName = opponentNames[Random.Range(0, opponentNames.Length)];
             string opponentFullName = string.Format("{0} {1}", opponentTitle, opponentName);
-            cardDisplay.setCardValues(enemyLevel, opponentFullName);
+            cardDisplay.setCardValues(enemyLevel, opponentFullName, rewardTextToDisplay);
             i++;
         }
 
@@ -59,5 +66,27 @@ public class CardManager : MonoBehaviour
 
         enemy.SetActive(true);
         enemy.GetComponent<EnemyManager>().ResetTransform();
+    }
+
+
+    public static int applyRewardHP(GameObject player)
+    {
+        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Health++;
+        return  player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Health;
+    }
+    public static int applyRewardATK(GameObject player)
+    {
+        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Attack++;
+        return player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Attack;
+    }
+    public static int applyRewardSPD(GameObject player)
+    {
+        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Speed++;
+        return player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Speed;
+    }
+    public static int applyRewardDEF(GameObject player)
+    {
+        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Defense++;
+        return player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Defense;
     }
 }

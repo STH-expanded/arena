@@ -13,6 +13,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Text speedText;
     [SerializeField] public Text attackText;
     [SerializeField] public Text defenseText;
+    [SerializeField] public Text rewardText;
 
     public CardManager cardManager;
 
@@ -37,7 +38,7 @@ public class CardDisplay : MonoBehaviour
         btn.onClick.AddListener(SelectAction);
     }
 
-    public void setCardValues(int level, string enemyName)
+    public void setCardValues(int level, string enemyName, string rewardTextToDisplay)
     {
         unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
@@ -56,6 +57,8 @@ public class CardDisplay : MonoBehaviour
 
         speedSlider.value = stats.Speed;
         speedText.text = stats.Speed.ToString();
+        rewardText.text = rewardTextToDisplay;
+
     }
 
     void SelectAction()
