@@ -6763,7 +6763,7 @@ MonoBehaviour:
   combatStanceState: {fileID: 576277527}
   pursueTargetState: {fileID: 2132931909}
   currentAttack: {fileID: 0}
-  walkbackState: {fileID: 0}
+  walkbackState: {fileID: 1718479258}
   hasPerformedAttack: 0
 --- !u!1 &1203369573
 GameObject:
@@ -8367,7 +8367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pursueTargetState: {fileID: 2132931909}
   combatStanceState: {fileID: 576277527}
-  walkbackState: {fileID: 0}
+  walkbackState: {fileID: 1718479258}
   attackState: {fileID: 1145343738}
 --- !u!4 &1453107238
 Transform:
