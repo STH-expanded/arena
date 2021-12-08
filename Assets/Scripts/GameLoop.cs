@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +10,8 @@ public class GameLoop : MonoBehaviour
     public CardManager cardManager;
     public PlayerManager playerManager;
     public EnemyManager enemyManager;
+    public CameraHandle cameraHandle;
+    private int winBuffer = 0;
 
     void Start()
     {
@@ -25,28 +26,54 @@ public class GameLoop : MonoBehaviour
             Application.Quit();
         }
 
+        enemyManager.isIntro = true;
+        playerManager.isIntro = true;
+        playerManager.isOutro = false;
+
         playerManager.unitStatisticsManager.InitStats(gameData.unitStatistics);
         cardManager.InitCards(gameData.level);
     }
 
     void Update()
     {
+        if (enemyManager.transform.position.z <= 5)
+        {
+            enemyManager.isIntro = false;
+            playerManager.isIntro = false;
+        }
+        
         if (cardManager.isActive)
             return;
 
         if (playerManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {
+            cameraHandle.isPlayerDead = true;
+            enemyManager.isOutro = true;
             Lose();
         }
         else if (enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {
-            Win();
+            cameraHandle.isEnemyDead = true;
+            playerManager.isOutro = true;
+            if (winBuffer < 620)
+            {
+                winBuffer += 1;
+                playerManager.startGameBuffer = 0;
+                enemyManager.startGameBuffer = 0;
+            }
+            else
+            {
+                winBuffer = 0;
+                Win();
+            }
         }
     }
 
     void Win()
     {
         Debug.Log("Win");
+        
+        Debug.Log(string.Format("Stat win : {0}", playerManager.rewardId));
 
         gameData.score += 1;
         gameData.level += 1;
@@ -54,8 +81,12 @@ public class GameLoop : MonoBehaviour
         gameData.unitStatistics = playerManager.unitStatisticsManager.unitStatistics;
 
         SaveLoad.SaveData(gameData);
-
+        
         cardManager.InitCards(gameData.level);
+        // reset for the next game :
+        cameraHandle.isEnemyDead = false;
+        enemyManager.isIntro = true;
+        playerManager.isOutro = true;
     }
 
     void Lose()
@@ -67,7 +98,12 @@ public class GameLoop : MonoBehaviour
         gameData.unitStatistics = new UnitStatistics();
 
         SaveLoad.SaveData(gameData);
-
+        
+        Invoke("DeathCountdown", 5);
+    }
+    
+    private void DeathCountdown()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

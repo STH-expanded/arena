@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     public float rotationSpeed;
     public float maximumAggroRadius = 0.5f;
     public Rigidbody enemyRigidBody;
+    public EnemyManager enemyManager;
 
     private Vector3 defPos;
     private Quaternion defRot;
@@ -25,8 +24,12 @@ public class EnemyManager : MonoBehaviour
     public float detectionRadius = 20;
     public float maximumDetectionAngle = 50;
     public float minimumDetectionAngle = -50;
-
+    public float viewableAngle;
+    
     public float currentRecoveryTime = 0;
+    public int startGameBuffer = 0;
+    public bool isIntro;
+    public bool isOutro;
 
     // Start is called before the first frame update
     private void Awake()
@@ -48,8 +51,21 @@ public class EnemyManager : MonoBehaviour
     {
         if (unitStatisticsManager.unitStatistics.CurrentHealth == 0)
             return;
-        HandleRecoveryTimer();
-        HandleStateMachine();
+        
+        if (isIntro)
+        {
+            enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // move forward
+        } else if (isOutro)
+        {
+            enemyAnimationManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
+
+        }
+        else
+        {
+            currentState.Tick(this, unitStatisticsManager.unitStatistics, enemyAnimationManager);
+            HandleRecoveryTimer();
+            HandleStateMachine();
+        }
     }
 
     private void HandleStateMachine()
@@ -90,7 +106,7 @@ public class EnemyManager : MonoBehaviour
     {
         PlayerManager playerManager = other.GetComponent<PlayerManager>();
 
-        if (playerManager != null)
+        if (playerManager != null && unitStatisticsManager.unitStatistics.CurrentHealth > 0)
         {
             playerManager.unitStatisticsManager.TakeDamage(4);
         }
@@ -101,5 +117,7 @@ public class EnemyManager : MonoBehaviour
         transform.position = defPos;
         transform.localRotation = defRot;
         transform.localScale = defScale;
+        isIntro = true;
+        isOutro = false;
     }
 }

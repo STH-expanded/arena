@@ -1,6 +1,4 @@
-using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class UnitStatisticsManager : MonoBehaviour
