@@ -30,6 +30,7 @@ public class EnemyManager : MonoBehaviour
     public float currentRecoveryTime = 0;
     public int startGameBuffer = 0;
     public bool isIntro;
+    public bool isOutro;
 
     // Start is called before the first frame update
     private void Awake()
@@ -44,8 +45,6 @@ public class EnemyManager : MonoBehaviour
         defPos = transform.position;
         defRot = transform.localRotation;
         defScale = transform.localScale;
-
-        isIntro = true;
     }
 
     // Update is called once per frame
@@ -57,6 +56,10 @@ public class EnemyManager : MonoBehaviour
         if (isIntro)
         {
             enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // move forward
+        } else if (isOutro)
+        {
+            enemyAnimationManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
+
         }
         else
         {
@@ -115,5 +118,7 @@ public class EnemyManager : MonoBehaviour
         transform.position = defPos;
         transform.localRotation = defRot;
         transform.localScale = defScale;
+        isIntro = true;
+        isOutro = false;
     }
 }
