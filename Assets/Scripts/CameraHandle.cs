@@ -43,4 +43,10 @@ public class CameraHandle : MonoBehaviour
         Vector3 center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.01f);
     }
+    
+    public void ZoomOnPlayer()
+    {
+        Vector3 center = (player.transform.position);
+        transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.01f);
+    }
 }

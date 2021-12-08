@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     public bool canAttack3;
     
     public int startGameBuffer = 0;
-    public bool isIntro = true;
+    public bool isIntro;
     
     private void Awake()
     {
@@ -38,6 +38,8 @@ public class PlayerManager : MonoBehaviour
         defPos = transform.position;
         defRot = transform.localRotation;
         defScale = transform.localScale;
+
+        isIntro = true;
     }
 
     private void Update()

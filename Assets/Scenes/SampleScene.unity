@@ -251,9 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f7de54e6b77ed40b493e413ba9df66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  playerManager: {fileID: 0}
-  playerMovement: {fileID: 0}
+  animator: {fileID: 10881304}
+  playerManager: {fileID: 262174275}
+  playerMovement: {fileID: 262174274}
 --- !u!114 &10881302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,15 +282,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 0}
-  currentState: {fileID: 0}
-  currentTarget: {fileID: 0}
+  currentState: {fileID: 2132931909}
+  currentTarget: {fileID: 262174275}
   isPreformingAction: 0
   unitStatisticsManager: {fileID: 0}
   distanceFromTarget: 0
   rotationSpeed: 20
   maximumAttackRange: 1.5
   enemyRigidBody: {fileID: 10881305}
-  enemyManager: {fileID: 0}
+  enemyManager: {fileID: 10881303}
   detectionRadius: 20
   maximumDetectionAngle: 50
   minimumDetectionAngle: -50
