@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a21a856f5ff584fb84b04320d11b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 0}
-  currentState: {fileID: 0}
+  navMeshAgent: {fileID: 694275729}
+  currentState: {fileID: 2132931909}
   currentTarget: {fileID: 262174275}
   isPreformingAction: 0
   unitStatisticsManager: {fileID: 0}
@@ -1582,6 +1582,7 @@ MonoBehaviour:
   rewardId: 0
   startGameBuffer: 0
   isIntro: 1
+  isOutro: 0
 --- !u!114 &262174276
 MonoBehaviour:
   m_ObjectHideFlags: 0

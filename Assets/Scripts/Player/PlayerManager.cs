@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     public int startGameBuffer = 0;
     public bool isIntro;
+    public bool isOutro;
     
     private void Awake()
     {
@@ -40,7 +41,6 @@ public class PlayerManager : MonoBehaviour
         defPos = transform.position;
         defRot = transform.localRotation;
         defScale = transform.localScale;
-
         isIntro = true;
     }
 
@@ -56,7 +56,10 @@ public class PlayerManager : MonoBehaviour
         canAttack2 = animator.GetBool("canAttack2");
         canAttack3 = animator.GetBool("canAttack3");
 
-        if (!isIntro)
+        if (isIntro || isOutro)
+        {
+            animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
+        } else
         {
             inputManager.HandleAllInputs();
             playerMovement.HandleAllMovement();
@@ -73,5 +76,7 @@ public class PlayerManager : MonoBehaviour
         transform.position = defPos;
         transform.localRotation = defRot;
         transform.localScale = defScale;
+        isIntro = true;
+        isOutro = false;
     }
 }
