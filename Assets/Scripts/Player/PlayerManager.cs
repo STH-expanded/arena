@@ -24,7 +24,9 @@ public class PlayerManager : MonoBehaviour
     public bool isAttack3;
     public bool canAttack2;
     public bool canAttack3;
-    
+
+    public int rewardId;
+
     public int startGameBuffer = 0;
     public bool isIntro;
     public bool isOutro;
