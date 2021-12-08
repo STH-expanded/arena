@@ -26,16 +26,23 @@ public class GameLoop : MonoBehaviour
             Application.Quit();
         }
 
+        enemyManager.isIntro = true;
+        playerManager.isIntro = true;
+        
         playerManager.unitStatisticsManager.InitStats(gameData.unitStatistics);
         cardManager.InitCards(gameData.level);
     }
 
     void Update()
     {
+        if (enemyManager.transform.position.z <= 5)
+        {
+            enemyManager.isIntro = false;
+            playerManager.isIntro = false;
+        }
+        
         if (cardManager.isActive)
             return;
-
-        playerManager.isIntro = enemyManager.isIntro;
 
         if (playerManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {

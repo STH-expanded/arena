@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour
     
     public float currentRecoveryTime = 0;
     public int startGameBuffer = 0;
-    public bool isIntro = true;
+    public bool isIntro;
 
     // Start is called before the first frame update
     private void Awake()
@@ -44,6 +44,8 @@ public class EnemyManager : MonoBehaviour
         defPos = transform.position;
         defRot = transform.localRotation;
         defScale = transform.localScale;
+
+        isIntro = true;
     }
 
     // Update is called once per frame
@@ -58,13 +60,9 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
+            currentState.Tick(this, unitStatisticsManager.unitStatistics, enemyAnimationManager);
             HandleRecoveryTimer();
             HandleStateMachine();
-        }
-
-        if (transform.position.z < 5)
-        {
-            isIntro = false;
         }
     }
 
@@ -106,7 +104,7 @@ public class EnemyManager : MonoBehaviour
     {
         PlayerManager playerManager = other.GetComponent<PlayerManager>();
 
-        if (playerManager != null && enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth > 0)
+        if (playerManager != null && unitStatisticsManager.unitStatistics.CurrentHealth > 0)
         {
             playerManager.unitStatisticsManager.TakeDamage(4);
         }
