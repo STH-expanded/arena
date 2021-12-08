@@ -5,11 +5,13 @@ using UnityEngine;
 public class PursueTargetState : State
 {
     public CombatStanceState combatStanceState;
+    public StrafeState strafeState;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
+        bool isStraph = distanceFromTarget <= enemyManager.maximumAggroRadius + 3 && distanceFromTarget > enemyManager.maximumAggroRadius;
 
         HandleRotateTowardsTarget(enemyManager);
 
@@ -19,9 +21,12 @@ public class PursueTargetState : State
             return this;
         }
 
-        if (distanceFromTarget > enemyManager.maximumAggroRadius)
+        if (distanceFromTarget > 3)
         {
             enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+        } else if (isStraph)
+        {
+            return strafeState;
         }
 
         enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;

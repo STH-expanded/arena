@@ -7,13 +7,14 @@ public class AttackState : State
     public CombatStanceState combatStanceState;
     public PursueTargetState pursueTargetState;
     public EnemyAttackAction currentAttack;
+    public WalkbackState walkbackState;
 
     public bool hasPerformedAttack = false;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
-        if (distanceFromTarget > enemyManager.maximumAggroRadius)
+        if (distanceFromTarget > 3)
         {
             return pursueTargetState;
         }
@@ -23,12 +24,15 @@ public class AttackState : State
             AttackTarget(enemyAnimatorManager, enemyManager);
         }
 
-        if (hasPerformedAttack)
+        if (hasPerformedAttack && enemyManager.currentRecoveryTime > 1)
         {
             return this;
+        } else if (hasPerformedAttack && enemyManager.currentRecoveryTime <= 1){
+            hasPerformedAttack = false;
+            return walkbackState;
         }
 
-        return combatStanceState;
+        return walkbackState;
     }
 
     private void AttackTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
