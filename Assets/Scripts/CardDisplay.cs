@@ -15,6 +15,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Text defenseText;
 
     public CardManager cardManager;
+    public CameraHandle cameraHandle;
 
     public Slider healthSlider;
     public Slider speedSlider;
@@ -61,8 +62,9 @@ public class CardDisplay : MonoBehaviour
     void SelectAction()
     {
         Debug.Log("Start fight");
-
+        
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
+        cameraHandle.isIntro = true;
         cardManager.isActive = false;
 
         cardManager.ResetUnits();

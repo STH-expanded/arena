@@ -4352,7 +4352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e5587673082a74e9fdf626662d26c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHandle: {fileID: 0}
+  cameraHandle: {fileID: 963194229}
   player: {fileID: 0}
 --- !u!114 &727288951
 MonoBehaviour:
@@ -4374,6 +4374,7 @@ MonoBehaviour:
   attackText: {fileID: 1024754613}
   defenseText: {fileID: 991111666}
   cardManager: {fileID: 527188487}
+  cameraHandle: {fileID: 963194229}
   healthSlider: {fileID: 74979253}
   speedSlider: {fileID: 637917624}
   attackSlider: {fileID: 1698834224}
@@ -5341,11 +5342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62550ad59a93a554fa885c0d49a9a9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameLoop: {fileID: 1087937710}
+  cardManager: {fileID: 527188487}
   player: {fileID: 262174266}
   enemy: {fileID: 10881299}
   isEnemyDead: 0
   isPlayerDead: 0
+  isIntro: 0
 --- !u!1 &966599414
 GameObject:
   m_ObjectHideFlags: 0
@@ -6168,7 +6170,6 @@ MonoBehaviour:
   playerManager: {fileID: 262174275}
   enemyManager: {fileID: 10881303}
   cameraHandle: {fileID: 963194229}
-  isIntro: 0
 --- !u!4 &1087937711
 Transform:
   m_ObjectHideFlags: 0
@@ -8725,7 +8726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e5587673082a74e9fdf626662d26c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHandle: {fileID: 0}
+  cameraHandle: {fileID: 963194229}
   player: {fileID: 0}
 --- !u!114 &1615225892
 MonoBehaviour:
@@ -8747,6 +8748,7 @@ MonoBehaviour:
   attackText: {fileID: 152529781}
   defenseText: {fileID: 422590323}
   cardManager: {fileID: 527188487}
+  cameraHandle: {fileID: 963194229}
   healthSlider: {fileID: 1817746910}
   speedSlider: {fileID: 1910032214}
   attackSlider: {fileID: 694470343}
@@ -10956,7 +10958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e5587673082a74e9fdf626662d26c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHandle: {fileID: 0}
+  cameraHandle: {fileID: 963194229}
   player: {fileID: 0}
 --- !u!114 &1968547285
 MonoBehaviour:
@@ -10978,6 +10980,7 @@ MonoBehaviour:
   attackText: {fileID: 736319810}
   defenseText: {fileID: 847320677}
   cardManager: {fileID: 527188487}
+  cameraHandle: {fileID: 963194229}
   healthSlider: {fileID: 564888584}
   speedSlider: {fileID: 1934710873}
   attackSlider: {fileID: 1089047522}

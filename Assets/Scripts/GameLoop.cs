@@ -13,8 +13,6 @@ public class GameLoop : MonoBehaviour
     public CameraHandle cameraHandle;
     private int winBuffer = 0;
 
-    public bool isIntro = true;
-
     void Start()
     {
         string path = Application.persistentDataPath + "/gameData.save";
@@ -37,8 +35,9 @@ public class GameLoop : MonoBehaviour
 
     void Update()
     {
-        if (enemyManager.transform.position.z <= 5)
+        if (enemyManager.transform.position.z <= 3)
         {
+            cameraHandle.isIntro = false;
             enemyManager.isIntro = false;
             playerManager.isIntro = false;
         }
@@ -85,7 +84,7 @@ public class GameLoop : MonoBehaviour
         playerManager.isIntro = true;
     }
 
-    void Lose()
+    void Lose() 
     {
         Debug.Log("Lose");
 
