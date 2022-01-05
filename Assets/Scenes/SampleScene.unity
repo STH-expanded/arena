@@ -298,6 +298,7 @@ MonoBehaviour:
   currentRecoveryTime: 0
   startGameBuffer: 0
   isIntro: 1
+  isOutro: 0
 --- !u!95 &10881304
 Animator:
   serializedVersion: 3
@@ -1579,7 +1580,6 @@ MonoBehaviour:
   isAttack3: 0
   canAttack2: 0
   canAttack3: 0
-  rewardId: 0
   startGameBuffer: 0
   isIntro: 1
 --- !u!114 &262174276
@@ -4533,7 +4533,7 @@ MonoBehaviour:
   speedText: {fileID: 1548039400}
   attackText: {fileID: 1024754613}
   defenseText: {fileID: 991111666}
-  rewardText: {fileID: 769502199}
+  rewardText: {fileID: 89526046}
   cardManager: {fileID: 527188487}
   healthSlider: {fileID: 74979253}
   speedSlider: {fileID: 637917624}

@@ -70,24 +70,24 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public static int applyRewardHP(GameObject player)
+    public static int applyRewardHP(PlayerManager playerManager)
     {
-        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Health++;
-        return  player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Health;
+        playerManager.unitStatisticsManager.unitStatistics.Health++;
+        return playerManager.unitStatisticsManager.unitStatistics.Health;
     }
-    public static int applyRewardATK(GameObject player)
+    public static int applyRewardATK(PlayerManager playerManager)
     {
-        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Attack++;
-        return player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Attack;
+       playerManager.unitStatisticsManager.unitStatistics.Attack++;
+        return playerManager.unitStatisticsManager.unitStatistics.Attack;
     }
-    public static int applyRewardSPD(GameObject player)
+    public static int applyRewardSPD(PlayerManager playerManager)
     {
-        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Speed++;
-        return player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Speed;
+       playerManager.unitStatisticsManager.unitStatistics.Speed++;
+        return playerManager.unitStatisticsManager.unitStatistics.Speed;
     }
-    public static int applyRewardDEF(GameObject player)
+    public static int applyRewardDEF(PlayerManager playerManager)
     {
-        player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Defense++;
-        return player.GetComponent<PlayerManager>().unitStatisticsManager.unitStatistics.Defense;
+       playerManager.unitStatisticsManager.unitStatistics.Defense++;
+        return playerManager.unitStatisticsManager.unitStatistics.Defense;
     }
 }

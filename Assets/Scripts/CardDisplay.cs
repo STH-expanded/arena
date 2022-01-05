@@ -69,7 +69,8 @@ public class CardDisplay : MonoBehaviour
         Debug.Log("Start fight");
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
         cardManager.isActive = false;
-        playerManager.rewardId = reward.id;
+        playerManager.rewardGame = reward;
+
         cardManager.ResetUnits();
     }
 }
