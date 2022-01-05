@@ -71,7 +71,8 @@ public class CardDisplay : MonoBehaviour
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
         cameraHandle.isIntro = true;
         cardManager.isActive = false;
-        playerManager.rewardId = reward.id;
+        playerManager.rewardGame = reward;
+
         cardManager.ResetUnits();
     }
 }
