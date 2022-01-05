@@ -78,3 +78,6 @@ crashlytics-build.properties
 
 # Rider settings
 .idea/
+
+hooks/
+lfs/
