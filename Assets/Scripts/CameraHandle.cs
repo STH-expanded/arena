@@ -32,7 +32,6 @@ public class CameraHandle : MonoBehaviour
             }
             else
             {
-                Debug.Log("Normal cinematic!");
                 Vector3 center = (player.transform.position + enemy.transform.position) / 2;
                 float dist = Vector3.Distance(player.transform.position, enemy.transform.position) + 2;
                 if (dist < 8) dist = 8;
@@ -49,7 +48,6 @@ public class CameraHandle : MonoBehaviour
 
     public void EntryCinematic()
     {
-        Debug.Log("Entry cinematic!");
         Vector3 center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -7, 0.05f);
         transform.rotation = Quaternion.Euler(20, 0, 0);
