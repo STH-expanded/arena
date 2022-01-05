@@ -14,6 +14,11 @@ public class CameraHandle : MonoBehaviour
 
     Transform currentView;
 
+    private void Awake()
+    {
+        currentView = transform;
+    }
+
     void Update()
     {
         if (isIntro)

@@ -9,9 +9,9 @@ public class Reward
 {
 	public int id;
 	public String name;
-	public Func<GameObject, int> applyReward;
+	public Func<PlayerManager, int> applyReward;
 
-	public Reward(int idReward, string nameReward, Func<GameObject, int> applyRewardFunction)
+	public Reward(int idReward, string nameReward, Func<PlayerManager, int> applyRewardFunction)
 	{
 		id = idReward;
 		name = nameReward;

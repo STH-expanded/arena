@@ -73,8 +73,8 @@ public class GameLoop : MonoBehaviour
     void Win()
     {
         Debug.Log("Win");
-        
-        Debug.Log(string.Format("Stat win : {0}", playerManager.rewardId));
+        // Result Reward
+        Debug.Log(playerManager.rewardGame.applyReward(playerManager));
 
         gameData.score += 1;
         gameData.level += 1;
@@ -82,7 +82,7 @@ public class GameLoop : MonoBehaviour
         gameData.unitStatistics = playerManager.unitStatisticsManager.unitStatistics;
 
         SaveLoad.SaveData(gameData);
-        
+          
         cardManager.InitCards(gameData.level);
         // reset for the next game :
         cameraHandle.isEnemyDead = false;
