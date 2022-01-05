@@ -17,9 +17,7 @@ public class KillCount : MonoBehaviour
             gameData = SaveLoad.LoadData();
             if (gameData.score > 0)
             {
-                Debug.Log("là ?");
-                Debug.Log(gameData.score);
-                killCount.text = "Killing count : " + gameData.score.ToString();
+                killCount.text = "Killing count : " + gameData.score;
             }
             else
             {
