@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
             gameData.highScore = 0;
             gameData.score = 0;
             gameData.level = 1;
+            gameData.numberOfGamePlayed = 0;
 
             SaveLoad.SaveData(gameData);
         }

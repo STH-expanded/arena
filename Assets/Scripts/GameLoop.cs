@@ -12,9 +12,12 @@ public class GameLoop : MonoBehaviour
     public EnemyManager enemyManager;
     public CameraHandle cameraHandle;
     private int winBuffer = 0;
+    public bool hasToExecuteOnlyOnce;
 
     void Start()
     {
+        hasToExecuteOnlyOnce = true;
+        
         string path = Application.persistentDataPath + "/gameData.save";
         if (File.Exists(path))
         {
@@ -50,6 +53,7 @@ public class GameLoop : MonoBehaviour
         {
             cameraHandle.isPlayerDead = true;
             enemyManager.isOutro = true;
+            
             Lose();
         }
         else if (enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
@@ -75,7 +79,7 @@ public class GameLoop : MonoBehaviour
         Debug.Log("Win");
         // Result Reward
         Debug.Log(playerManager.rewardGame.applyReward(playerManager));
-
+        
         gameData.numberOfGamePlayed += 1;
         gameData.score += 1;
         gameData.level += 1;
@@ -88,10 +92,10 @@ public class GameLoop : MonoBehaviour
             if (gameData.numberOfGamePlayed == 1) gameData.achievements[0] = true;
             if (gameData.numberOfGamePlayed == 5) gameData.achievements[1] = true;
             if (gameData.numberOfGamePlayed == 10) gameData.achievements[2] = true;
-            if (enemyManager.unitStatisticsManager.unitStatistics.Level >= 10) gameData.achievements[2] = true;
-            if (gameData.score == 1) gameData.achievements[3] = true;
-            if (gameData.score == 5) gameData.achievements[4] = true;
-            if (gameData.score == 10) gameData.achievements[5] = true;
+            if (enemyManager.unitStatisticsManager.unitStatistics.Level >= 10) gameData.achievements[3] = true;
+            if (gameData.score == 1) gameData.achievements[4] = true;
+            if (gameData.score == 5) gameData.achievements[5] = true;
+            if (gameData.score == 10) gameData.achievements[6] = true;
         }
         
         SaveLoad.SaveData(gameData);
@@ -104,11 +108,25 @@ public class GameLoop : MonoBehaviour
         playerManager.isOutro = true;
     }
 
-    void Lose() 
+    void Lose()
     {
-        Debug.Log("Lose");
+        // Achievements
+        if (gameData.achievements != null)
+        {
+            if (gameData.numberOfGamePlayed == 1) gameData.achievements[0] = true;
+            if (gameData.numberOfGamePlayed == 5) gameData.achievements[1] = true;
+            if (gameData.numberOfGamePlayed == 10) gameData.achievements[2] = true;
+            
+            if (hasToExecuteOnlyOnce)
+            {
+                gameData.numberOfGamePlayed += 1;
+                hasToExecuteOnlyOnce = false;
+            }
 
-        gameData.numberOfGamePlayed += 1;
+        }
+
+        Debug.Log("Lose");
+        
         gameData.score = 0;
         gameData.level = 1;
         gameData.unitStatistics = new UnitStatistics();
