@@ -4567,7 +4567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e5587673082a74e9fdf626662d26c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHandle: {fileID: 0}
+  cameraHandle: {fileID: 963194229}
   player: {fileID: 0}
 --- !u!114 &727288951
 MonoBehaviour:
@@ -4590,6 +4590,7 @@ MonoBehaviour:
   defenseText: {fileID: 991111666}
   rewardText: {fileID: 769502199}
   cardManager: {fileID: 527188487}
+  cameraHandle: {fileID: 963194229}
   healthSlider: {fileID: 74979253}
   speedSlider: {fileID: 637917624}
   attackSlider: {fileID: 1698834224}
@@ -5669,13 +5670,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
+  m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
   m_LocalPosition: {x: 0, y: 10, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 104319411}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 55, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5692,6 +5693,7 @@ MonoBehaviour:
   enemy: {fileID: 10881299}
   isEnemyDead: 0
   isPlayerDead: 0
+  isIntro: 0
 --- !u!1 &966599414
 GameObject:
   m_ObjectHideFlags: 0
@@ -8967,22 +8969,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551672124}
   m_CullTransparentMesh: 1
---- !u!1 &1554693682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1709192058}
-  m_Layer: 0
-  m_Name: Recovery GameObject (1709192058)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1571889737
 GameObject:
   m_ObjectHideFlags: 0
@@ -9213,7 +9199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e5587673082a74e9fdf626662d26c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHandle: {fileID: 0}
+  cameraHandle: {fileID: 963194229}
   player: {fileID: 0}
 --- !u!114 &1615225892
 MonoBehaviour:
@@ -9236,6 +9222,7 @@ MonoBehaviour:
   defenseText: {fileID: 422590323}
   rewardText: {fileID: 382709157}
   cardManager: {fileID: 527188487}
+  cameraHandle: {fileID: 963194229}
   healthSlider: {fileID: 1817746910}
   speedSlider: {fileID: 1910032214}
   attackSlider: {fileID: 694470343}
@@ -9772,25 +9759,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!224 &1709192058
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554693682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1968547283}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -63.439, y: -50}
-  m_SizeDelta: {x: 34.121, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1718479256
 GameObject:
   m_ObjectHideFlags: 0
@@ -9987,6 +9955,85 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1774962681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774962682}
+  - component: {fileID: 1774962684}
+  - component: {fileID: 1774962683}
+  m_Layer: 5
+  m_Name: SpeedText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1774962682
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774962681}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1968547283}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -63.439, y: -50}
+  m_SizeDelta: {x: 34.121, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1774962683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774962681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: SPD
+--- !u!222 &1774962684
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774962681}
+  m_CullTransparentMesh: 1
 --- !u!1 &1777394452
 GameObject:
   m_ObjectHideFlags: 0
@@ -11368,7 +11415,7 @@ RectTransform:
   - {fileID: 1067304162}
   - {fileID: 564888583}
   - {fileID: 723423021}
-  - {fileID: 1709192058}
+  - {fileID: 1774962682}
   - {fileID: 1934710872}
   - {fileID: 1640910507}
   - {fileID: 28545747}
@@ -11399,7 +11446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e5587673082a74e9fdf626662d26c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHandle: {fileID: 0}
+  cameraHandle: {fileID: 963194229}
   player: {fileID: 0}
 --- !u!114 &1968547285
 MonoBehaviour:
@@ -11422,6 +11469,7 @@ MonoBehaviour:
   defenseText: {fileID: 847320677}
   rewardText: {fileID: 89526046}
   cardManager: {fileID: 527188487}
+  cameraHandle: {fileID: 963194229}
   healthSlider: {fileID: 564888584}
   speedSlider: {fileID: 1934710873}
   attackSlider: {fileID: 1089047522}
