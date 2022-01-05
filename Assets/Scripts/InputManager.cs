@@ -66,6 +66,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleRollInput()
     {
+        Debug.Log(playerControls.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started);
         b_Input = playerControls.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
 
         if (b_Input)

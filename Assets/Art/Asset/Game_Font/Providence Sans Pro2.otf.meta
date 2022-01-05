@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 484e0cf3f9a96994196197afda71162f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Providence Sans Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c0ff3450d44eb024c94447080023c56e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
