@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     public bool isAttack3;
     public bool canAttack2;
     public bool canAttack3;
+    public bool isInvulnerable;
 
     public Reward rewardGame;
 
@@ -55,6 +56,7 @@ public class PlayerManager : MonoBehaviour
         isAttack3 = animator.GetBool("isAttack3");
         canAttack2 = animator.GetBool("canAttack2");
         canAttack3 = animator.GetBool("canAttack3");
+        isInvulnerable = animator.GetBool("isInvulnerable");
 
         if (isIntro || isOutro)
         {
