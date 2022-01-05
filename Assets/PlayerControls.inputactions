@@ -11,7 +11,8 @@
                     "id": "eded4792-69c5-4484-98b0-61932919b9c0",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -137,7 +138,8 @@
                     "id": "18d57282-d849-4766-8df1-75aa4b639008",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Attack",
@@ -145,7 +147,8 @@
                     "id": "92b2a9e1-b3d9-4b9f-8d02-a310a7188b46",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
