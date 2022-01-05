@@ -11,7 +11,7 @@ public class UserInterface : MonoBehaviour
     public Slider enemyHealthBar;
     public EnemyManager enemyManager;
 
-    void Start()
+    public void InitHealthBars()
     {
         playerHealthBar.maxValue = playerManager.unitStatisticsManager.unitStatistics.Health;
         playerHealthBar.value = playerManager.unitStatisticsManager.unitStatistics.Health;

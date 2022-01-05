@@ -5,11 +5,11 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     Collider damageCollider;
-
-    public int currentWeaponDamage = 25;
+    UnitStatisticsManager unitStatisticsManager;
 
     private void Awake()
     {
+        unitStatisticsManager = GetComponent<UnitStatisticsManager>();
         damageCollider = GetComponent<Collider>();
         damageCollider.gameObject.SetActive(true);
         damageCollider.isTrigger = true;
@@ -34,7 +34,7 @@ public class DamageCollider : MonoBehaviour
 
             if (unitStatisticsManager != null)
             {
-                unitStatisticsManager.TakeDamage(currentWeaponDamage);
+                unitStatisticsManager.TakeDamage(unitStatisticsManager.unitStatistics.Attack);
             }
         }
 
@@ -44,7 +44,7 @@ public class DamageCollider : MonoBehaviour
 
             if (unitStatisticsManager != null)
             {
-                unitStatisticsManager.TakeDamage(currentWeaponDamage);
+                unitStatisticsManager.TakeDamage(unitStatisticsManager.unitStatistics.Attack);
             }
         }
     }
