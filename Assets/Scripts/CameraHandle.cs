@@ -11,7 +11,9 @@ public class CameraHandle : MonoBehaviour
     public bool isEnemyDead;
     public bool isPlayerDead;
     public bool isIntro;
-    
+
+    Transform currentView;
+
     void Update()
     {
         if (isIntro)
@@ -30,10 +32,12 @@ public class CameraHandle : MonoBehaviour
             }
             else
             {
+                Debug.Log("Normal cinematic!");
                 Vector3 center = (player.transform.position + enemy.transform.position) / 2;
                 float dist = Vector3.Distance(player.transform.position, enemy.transform.position) + 2;
                 if (dist < 8) dist = 8;
-                transform.position = Vector3.Lerp(transform.position, center + transform.forward * -dist, 0.1f);
+                transform.position = Vector3.Lerp(currentView.position, center + transform.forward * -dist, Time.deltaTime * 5);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(55, 0, 0), Time.deltaTime * 5);
             }
         }
     }
@@ -45,9 +49,11 @@ public class CameraHandle : MonoBehaviour
 
     public void EntryCinematic()
     {
+        Debug.Log("Entry cinematic!");
         Vector3 center = (enemy.transform.position);
-        transform.Rotate(0, -15 * Time.deltaTime, 0);
-        transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.05f);
+        transform.position = Vector3.Lerp(transform.position, center + transform.forward * -7, 0.05f);
+        transform.rotation = Quaternion.Euler(20, 0, 0);
+        currentView = transform;
     }
 
     public void ZoomOnEnemy()

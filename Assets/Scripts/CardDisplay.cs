@@ -13,6 +13,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Text speedText;
     [SerializeField] public Text attackText;
     [SerializeField] public Text defenseText;
+    [SerializeField] public Text rewardText;
 
     public CardManager cardManager;
     public CameraHandle cameraHandle;
@@ -27,6 +28,9 @@ public class CardDisplay : MonoBehaviour
 
     public Button selectButton;
 
+    public Reward reward;
+    public PlayerManager playerManager;
+
     private void Awake()
     {
         unitStatisticsManager = GetComponent<UnitStatisticsManager>();
@@ -38,7 +42,7 @@ public class CardDisplay : MonoBehaviour
         btn.onClick.AddListener(SelectAction);
     }
 
-    public void setCardValues(int level, string enemyName)
+    public void setCardValues(int level, string enemyName  )
     {
         unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
@@ -57,16 +61,17 @@ public class CardDisplay : MonoBehaviour
 
         speedSlider.value = stats.Speed;
         speedText.text = stats.Speed.ToString();
+        rewardText.text = reward.name;
+
     }
 
     void SelectAction()
     {
         Debug.Log("Start fight");
-        
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
         cameraHandle.isIntro = true;
         cardManager.isActive = false;
-
+        playerManager.rewardId = reward.id;
         cardManager.ResetUnits();
     }
 }
