@@ -62,7 +62,6 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
-            currentState.Tick(this, unitStatisticsManager.unitStatistics, enemyAnimationManager);
             HandleRecoveryTimer();
             HandleStateMachine();
         }
