@@ -11,9 +11,8 @@ public class EnemyManager : MonoBehaviour
     public PlayerManager currentTarget;
     public bool isPreformingAction;
     public UnitStatisticsManager unitStatisticsManager;
-    public float distanceFromTarget;
     public float rotationSpeed;
-    public float maximumAttackRange = 0.5f;
+    public float maximumAggroRadius = 0.5f;
     public Rigidbody enemyRigidBody;
     public EnemyManager enemyManager;
 
@@ -63,7 +62,6 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
-            currentState.Tick(this, unitStatisticsManager.unitStatistics, enemyAnimationManager);
             HandleRecoveryTimer();
             HandleStateMachine();
         }

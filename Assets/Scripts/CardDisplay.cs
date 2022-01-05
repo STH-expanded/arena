@@ -16,6 +16,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Text rewardText;
 
     public CardManager cardManager;
+    public CameraHandle cameraHandle;
 
     public Slider healthSlider;
     public Slider speedSlider;
@@ -68,6 +69,7 @@ public class CardDisplay : MonoBehaviour
     {
         Debug.Log("Start fight");
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
+        cameraHandle.isIntro = true;
         cardManager.isActive = false;
         playerManager.rewardGame = reward;
 

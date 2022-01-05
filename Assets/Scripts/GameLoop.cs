@@ -36,8 +36,9 @@ public class GameLoop : MonoBehaviour
 
     void Update()
     {
-        if (enemyManager.transform.position.z <= 5)
+        if (enemyManager.transform.position.z <= 3)
         {
+            cameraHandle.isIntro = false;
             enemyManager.isIntro = false;
             playerManager.isIntro = false;
         }
@@ -89,7 +90,7 @@ public class GameLoop : MonoBehaviour
         playerManager.isOutro = true;
     }
 
-    void Lose()
+    void Lose() 
     {
         Debug.Log("Lose");
 
