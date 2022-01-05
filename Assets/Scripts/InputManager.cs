@@ -66,8 +66,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleRollInput()
     {
-        Debug.Log(playerControls.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started);
-        b_Input = playerControls.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
+        b_Input = playerControls.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
 
         if (b_Input)
         {
@@ -77,7 +76,7 @@ public class InputManager : MonoBehaviour
 
     private void HandleAttackInput()
     {
-        a_Input = playerControls.PlayerActions.Attack.phase == UnityEngine.InputSystem.InputActionPhase.Started;
+        a_Input = playerControls.PlayerActions.Attack.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
 
         if (playerManager.canAttack3 && a_Input && !a_Buffer)
         {
