@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameLoop : MonoBehaviour
 {
+    [SerializeField]
     GameData gameData;
 
     public CardManager cardManager;
@@ -48,19 +49,24 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("Win");
 
+        gameData.numberOfGamePlayed += 1;
         gameData.score += 1;
         gameData.level += 1;
         if (gameData.score > gameData.highScore) gameData.highScore = gameData.score;
         gameData.unitStatistics = playerManager.unitStatisticsManager.unitStatistics;
 
         // Achievements
-        if (gameData.score == 1) gameData.achievements[0] = true;
-        if (gameData.score == 2) gameData.achievements[1] = true;
-        if (gameData.score == 3) gameData.achievements[2] = true;
-        if (gameData.score == 4) gameData.achievements[3] = true;
-        if (gameData.score == 5) gameData.achievements[4] = true;
-        if (gameData.score == 6) gameData.achievements[5] = true;
-
+        if (gameData.achievements != null)
+        {
+            if (gameData.numberOfGamePlayed == 1) gameData.achievements[0] = true;
+            if (gameData.numberOfGamePlayed == 5) gameData.achievements[1] = true;
+            if (gameData.numberOfGamePlayed == 10) gameData.achievements[2] = true;
+            if (enemyManager.unitStatisticsManager.unitStatistics.Level >= 10) gameData.achievements[2] = true;
+            if (gameData.score == 1) gameData.achievements[3] = true;
+            if (gameData.score == 5) gameData.achievements[4] = true;
+            if (gameData.score == 10) gameData.achievements[5] = true;
+        }
+        
         SaveLoad.SaveData(gameData);
 
         GameObject.Find("Canvas").SetActive(false);
@@ -71,6 +77,7 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("Lose");
 
+        gameData.numberOfGamePlayed += 1;
         gameData.score = 0;
         gameData.level = 1;
         gameData.unitStatistics = new UnitStatistics();
