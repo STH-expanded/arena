@@ -100,7 +100,6 @@ public class GameLoop : MonoBehaviour
         
         SaveLoad.SaveData(gameData);
         
-        GameObject.Find("Canvas").SetActive(false);
         cardManager.InitCards(gameData.level);
         // reset for the next game :
         cameraHandle.isEnemyDead = false;
