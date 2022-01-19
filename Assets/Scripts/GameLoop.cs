@@ -8,6 +8,7 @@ public class GameLoop : MonoBehaviour
     GameData gameData;
 
     public CardManager cardManager;
+    public Stats statsPlayers;
     public PlayerManager playerManager;
     public EnemyManager enemyManager;
     public CameraHandle cameraHandle;
@@ -32,6 +33,7 @@ public class GameLoop : MonoBehaviour
 
         playerManager.unitStatisticsManager.InitStats(gameData.unitStatistics);
         cardManager.InitCards(gameData.level);
+        statsPlayers.InitStats(playerManager);
     }
 
     void Update()
@@ -102,6 +104,7 @@ public class GameLoop : MonoBehaviour
         cameraHandle.isEnemyDead = false;
         enemyManager.isIntro = true;
         playerManager.isOutro = true;
+        statsPlayers.InitStats(playerManager);
     }
 
     void Lose() 
