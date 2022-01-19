@@ -105,6 +105,10 @@ public class CardManager : MonoBehaviour
         float percentInt = UnityEngine.Random.Range(40,70);
         float percentHeal = percentInt / 100;
         playerManager.unitStatisticsManager.unitStatistics.CurrentHealth += (int) Math.Floor(maxHp*percentHeal);
+        if (playerManager.unitStatisticsManager.unitStatistics.CurrentHealth > playerManager.unitStatisticsManager.unitStatistics.Health)
+        {
+            playerManager.unitStatisticsManager.unitStatistics.CurrentHealth = playerManager.unitStatisticsManager.unitStatistics.Health;
+        }
         return playerManager.unitStatisticsManager.unitStatistics.CurrentHealth;
     }
 }
