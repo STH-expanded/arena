@@ -27,6 +27,8 @@ public class CardDisplay : MonoBehaviour
 
     public UnitStatisticsManager unitStatisticsManager;
     public UnitStatisticsManager enemyStatsManager;
+    public Stats statsManager;
+
 
     public Button selectButton;
 
@@ -75,6 +77,8 @@ public class CardDisplay : MonoBehaviour
         userInterface.InitHealthBars();
 
         cardManager.isActive = false;
+        statsManager.isActive = false;
+        statsManager.statsCard.SetActive(false);
         playerManager.rewardGame = reward;
 
         cardManager.ResetUnits();
