@@ -75,7 +75,9 @@ public class CardManager : MonoBehaviour
     public static int applyRewardHP(PlayerManager playerManager)
     {
         // hp max 3-5
-        playerManager.unitStatisticsManager.unitStatistics.Health+=UnityEngine.Random.Range(3,5);
+        int hpAdd = UnityEngine.Random.Range(3,5);
+        playerManager.unitStatisticsManager.unitStatistics.Health+=hpAdd;
+        playerManager.unitStatisticsManager.unitStatistics.CurrentHealth+=hpAdd;
         return playerManager.unitStatisticsManager.unitStatistics.Health;
     }
     public static int applyRewardATK(PlayerManager playerManager)
