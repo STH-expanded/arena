@@ -82,7 +82,7 @@ public class CardManager : MonoBehaviour
     }
     public static int applyRewardATK(PlayerManager playerManager)
     {
-        // atc 1-3
+        // atk 1-3
        playerManager.unitStatisticsManager.unitStatistics.Attack+=UnityEngine.Random.Range(1,3);
         return playerManager.unitStatisticsManager.unitStatistics.Attack;
     }
