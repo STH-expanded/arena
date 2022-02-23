@@ -18,9 +18,9 @@ public class Stats : MonoBehaviour
     public void InitStats(PlayerManager playerManager)
     {
         statsCard.SetActive(true);
-       maxHealthText.text = "HP: " + playerManager.unitStatisticsManager.unitStatistics.CurrentHealth.ToString() + "/" + playerManager.unitStatisticsManager.unitStatistics.Health.ToString();
-       speedText.text = "SPD: " + playerManager.unitStatisticsManager.unitStatistics.Speed.ToString();
-       attackText.text = "ATT: " + playerManager.unitStatisticsManager.unitStatistics.Attack.ToString();
-       defenseText.text = "DEF: " + playerManager.unitStatisticsManager.unitStatistics.Defense.ToString();
+       maxHealthText.text = playerManager.unitStatisticsManager.unitStatistics.CurrentHealth.ToString() + "/" + playerManager.unitStatisticsManager.unitStatistics.Health.ToString();
+       speedText.text = playerManager.unitStatisticsManager.unitStatistics.Speed.ToString();
+       attackText.text = playerManager.unitStatisticsManager.unitStatistics.Attack.ToString();
+       defenseText.text = playerManager.unitStatisticsManager.unitStatistics.Defense.ToString();
     }
 }

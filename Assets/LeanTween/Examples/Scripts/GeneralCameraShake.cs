@@ -1,7 +1,5 @@
 #if !UNITY_FLASH
 using UnityEngine;
-using System.Collections;
-using DentedPixel;
 
 public class GeneralCameraShake : MonoBehaviour {
 
@@ -34,8 +32,8 @@ public class GeneralCameraShake : MonoBehaviour {
 				* Camera Shake
 				**************/
 				
-				float shakeAmt = height*0.2f; // the degrees to shake the camera
-				float shakePeriodTime = 0.42f; // The period of each shake
+				float shakeAmt = height*0.3f; // the degrees to shake the camera
+				float shakePeriodTime = 0.75f; // The period of each shake
 				float dropOffTime = 1.6f; // How long it takes the shaking to settle down to nothing
 				LTDescr shakeTween = LeanTween.rotateAroundLocal( gameObject, Vector3.right, shakeAmt, shakePeriodTime)
 				.setEase( LeanTweenType.easeShake ) // this is a special ease that is good for shaking
