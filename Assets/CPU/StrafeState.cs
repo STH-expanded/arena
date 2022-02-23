@@ -35,8 +35,8 @@ public class StrafeState : State
 
         enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
         enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);      
-        Vector3 h = Vector3.Normalize(enemyManager.transform.right) * (direction ? 1 : -1) * 800f * Time.deltaTime;
-        Vector3 v = Vector3.Normalize(targetDirection) * 700f * (distanceFromTarget > 3 ? 1 : -1) * Time.deltaTime;
+        Vector3 h = Vector3.Normalize(enemyManager.transform.right) * (direction ? 1 : -1) * 600f * Time.deltaTime;
+        Vector3 v = Vector3.Normalize(targetDirection) * 400f * (distanceFromTarget > 3 ? 1 : -1) * Time.deltaTime;
         if (Mathf.Round(distanceFromTarget) != 3f)
         {
             enemyManager.enemyRigidBody.AddForce(v + h);
