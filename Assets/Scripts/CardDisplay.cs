@@ -46,7 +46,7 @@ public class CardDisplay : MonoBehaviour
         btn.onClick.AddListener(SelectAction);
     }
 
-    public void setCardValues(int level, string enemyName  )
+    public void SetCardValues(int level, string enemyName  )
     {
         unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
@@ -69,7 +69,7 @@ public class CardDisplay : MonoBehaviour
 
     }
 
-    void SelectAction()
+    private void SelectAction()
     {
         Debug.Log("Start fight");
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);

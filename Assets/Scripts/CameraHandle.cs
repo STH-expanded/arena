@@ -12,11 +12,11 @@ public class CameraHandle : MonoBehaviour
     public bool isPlayerDead;
     public bool isIntro;
 
-    Transform currentView;
+    Transform _currentView;
 
     private void Awake()
     {
-        currentView = transform;
+        _currentView = transform;
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class CameraHandle : MonoBehaviour
                 Vector3 center = (player.transform.position + enemy.transform.position) / 2;
                 float dist = Vector3.Distance(player.transform.position, enemy.transform.position) + 2;
                 if (dist < 8) dist = 8;
-                transform.position = Vector3.Lerp(currentView.position, center + transform.forward * -dist, Time.deltaTime * 5);
+                transform.position = Vector3.Lerp(_currentView.position, center + transform.forward * -dist, Time.deltaTime * 5);
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(55, 0, 0), Time.deltaTime * 5);
             }
         }
@@ -56,7 +56,7 @@ public class CameraHandle : MonoBehaviour
         Vector3 center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -7, 0.05f);
         transform.rotation = Quaternion.Euler(20, 0, 0);
-        currentView = transform;
+        _currentView = transform;
     }
 
     public void ZoomOnEnemy()

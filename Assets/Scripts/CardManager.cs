@@ -19,18 +19,18 @@ public class CardManager : MonoBehaviour
 
 
 
-    private readonly string[] opponentTitles = {
+    private readonly string[] _opponentTitles = {
         "Archonte", "Auguste", "Baron", "César", "Comte", "Duc", "Grand-duc", "Jarl", "Jinong", "Joupan", "Knèze", "Lord", "Magnat", "Margrave", "Marquis", "Nizam", "Padichah", "Prince consort", "Roi consort", "Tayiji", "Vice-roi", "Amiral", "Ban", "Baronnet", "Brigadier", "Burgrave", "Capitaine", "Colonel", "Commandeur", "Despote", "Général", "Gouverneur", "Lieutenant", "Magnat", "Maréchal", "Pacha", "Prince-évêque", "Stratège", "Topotérète", "Vicomte", "Vidame"
     };
-    private readonly string[] opponentNames = {
+    private readonly string[] _opponentNames = {
         "Samy", "Henry", "Léo", "Maxime", "Hugo", "Erwan", "Mathis", "Alex", "Geoffrey", "Paul", "Adrien", "Mattéo", "Tanguy"
     };
-    private readonly Reward[] rewardAvailble = {
-        new Reward(0,"MaxHP +", applyRewardHP), 
-        new Reward(1,"ATK +",applyRewardATK), 
-        new Reward(2,"SPD +",applyRewardSPD),
-        new Reward(3,"DEF +",applyRewardDEF),
-        new Reward(4,"Heal",applyRewardHeal)
+    private readonly Reward[] _rewardAvailble = {
+        new Reward(0,"MaxHP +", ApplyRewardHp), 
+        new Reward(1,"ATK +", ApplyRewardAtk), 
+        new Reward(2,"SPD +", ApplyRewardSpeed),
+        new Reward(3,"DEF +", ApplyRewardDef),
+        new Reward(4,"Heal", ApplyRewardHeal)
     };
     public void InitCards(int level)
     {
@@ -49,11 +49,11 @@ public class CardManager : MonoBehaviour
         {
             int enemyLevel = UnityEngine.Random.Range(level + i * 5, level + (i + 1) * 5);
             CardDisplay cardDisplay = card.GetComponent<CardDisplay>();
-            cardDisplay.reward = rewardAvailble[UnityEngine.Random.Range(0, rewardAvailble.Length)];
-            string opponentTitle = opponentTitles[UnityEngine.Random.Range(0, opponentTitles.Length)];
-            string opponentName = opponentNames[UnityEngine.Random.Range(0, opponentNames.Length)];
-            string opponentFullName = string.Format("{0} {1}", opponentTitle, opponentName);
-            cardDisplay.setCardValues(enemyLevel, opponentFullName);
+            cardDisplay.reward = _rewardAvailble[UnityEngine.Random.Range(0, _rewardAvailble.Length)];
+            string opponentTitle = _opponentTitles[UnityEngine.Random.Range(0, _opponentTitles.Length)];
+            string opponentName = _opponentNames[UnityEngine.Random.Range(0, _opponentNames.Length)];
+            string opponentFullName = $"{opponentTitle} {opponentName}";
+            cardDisplay.SetCardValues(enemyLevel, opponentFullName);
             i++;
         }
 
@@ -72,7 +72,7 @@ public class CardManager : MonoBehaviour
     }
   
 
-    public static int applyRewardHP(PlayerManager playerManager)
+    private static int ApplyRewardHp(PlayerManager playerManager)
     {
         // hp max 3-5
         int hpAdd = UnityEngine.Random.Range(3,5);
@@ -80,25 +80,25 @@ public class CardManager : MonoBehaviour
         playerManager.unitStatisticsManager.unitStatistics.CurrentHealth+=hpAdd;
         return playerManager.unitStatisticsManager.unitStatistics.Health;
     }
-    public static int applyRewardATK(PlayerManager playerManager)
+    private static int ApplyRewardAtk(PlayerManager playerManager)
     {
         // atc 1-3
        playerManager.unitStatisticsManager.unitStatistics.Attack+=UnityEngine.Random.Range(1,3);
         return playerManager.unitStatisticsManager.unitStatistics.Attack;
     }
-    public static int applyRewardSPD(PlayerManager playerManager)
+    private static int ApplyRewardSpeed(PlayerManager playerManager)
     {
         // spd 1-3
        playerManager.unitStatisticsManager.unitStatistics.Speed+=UnityEngine.Random.Range(1,3);
         return playerManager.unitStatisticsManager.unitStatistics.Speed;
     }
-    public static int applyRewardDEF(PlayerManager playerManager)
+    private static int ApplyRewardDef(PlayerManager playerManager)
     {
         // def 1-3
        playerManager.unitStatisticsManager.unitStatistics.Defense+=UnityEngine.Random.Range(1,3);
         return playerManager.unitStatisticsManager.unitStatistics.Defense;
     }
-     public static int applyRewardHeal(PlayerManager playerManager)
+     private static int ApplyRewardHeal(PlayerManager playerManager)
     {
         // Heal 40%-70%
         int maxHp = playerManager.unitStatisticsManager.unitStatistics.Health;
