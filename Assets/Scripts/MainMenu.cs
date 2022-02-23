@@ -36,6 +36,12 @@ public class MainMenu : MonoBehaviour
                 bool a = gameData.achievements[i - 1];
                 GameObject obj = GameObject.Find("Achievement" + i);
                 obj.GetComponentInChildren<UnityEngine.UI.Text>().color = a ? Color.white : Color.grey;
+                Sprite trophySprite =  Resources.Load <Sprite>("trophy");
+
+                if (a)
+                {
+                    obj.GetComponentInChildren<UnityEngine.UI.Image>().sprite = trophySprite;
+                }
             }
         }
         GameObject.Find("AchievementsMenu").SetActive(false);
