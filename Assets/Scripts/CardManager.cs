@@ -26,11 +26,11 @@ public class CardManager : MonoBehaviour
         "Samy", "Henry", "Léo", "Maxime", "Hugo", "Erwan", "Mathis", "Alex", "Geoffrey", "Paul", "Adrien", "Mattéo", "Tanguy"
     };
     private readonly Reward[] rewardAvailble = {
-        new Reward(0,"MaxHP +", applyRewardHP), 
-        new Reward(1,"ATK +",applyRewardATK), 
-        new Reward(2,"SPD +",applyRewardSPD),
-        new Reward(3,"DEF +",applyRewardDEF),
-        new Reward(4,"Heal",applyRewardHeal)
+        new Reward(0,"MaxHP +","heartUp", applyRewardHP), 
+        new Reward(1,"ATK +","swordUp", applyRewardATK), 
+        new Reward(2,"SPD +","speedUp",applyRewardSPD),
+        new Reward(3,"DEF +","shieldUp" ,applyRewardDEF),
+        new Reward(4,"Heal","potion",applyRewardHeal)
     };
     public void InitCards(int level)
     {
