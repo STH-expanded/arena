@@ -600,7 +600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: deb3e58480a93cf44b8f442c162d2d87, type: 3}
+  m_Texture: {fileID: 2800000, guid: 88cbb87eecefe3e4a957753ee039839b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3404,8 +3404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 20}
-  m_SizeDelta: {x: 124.06, y: 32.8419}
+  m_AnchoredPosition: {x: 109, y: 20}
+  m_SizeDelta: {x: 100, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &568765292
 MonoBehaviour:
@@ -3434,13 +3434,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: NaN
 --- !u!222 &568765293
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3483,8 +3483,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -25}
-  m_SizeDelta: {x: 124.06, y: 32.8419}
+  m_AnchoredPosition: {x: 109, y: -25}
+  m_SizeDelta: {x: 100, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572281591
 MonoBehaviour:
@@ -3513,13 +3513,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: NaN
 --- !u!222 &572281592
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7309,7 +7309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 02198cab635f34143bd35a1070f10525, type: 3}
+  m_Texture: {fileID: 2800000, guid: 78f14015f798bdb428e0e1b8d597dd06, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7791,7 +7791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 77190db47cceb734fb3ae27783998c8a, type: 3}
+  m_Texture: {fileID: 2800000, guid: 14fef7d0d026c244bb30951fd82249f7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -9269,7 +9269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8b75eb4ce6185d545a9a11e9031ecb05, type: 3}
+  m_Texture: {fileID: 2800000, guid: 54ab4aac9871bf84d800dd392097d0b9, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -9759,7 +9759,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -63, y: -114}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 25, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590794641
 MonoBehaviour:
@@ -9833,8 +9833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 60}
-  m_SizeDelta: {x: 124.06, y: 32.8419}
+  m_AnchoredPosition: {x: 109, y: 60}
+  m_SizeDelta: {x: 100, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594425188
 MonoBehaviour:
@@ -9863,13 +9863,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: NaN/NaN
 --- !u!222 &1594425189
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12093,8 +12093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -70}
-  m_SizeDelta: {x: 124.06, y: 32.8419}
+  m_AnchoredPosition: {x: 109, y: -70}
+  m_SizeDelta: {x: 100, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945997659
 MonoBehaviour:
@@ -12123,13 +12123,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: NaN
 --- !u!222 &1945997660
 CanvasRenderer:
   m_ObjectHideFlags: 0
