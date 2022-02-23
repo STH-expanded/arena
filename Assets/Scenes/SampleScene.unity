@@ -2451,6 +2451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58b73064a5aa6d47ab4101272a1bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsCard: {fileID: 0}
   maxHealthText: {fileID: 1594425188}
   speedText: {fileID: 568765292}
   attackText: {fileID: 572281591}
@@ -3328,9 +3329,9 @@ RectTransform:
   m_Father: {fileID: 448227217}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -488.47, y: 12.537}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 63, y: 12.537}
   m_SizeDelta: {x: 124.06, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &568765292
@@ -3407,9 +3408,9 @@ RectTransform:
   m_Father: {fileID: 448227217}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -488.47, y: -20.305}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 63, y: -20.305}
   m_SizeDelta: {x: 124.06, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572281591
@@ -9352,9 +9353,9 @@ RectTransform:
   m_Father: {fileID: 448227217}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -488.47, y: 45.379}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 63, y: 45.379}
   m_SizeDelta: {x: 124.06, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594425188
@@ -11535,9 +11536,9 @@ RectTransform:
   m_Father: {fileID: 448227217}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -488.47, y: -53.147}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 63, y: -53.147}
   m_SizeDelta: {x: 124.06, y: 32.8419}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945997659
