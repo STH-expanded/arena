@@ -8,32 +8,68 @@ public class StrafeState : State
     public CombatStanceState combatStanceState;
     public WalkbackState walkbackState;
     public AttackState attackState;
+    public bool direction;
+    public int framecount = 0;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         attackState.hasPerformedAttack = false;
-        if (distanceFromTarget > 5)
+        if (framecount % 240 == 0)
+        {
+            if (Random.Range(0, 1f) > 0.33f)
+            {
+                return attackState;
+            } else
+            {
+                direction = Random.Range(0, 1f) > 0.5 ? true : false;
+            }
+        }
+        framecount++;
+        if (distanceFromTarget > 7)
         {
             enemyAnimatorManager.animator.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
             return pursueTargetState;
-        } else if (distanceFromTarget < 2)
+        }  /* else
+        { */
+
+        enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
+        enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);      
+        Vector3 h = Vector3.Normalize(enemyManager.transform.right) * (direction ? 1 : -1) * 800f * Time.deltaTime;
+        Vector3 v = Vector3.Normalize(targetDirection) * 700f * (distanceFromTarget > 3 ? 1 : -1) * Time.deltaTime;
+        if (Mathf.Round(distanceFromTarget) != 3f)
         {
-            enemyAnimatorManager.animator.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
-            float rand = Random.Range(0f, 1f);
-            if (rand > 0.5f)
-            {
-                return combatStanceState;
-            } else
-            {
-                return walkbackState;
-            }
-        } else
+            enemyManager.enemyRigidBody.AddForce(v + h);
+        }
+        else
         {
-            enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
-            enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
-            enemyAnimatorManager.animator.SetFloat("Horizontal", 1, 0.1f, Time.deltaTime);
-            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + enemyManager.transform.right * 0.05f);
+            enemyManager.enemyRigidBody.AddForce(h);
+        }
+        //} 
+
+        if (enemyManager.transform.position.x < -10)
+        {
+            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + new Vector3(1,0,0));
+            direction = !direction;
+            framecount = 1;
+        }
+        if (enemyManager.transform.position.x > 10)
+        {
+            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + new Vector3(-1, 0, 0));
+            direction = !direction;
+            framecount = 1;
+        }
+        if (enemyManager.transform.position.z < -10)
+        {
+            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + new Vector3(0, 0, 1));
+            direction = !direction;
+            framecount = 1;
+        }
+        if (enemyManager.transform.position.z > 10)
+        {
+            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + new Vector3(0, 0, -1));
+            direction = !direction;
+            framecount = 1;
         }
 
         return this;

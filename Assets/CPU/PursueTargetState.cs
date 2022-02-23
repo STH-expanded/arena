@@ -21,7 +21,7 @@ public class PursueTargetState : State
             return this;
         }
 
-        if (distanceFromTarget > 3)
+        if (distanceFromTarget > 4)
         {
             enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
         } else if (isStraph)
@@ -32,14 +32,7 @@ public class PursueTargetState : State
         enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
         enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
 
-        if (distanceFromTarget <= enemyManager.maximumAggroRadius)
-        {
-            return combatStanceState;
-        } 
-        else
-        {
-            return this;
-        }
+        return this;
     }
 
     private void HandleRotateTowardsTarget(EnemyManager enemyManager)
