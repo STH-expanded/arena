@@ -7,32 +7,33 @@ public class AttackState : State
     public CombatStanceState combatStanceState;
     public PursueTargetState pursueTargetState;
     public EnemyAttackAction currentAttack;
+    public StrafeState strafeState;
     public WalkbackState walkbackState;
 
     public bool hasPerformedAttack = false;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
+        Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-
-        if (distanceFromTarget > 3)
-        {
-            return pursueTargetState;
-        }
 
         if (!hasPerformedAttack)
         {
-            AttackTarget(enemyAnimatorManager, enemyManager);
+            if (distanceFromTarget < 1)
+            {
+
+                AttackTarget(enemyAnimatorManager, enemyManager);
+                enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+
+            }
+            else
+            {
+                enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
+                enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                return this;
+            }
         }
 
-        if (hasPerformedAttack && enemyManager.currentRecoveryTime > 1)
-        {
-            return this;
-        } else if (hasPerformedAttack && enemyManager.currentRecoveryTime <= 1){
-            hasPerformedAttack = false;
-            return walkbackState;
-        }
-
-        return walkbackState;
+        return strafeState;
     }
 
     private void AttackTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
