@@ -22,13 +22,14 @@ public class AttackState : State
             {
 
                 AttackTarget(enemyAnimatorManager, enemyManager);
-                enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                //enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
 
             }
             else
             {
                 enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
-                enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                //enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + enemyManager.transform.forward * 10f * Time.deltaTime);
                 return this;
             }
         }

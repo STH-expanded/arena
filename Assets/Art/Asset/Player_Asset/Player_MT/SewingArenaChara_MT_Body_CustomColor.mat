@@ -133,6 +133,7 @@ Material:
     - Vector1_D22DE451_2: 1
     - Vector1_D22DE451_3: 1
     - Vector1_D22DE451_4: 1
+    - Vector1_bc4dc2019195409b9a562c1c562979f7: 3
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -162,11 +163,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_DFC0C2F9: {r: 0.9811321, g: 0.087006, b: 0.19570373, a: 0}
+    - Color_DFC0C2F9: {r: 1, g: 0, b: 0.01956749, a: 0}
     - Color_DFC0C2F9_1: {r: 0.5647059, g: 0.3263383, b: 0.24313724, a: 0}
     - Color_DFC0C2F9_2: {r: 0.7924528, g: 0.7589547, b: 0.4440726, a: 0}
     - Color_DFC0C2F9_3: {r: 1, g: 0.25445265, b: 0, a: 1}
     - Color_DFC0C2F9_4: {r: 0.4245283, g: 0.29396582, b: 0.29396582, a: 0}
+    - Color_DFC0C2F9_5: {r: 1, g: 0.8866935, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

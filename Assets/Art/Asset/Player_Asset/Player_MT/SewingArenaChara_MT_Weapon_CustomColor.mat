@@ -150,6 +150,7 @@ Material:
     - Vector1_D22DE451_2: 1
     - Vector1_D22DE451_3: 1
     - Vector1_D22DE451_4: 10
+    - Vector1_bc4dc2019195409b9a562c1c562979f7: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -183,7 +184,8 @@ Material:
     - Color_DFC0C2F9_1: {r: 1, g: 0.7270248, b: 0, a: 0}
     - Color_DFC0C2F9_2: {r: 0.4528302, g: 0.4216522, b: 0.3054468, a: 0}
     - Color_DFC0C2F9_3: {r: 0.06930768, g: 1, b: 0, a: 0}
-    - Color_DFC0C2F9_4: {r: 1, g: 0.07983519, b: 0, a: 0}
+    - Color_DFC0C2F9_4: {r: 0.9186332, g: 1, b: 0, a: 0}
+    - Color_DFC0C2F9_5: {r: 1, g: 0.8901961, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
