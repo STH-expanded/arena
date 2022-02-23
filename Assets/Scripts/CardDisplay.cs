@@ -12,6 +12,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Text attackText;
     [SerializeField] public Text defenseText;
     [SerializeField] public Text rewardText;
+    [SerializeField] public Image rewardImage;
 
     public CardManager cardManager;
     public CameraHandle cameraHandle;
@@ -44,7 +45,7 @@ public class CardDisplay : MonoBehaviour
         btn.onClick.AddListener(SelectAction);
     }
 
-    public void setCardValues(int level, string enemyName  )
+    public void setCardValues(int level, string enemyName)
     {
         unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
@@ -64,7 +65,8 @@ public class CardDisplay : MonoBehaviour
         speedSlider.value = stats.Speed;
         speedText.text = stats.Speed.ToString();
         rewardText.text = reward.name;
-
+        Debug.Log(reward.srcIcon);
+        rewardImage.sprite = Resources.Load<Sprite>(reward.srcIcon);
     }
 
     void SelectAction()
