@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,7 +20,6 @@ public class CameraHandle : MonoBehaviour
     {
         if (isIntro)
         {
-            Debug.Log("Intro");
             EntryCinematic();
         }
         else
@@ -63,17 +59,5 @@ public class CameraHandle : MonoBehaviour
     {
         Vector3 center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.01f);
-    }
-    
-    public void ZoomOnPlayer()
-    {
-        Vector3 center = (player.transform.position);
-        transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.01f);
-    }
-
-    private void ResetCameraRotation()
-    {
-        Debug.Log("Reset cam!!!");
-        // transform.LookAt(Vector3.zero);
     }
 }
