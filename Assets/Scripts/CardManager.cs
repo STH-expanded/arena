@@ -13,12 +13,11 @@ public class CardManager : MonoBehaviour
     public GameObject card3;
 
     public bool isActive;
-
+    public float prevSpeed;
+    
     public GameObject player;
     public GameObject enemy;
-
-
-
+    
     private readonly string[] _opponentTitles = {
         "Archonte", "Auguste", "Baron", "César", "Comte", "Duc", "Grand-duc", "Jarl", "Jinong", "Joupan", "Knèze", "Lord", "Magnat", "Margrave", "Marquis", "Nizam", "Padichah", "Prince consort", "Roi consort", "Tayiji", "Vice-roi", "Amiral", "Ban", "Baronnet", "Brigadier", "Burgrave", "Capitaine", "Colonel", "Commandeur", "Despote", "Général", "Gouverneur", "Lieutenant", "Magnat", "Maréchal", "Pacha", "Prince-évêque", "Stratège", "Topotérète", "Vicomte", "Vidame"
     };
@@ -32,6 +31,7 @@ public class CardManager : MonoBehaviour
         new Reward(3,"DEF +", ApplyRewardDef),
         new Reward(4,"Heal", ApplyRewardHeal)
     };
+    
     public void InitCards(int level)
     {
 

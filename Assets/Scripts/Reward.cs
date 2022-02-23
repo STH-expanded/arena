@@ -16,9 +16,5 @@ public class Reward
 		id = idReward;
 		name = nameReward;
 		applyReward = applyRewardFunction;
-		
-
 	}
-
-
 }
