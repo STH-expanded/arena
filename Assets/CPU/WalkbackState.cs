@@ -6,6 +6,8 @@ public class WalkbackState : State
 {
     public AttackState attackState;
     public CombatStanceState combatStanceState;
+    public StrafeState strafeState;
+    public int framecount = 0;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -13,12 +15,16 @@ public class WalkbackState : State
         attackState.hasPerformedAttack = false;
 
         enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
-        enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + enemyManager.transform.forward * -0.5f);
-
-        if (distanceFromTarget > 3)
+        if (enemyManager.transform.position.x > -10 && enemyManager.transform.position.x < 10 && enemyManager.transform.position.z > -10 && enemyManager.transform.position.z < 10)
         {
-            return combatStanceState;
+            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + enemyManager.transform.forward * -5f * Time.deltaTime);
         }
+        if (framecount > 60)
+        {
+            framecount = 0;
+            return strafeState;
+        }
+        framecount++;
         return this;
     }
 }

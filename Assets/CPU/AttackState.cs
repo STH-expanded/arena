@@ -9,6 +9,7 @@ public class AttackState : State
     public EnemyAttackAction currentAttack;
     public StrafeState strafeState;
     public WalkbackState walkbackState;
+    public int framecount = 0;
 
     public bool hasPerformedAttack = false;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
@@ -20,16 +21,23 @@ public class AttackState : State
         {
             if (distanceFromTarget < 1)
             {
-
                 AttackTarget(enemyAnimatorManager, enemyManager);
                 enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
-
             }
             else
             {
-                enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
-                enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
-                return this;
+                if (framecount < 60)
+                {
+                    enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
+                    enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                    framecount++;
+                    return this;
+                }
+                else
+                {
+                    framecount = 0;
+                    return strafeState;
+                }
             }
         }
 
