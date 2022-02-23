@@ -2451,11 +2451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58b73064a5aa6d47ab4101272a1bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  statsCard: {fileID: 0}
-=======
   statsCard: {fileID: 448227216}
->>>>>>> 4d40f824db0228edf9bec2b089b9b7add6cc047c
   maxHealthText: {fileID: 1594425188}
   speedText: {fileID: 568765292}
   attackText: {fileID: 572281591}
