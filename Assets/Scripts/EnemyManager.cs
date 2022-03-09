@@ -25,11 +25,14 @@ public class EnemyManager : MonoBehaviour
     public float maximumDetectionAngle = 50;
     public float minimumDetectionAngle = -50;
     public float viewableAngle;
-    
+
     public float currentRecoveryTime = 0;
     public int startGameBuffer = 0;
     public bool isIntro;
     public bool isOutro;
+
+    [SerializeField] private GameObject attackVFX;
+    [SerializeField] private GameObject attackVFXReverse;
 
     // Start is called before the first frame update
     private void Awake()
@@ -51,12 +54,13 @@ public class EnemyManager : MonoBehaviour
     {
         if (unitStatisticsManager.unitStatistics.CurrentHealth == 0)
             return;
-        
+
         if (isIntro)
         {
             //enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // move forward
             enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.forward * -10f * Time.deltaTime);
-        } else if (isOutro)
+        }
+        else if (isOutro)
         {
             enemyAnimationManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
 
@@ -119,5 +123,17 @@ public class EnemyManager : MonoBehaviour
         transform.localScale = defScale;
         isIntro = true;
         isOutro = false;
+    }
+
+    public void LaunchAttackVFX()
+    {
+        GameObject clone = Instantiate(attackVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+
+    public void LaunchAttackVFX2()
+    {
+        GameObject clone = Instantiate(attackVFXReverse, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
     }
 }
