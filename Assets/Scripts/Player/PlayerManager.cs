@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour
     public bool isOutro;
 
     [SerializeField] private GameObject attackVFX;
+    [SerializeField] private GameObject attackVFXReverse;
 
     private void Awake()
     {
@@ -88,6 +89,12 @@ public class PlayerManager : MonoBehaviour
     public void LaunchAttackVFX()
     {
         GameObject clone = Instantiate(attackVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+
+    public void LaunchAttackVFX2()
+    {
+        GameObject clone = Instantiate(attackVFXReverse, transform.position, transform.localRotation);
         Destroy(clone, 1.0f);
     }
 }
