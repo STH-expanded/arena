@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06296718, g: 0.014562094, b: 0.17087623, a: 1}
+  m_IndirectSpecularColor: {r: 0.06296513, g: 0.014560476, b: 0.1708759, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -889,7 +889,7 @@ Transform:
   - {fileID: 527188483}
   - {fileID: 448227217}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &104319412
 MonoBehaviour:
@@ -7132,6 +7132,7 @@ MonoBehaviour:
   currentAttack: {fileID: 11400000, guid: 4b21ca1ad50c0134296f5968e232819f, type: 2}
   strafeState: {fileID: 1453107237}
   walkbackState: {fileID: 1718479258}
+  framecount: 0
   hasPerformedAttack: 0
 --- !u!1 &1166670245
 GameObject:
@@ -8581,7 +8582,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9b2390713041f714c9204e886fa74817, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b2390713041f714c9204e886fa74817, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9165,30 +9166,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462816831}
   m_CullTransparentMesh: 1
---- !u!1 &1490080298 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 271260264027092187, guid: 7203151d128217b4d8018746349089d6, type: 3}
-  m_PrefabInstance: {fileID: 490422163}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1490080299 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 871648845661300426, guid: 7203151d128217b4d8018746349089d6, type: 3}
-  m_PrefabInstance: {fileID: 490422163}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1490080300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490080298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a53fbe7d6fd154e44b9f0e2403601c52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentOverride: {fileID: 1490080299}
-  currentWeaponModel: {fileID: 0}
 --- !u!1 &1496223048
 GameObject:
   m_ObjectHideFlags: 0
@@ -10519,6 +10496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackState: {fileID: 1145343738}
   combatStanceState: {fileID: 576277527}
+  strafeState: {fileID: 1453107237}
+  framecount: 0
 --- !u!1 &1729037100
 GameObject:
   m_ObjectHideFlags: 0
