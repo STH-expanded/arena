@@ -98,7 +98,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SewingArenaChara_MT_PlayerBody
-    second: {fileID: 2100000, guid: 9c9efe5eacdc9d241afac356a6953908, type: 2}
+    second: {fileID: 2100000, guid: 46913b31cce532d4f852bd519f510165, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
