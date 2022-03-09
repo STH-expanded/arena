@@ -35,6 +35,7 @@ public class DamageCollider : MonoBehaviour
             if (unitStatisticsManager != null)
             {
                 unitStatisticsManager.TakeDamage(unitStatisticsManager.unitStatistics.Attack);
+                damageCollider.enabled = false;
             }
         }
 
@@ -45,6 +46,7 @@ public class DamageCollider : MonoBehaviour
             if (unitStatisticsManager != null)
             {
                 unitStatisticsManager.TakeDamage(unitStatisticsManager.unitStatistics.Attack);
+                damageCollider.enabled = false;
             }
         }
     }
