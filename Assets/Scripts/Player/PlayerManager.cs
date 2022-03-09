@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private GameObject attackVFX;
     [SerializeField] private GameObject attackVFXReverse;
+    [SerializeField] private GameObject hitVFX;
 
     private void Awake()
     {
@@ -95,6 +96,12 @@ public class PlayerManager : MonoBehaviour
     public void LaunchAttackVFX2()
     {
         GameObject clone = Instantiate(attackVFXReverse, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+
+    public void LaunchHitVFX()
+    {
+        GameObject clone = Instantiate(hitVFX, transform.position, transform.localRotation);
         Destroy(clone, 1.0f);
     }
 }
