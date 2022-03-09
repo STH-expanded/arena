@@ -34,6 +34,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject attackVFX;
     [SerializeField] private GameObject attackVFXReverse;
     [SerializeField] private GameObject cloudVFX;
+    [SerializeField] private GameObject hitVFX;
 
     // Start is called before the first frame update
     private void Awake()
@@ -140,6 +141,11 @@ public class EnemyManager : MonoBehaviour
     public void LaunchWalkVFX()
     {
         GameObject clone = Instantiate(cloudVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+    public void LaunchHitVFX()
+    {
+        GameObject clone = Instantiate(hitVFX, transform.position, transform.localRotation);
         Destroy(clone, 1.0f);
     }
 }
