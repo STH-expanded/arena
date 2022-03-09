@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 9b2390713041f714c9204e886fa74817
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_Cube_MT_2
+    second: {fileID: 2100000, guid: 031580f8ffd6b074eb640ae0c4c43a7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_Cube_MT_3
+    second: {fileID: 2100000, guid: db133bcc2cfdcbe429efe40db876888a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_Cube_MT_4
+    second: {fileID: 2100000, guid: 3c94f35167e6c684cb73b4675098c105, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_Cube_MT_5
+    second: {fileID: 2100000, guid: e8ac949a82a8f7347a2a242dc41cdcb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_DoorShadow_MT
+    second: {fileID: 2100000, guid: c0a611274329b7b42afdc6e99df31980, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_Flag_MT
+    second: {fileID: 2100000, guid: 22bb7c22de1eb3749b3d10d5b5003764, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_NeedleTopOrb_MT_1
+    second: {fileID: 2100000, guid: 659afc357a61fb04eb31cadd6df3d1a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_NeedleTopOrb_MT_2
+    second: {fileID: 2100000, guid: 0d3fa8a927f3b6f438fa59b6c8d21357, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_NeedleTopOrb_MT_3
+    second: {fileID: 2100000, guid: db569d9734ec8ec418af6611883a2012, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_NeedleTopOrb_MT_4
+    second: {fileID: 2100000, guid: eb47bbbd3ed200d4494e4d7f56a12914, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_Rope_MT
+    second: {fileID: 2100000, guid: 4ee0901a6ed8f3d4d947326e952a1e3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_SewingNeedle_MT_1
+    second: {fileID: 2100000, guid: 6abf118585ee37042a89df4b61b334a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_SewingNeedle_MT_2
+    second: {fileID: 2100000, guid: a62c73d20204038488a3b001ee2a54a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_SewingNeedle_MT_3
+    second: {fileID: 2100000, guid: 986ec0e29667500488a0f0ff45deb650, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_SewingNeedle_MT_4
+    second: {fileID: 2100000, guid: e28c86a3760394a4dbcd89b11538b95a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_SewingNeedle_MT_5
+    second: {fileID: 2100000, guid: ca6feb8b64c36c34791583a571598d6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_SewingNeedle_MT_6
+    second: {fileID: 2100000, guid: d89d9ef3740cceb448f84077dbea5c3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaAsset_Spectaor_MT
+    second: {fileID: 2100000, guid: 8a03162b38473794a80759d9a8cfe6c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SewingArenaChara_MT_PlayerBody
+    second: {fileID: 2100000, guid: 46913b31cce532d4f852bd519f510165, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 4ee0901a6ed8f3d4d947326e952a1e3d, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

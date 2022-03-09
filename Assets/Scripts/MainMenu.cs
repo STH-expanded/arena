@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
     public GameData gameData;
+    public GameObject achievementList;
 
     public void Start()
     {
@@ -22,9 +24,27 @@ public class MainMenu : MonoBehaviour
             gameData.highScore = 0;
             gameData.score = 0;
             gameData.level = 1;
+            gameData.numberOfGamePlayed = 0;
 
             SaveLoad.SaveData(gameData);
         }
+        
+        for (int i = 1; i < gameData.achievements.Length + 1; i++)
+        {
+            if (gameData.achievements != null)
+            {
+                bool a = gameData.achievements[i - 1];
+                GameObject obj = GameObject.Find("Achievement" + i);
+                obj.GetComponentInChildren<UnityEngine.UI.Text>().color = a ? Color.white : Color.grey;
+                Sprite trophySprite =  Resources.Load <Sprite>("trophy");
+
+                if (a)
+                {
+                    obj.GetComponentInChildren<UnityEngine.UI.Image>().sprite = trophySprite;
+                }
+            }
+        }
+        GameObject.Find("AchievementsMenu").SetActive(false);
     }
 
     public void PlayGame()

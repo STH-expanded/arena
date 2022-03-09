@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class CardDisplay : MonoBehaviour
 {
@@ -14,16 +12,22 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public Text attackText;
     [SerializeField] public Text defenseText;
     [SerializeField] public Text rewardText;
+    [SerializeField] public Image rewardImage;
 
     public CardManager cardManager;
+    public CameraHandle cameraHandle;
 
     public Slider healthSlider;
     public Slider speedSlider;
     public Slider attackSlider;
     public Slider defenseSlider;
 
+    public UserInterface userInterface;
+
     public UnitStatisticsManager unitStatisticsManager;
     public UnitStatisticsManager enemyStatsManager;
+    public Stats statsManager;
+
 
     public Button selectButton;
 
@@ -41,7 +45,7 @@ public class CardDisplay : MonoBehaviour
         btn.onClick.AddListener(SelectAction);
     }
 
-    public void setCardValues(int level, string enemyName  )
+    public void setCardValues(int level, string enemyName)
     {
         unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
@@ -61,15 +65,21 @@ public class CardDisplay : MonoBehaviour
         speedSlider.value = stats.Speed;
         speedText.text = stats.Speed.ToString();
         rewardText.text = reward.name;
-
+        Debug.Log(reward.srcIcon);
+        rewardImage.sprite = Resources.Load<Sprite>(reward.srcIcon);
     }
 
     void SelectAction()
     {
-        Debug.Log("Start fight");
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
+        cameraHandle.isIntro = true;
+        userInterface.InitHealthBars();
+
         cardManager.isActive = false;
-        playerManager.rewardId = reward.id;
+        statsManager.isActive = false;
+        statsManager.statsCard.SetActive(false);
+        playerManager.rewardGame = reward;
+
         cardManager.ResetUnits();
     }
 }

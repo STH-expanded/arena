@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed;
     public string lastAttack;
 
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
@@ -111,18 +112,18 @@ public class PlayerMovement : MonoBehaviour
         else if (inputManager.attack3Buffer)
         {
             inputManager.attack3Buffer = false;
-            animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack3, true);
+            animatorManager.PlayTargetAnimation("Attack3", true);
         }
         else if (inputManager.attack2Buffer)
         {
             inputManager.attack2Buffer = false;
-            animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack2, true);
+            animatorManager.PlayTargetAnimation("Attack2", true);
         }
         if (inputManager.attack1Flag)
         {
             Vector3 direction = transform.forward;
             transform.rotation = Quaternion.LookRotation(direction);
-            animatorManager.PlayTargetAnimation(weaponSlotManager.weaponItem.Attack1, true);
+            animatorManager.PlayTargetAnimation("Attack1", true);
         }
     }
 }

@@ -4,34 +4,21 @@ using UnityEngine;
 
 public class WeaponSlotManager : MonoBehaviour
 {
-    WeaponHolderSlot handSlot;
-    public WeaponItem weaponItem;
-
     DamageCollider damageCollider;
-
-    private void Awake()
-    {
-        WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
-        foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
-        {
-            handSlot = weaponSlot;
-        }
-    }
 
     private void Start()
     {
-        LoadWeaponSlot(weaponItem);
+        LoadWeaponSlot();
     }
 
-    public void LoadWeaponSlot(WeaponItem weaponItem)
+    public void LoadWeaponSlot()
     {
-        handSlot.LoadWeaponModel(weaponItem);
         LoadWeaponDamageCollider();
     }
 
     private void LoadWeaponDamageCollider()
     {
-        damageCollider = handSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+        damageCollider = GetComponentInChildren<DamageCollider>();
     }
 
     public void OpenDamageCollider()

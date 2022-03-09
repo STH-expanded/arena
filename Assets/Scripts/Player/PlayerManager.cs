@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     Animator animator;
     public UnitStatisticsManager unitStatisticsManager;
 
-   [Header("Player flags")]
+    [Header("Player flags")]
     public bool isInteracting;
     public bool isRolling;
     public bool isStabbing;
@@ -24,12 +24,19 @@ public class PlayerManager : MonoBehaviour
     public bool isAttack3;
     public bool canAttack2;
     public bool canAttack3;
+    public bool isInvulnerable;
 
-    public int rewardId;
+    public Reward rewardGame;
 
     public int startGameBuffer = 0;
     public bool isIntro;
-    
+    public bool isOutro;
+
+    [SerializeField] private GameObject attackVFX;
+    [SerializeField] private GameObject attackVFXReverse;
+    [SerializeField] private GameObject cloudVFX;
+    [SerializeField] private GameObject hitVFX;
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
@@ -40,7 +47,6 @@ public class PlayerManager : MonoBehaviour
         defPos = transform.position;
         defRot = transform.localRotation;
         defScale = transform.localScale;
-
         isIntro = true;
     }
 
@@ -55,8 +61,13 @@ public class PlayerManager : MonoBehaviour
         isAttack3 = animator.GetBool("isAttack3");
         canAttack2 = animator.GetBool("canAttack2");
         canAttack3 = animator.GetBool("canAttack3");
+        isInvulnerable = animator.GetBool("isInvulnerable");
 
-        if (!isIntro)
+        if (isIntro || isOutro)
+        {
+            animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
+        }
+        else
         {
             inputManager.HandleAllInputs();
             playerMovement.HandleAllMovement();
@@ -73,5 +84,31 @@ public class PlayerManager : MonoBehaviour
         transform.position = defPos;
         transform.localRotation = defRot;
         transform.localScale = defScale;
+        isIntro = true;
+        isOutro = false;
+    }
+
+    public void LaunchAttackVFX()
+    {
+        GameObject clone = Instantiate(attackVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+
+    public void LaunchAttackVFX2()
+    {
+        GameObject clone = Instantiate(attackVFXReverse, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+    public void LaunchWalkVFX()
+    {
+        GameObject clone = Instantiate(cloudVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+    
+
+    public void LaunchHitVFX()
+    {
+        GameObject clone = Instantiate(hitVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
     }
 }

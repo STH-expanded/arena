@@ -5,99 +5,67 @@ using UnityEngine;
 public class AttackState : State
 {
     public CombatStanceState combatStanceState;
+    public PursueTargetState pursueTargetState;
     public EnemyAttackAction[] enemyAttacks;
     public EnemyAttackAction currentAttack;
+    public StrafeState strafeState;
+    public WalkbackState walkbackState;
+    public int framecount = 0;
+
+    public bool hasPerformedAttack = false;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-        float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
+        Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
-        if (enemyManager.isPreformingAction)
+        if (!hasPerformedAttack)
         {
-            return combatStanceState;
-        }
-
-        if (currentAttack != null)
-        {
-            if (enemyManager.distanceFromTarget < currentAttack.minimumDistanceNeededToAttack)
+            if (distanceFromTarget < 1.5f)
             {
-                return this;
-            } 
-            else if (enemyManager.distanceFromTarget < currentAttack.maximumDistanceNeededToAttack)
+                enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
+                enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.Normalize(targetDirection) * 10f * Time.deltaTime);
+                enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                AttackTarget(enemyAnimatorManager, enemyManager);
+                currentAttack = null;
+            }
+            else
             {
-                if (enemyManager.viewableAngle <= currentAttack.maximumAttackAngle
-                    && enemyManager.viewableAngle >= currentAttack.minimumAttackAngle)
+                if (framecount < 80)
                 {
-                    if (enemyManager.currentRecoveryTime <= 0 && enemyManager.isPreformingAction == false)
-                    {
-                        enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
-                        enemyAnimatorManager.animator.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
-                        enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
-                        enemyManager.isPreformingAction = true;
-                        enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
-                        currentAttack = null;
-                        return combatStanceState;
-                    }
+                    enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
+                    enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.Normalize(targetDirection) * 10f * Time.deltaTime);
+                    enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                    framecount++;
+                    return this;
+                }
+                else
+                {
+                    framecount = 0;
+                    return strafeState;
                 }
             }
         }
-        else
-        {
-            GetNewAttack(enemyManager);
-        }
 
-        return combatStanceState;
+        return walkbackState;
     }
 
-    private void GetNewAttack(EnemyManager enemyManager)
+    private void AttackTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
     {
-        Vector3 targetsDirection = enemyManager.currentTarget.transform.position - transform.position;
-        float viewableAngle = Vector3.Angle(targetsDirection, transform.forward);
-        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
-
-        int maxScore = 0;
-
-        for (int i = 0; i < enemyAttacks.Length; i++)
+        float random = Random.Range(0, 3f);
+        if (random <= 1)
         {
-            EnemyAttackAction enemyAttackAction = enemyAttacks[i];
-
-            if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
-                && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
-            {
-                if (viewableAngle <= enemyAttackAction.maximumAttackAngle
-                    && viewableAngle >= enemyAttackAction.minimumAttackAngle)
-                {
-                    maxScore += enemyAttackAction.attackScore;
-                }
-            }
-        }
-
-        int randomValue = Random.Range(0, maxScore);
-        int temporaryScore = 0;
-
-        for (int i = 0; i < enemyAttacks.Length; i++)
+            currentAttack = enemyAttacks[0];
+        } else if (random > 1 && random <= 2)
         {
-            EnemyAttackAction enemyAttackAction = enemyAttacks[i];
-
-            if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceNeededToAttack
-                && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
-            {
-                if (viewableAngle <= enemyAttackAction.maximumAttackAngle
-                    && viewableAngle >= enemyAttackAction.minimumAttackAngle)
-                {
-                    if (currentAttack != null)
-                    {
-                        return;
-                    }
-
-                    temporaryScore += enemyAttackAction.attackScore;
-
-                    if (temporaryScore > randomValue)
-                    {
-                        currentAttack = enemyAttackAction;
-                    }
-                }
-            }
+            currentAttack = enemyAttacks[1];
+        } else
+        {
+            currentAttack = enemyAttacks[2];
         }
+        enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+        enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
+        hasPerformedAttack = true;
     }
+
+
 }

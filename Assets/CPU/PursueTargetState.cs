@@ -5,32 +5,35 @@ using UnityEngine;
 public class PursueTargetState : State
 {
     public CombatStanceState combatStanceState;
+    public StrafeState strafeState;
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        if (enemyManager.isPreformingAction)
-            return this;
-
-        Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
-        float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-
-        if (enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
-        {
-            enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
-        }
+        Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        //float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
+        bool isStraph = distanceFromTarget <= enemyManager.maximumAggroRadius + 5 && distanceFromTarget > enemyManager.maximumAggroRadius;
 
         HandleRotateTowardsTarget(enemyManager);
+
+        if (enemyManager.isPreformingAction)
+        {
+            enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+            return this;
+        }
+
+        if (distanceFromTarget > 5)
+        {
+            enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.Normalize(targetDirection) * 10f * Time.deltaTime);
+        } else if (isStraph)
+        {
+            return strafeState;
+        }
+
         enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
         enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
 
-        if (enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
-        {
-            return combatStanceState;
-        } 
-        else
-        {
-            return this;
-        }
+        return this;
     }
 
     private void HandleRotateTowardsTarget(EnemyManager enemyManager)
@@ -57,7 +60,7 @@ public class PursueTargetState : State
             enemyManager.navMeshAgent.enabled = true;
             enemyManager.navMeshAgent.SetDestination(enemyManager.currentTarget.transform.position);
             enemyManager.enemyRigidBody.velocity = targetVelocity;
-            enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
+            enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
         }
     }
 }
