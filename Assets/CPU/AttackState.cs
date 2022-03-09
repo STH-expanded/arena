@@ -19,16 +19,19 @@ public class AttackState : State
 
         if (!hasPerformedAttack)
         {
-            if (distanceFromTarget < 1)
+            if (distanceFromTarget < 1.5f)
             {
-                AttackTarget(enemyAnimatorManager, enemyManager);
+                enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
+                enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.Normalize(targetDirection) * 10f * Time.deltaTime);
                 enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                AttackTarget(enemyAnimatorManager, enemyManager);
             }
             else
             {
                 if (framecount < 80)
                 {
                     enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
+                    enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.Normalize(targetDirection) * 10f * Time.deltaTime);
                     enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
                     framecount++;
                     return this;
@@ -41,7 +44,7 @@ public class AttackState : State
             }
         }
 
-        return strafeState;
+        return walkbackState;
     }
 
     private void AttackTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
