@@ -24,7 +24,7 @@ public class MainCardTween : MonoBehaviour
         LeanTween.scale(gameObject, new Vector3(1, 1, 1), inDuration).setDelay(inDelay).setOnComplete(OnComplete).setEase(inType);
     }
 
-    public void OnComplete()
+    private void OnComplete()
     {
         if (onCompleteCallback != null)
         {
@@ -45,6 +45,7 @@ public class MainCardTween : MonoBehaviour
 
     void DestroyMe()
     {
+        Debug.Log("Cards destroyed!");
         gameObject.SetActive(false);
         unselectedCard1.SetActive(false);
         unselectedCard2.SetActive(false);
