@@ -32,16 +32,17 @@ public class StrafeState : State
         framecount++;
         if (distanceFromTarget > 7)
         {
-            enemyAnimatorManager.animator.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
+            //enemyAnimatorManager.animator.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
             return pursueTargetState;
         }  /* else
         { */
 
+        enemyAnimatorManager.animator.SetFloat("Vertical", 0.5f, 0.1f, Time.deltaTime);
         enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
         enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);      
         Vector3 h = Vector3.Normalize(enemyManager.transform.right) * (direction ? 1 : -1) * 600f * Time.deltaTime;
-        Vector3 v = Vector3.Normalize(targetDirection) * 400f * (distanceFromTarget > 3 ? 1 : -1) * Time.deltaTime;
-        if (Mathf.Round(distanceFromTarget) != 3f)
+        Vector3 v = Vector3.Normalize(targetDirection) * 400f * (distanceFromTarget > 5 ? 1 : -1) * Time.deltaTime;
+        if (Mathf.Round(distanceFromTarget) != 5f)
         {
             enemyManager.enemyRigidBody.AddForce(v + h);
         }
