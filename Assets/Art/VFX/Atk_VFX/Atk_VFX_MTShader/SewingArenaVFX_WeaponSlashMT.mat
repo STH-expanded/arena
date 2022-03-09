@@ -20,10 +20,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: SewingArenaVFX_WeaponSlashMT
   m_Shader: {fileID: -6465566751694194690, guid: 3b9110692c7adbd4d9bad421342db182, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -76,12 +76,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: 2425ddadc2c91614b8e6fde745adbf09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_0af0edbc7fa843edb375b0ac1f50a7c1_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 63a8e56fb97c41a42a131db9407c60ba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_1734bf5c499842daa4e45f567262a461_Texture_1:
         m_Texture: {fileID: 2800000, guid: 2872ad9867ca310428f1c98964989529, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_2d4d7d63dc65426f94a65a3ee1c77f85_Texture_1:
         m_Texture: {fileID: 2800000, guid: 73a7583719c1b054280a61627dbe3ff9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_2fd313770ec943428ea0010d7319c3cb_Texture_1:
+        m_Texture: {fileID: 2800000, guid: b676265840568194cbb059d3dfa6bb1f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3b189892b187497e9b244b5c90dfaefe_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6ce7d45ec5039fe42b0ebce9e03d5cc8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_466bdbf9e09545da8be8ab2412ae10ba_Texture_1:
@@ -110,6 +122,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_8f4e4d1f45c14ff7b490aa3714845428_Texture_1:
         m_Texture: {fileID: 2800000, guid: 5afbeead2c8123040b4c489414cdac00, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a8642723a8e34c81b87594740ac5be30_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 3d7db0e176b61624f8abf9aec9b380e9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b27492ee6a06444d9943030df5960468_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 464161305f33ecf498004318e1a6dedd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_ce1cbb1b2b5d45d7aaaca5683d031471_Texture_1:
@@ -142,10 +162,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_D22DE451: 1
-    - Vector1_D22DE451_1: 2
+    - Vector1_D22DE451_1: 4.6
     - Vector1_D22DE451_2: 1
     - Vector1_D22DE451_3: 1
-    - Vector1_D22DE451_4: 0.77
+    - Vector1_D22DE451_4: 0.172
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     Animator animator;
     public UnitStatisticsManager unitStatisticsManager;
 
-   [Header("Player flags")]
+    [Header("Player flags")]
     public bool isInteracting;
     public bool isRolling;
     public bool isStabbing;
@@ -31,7 +31,12 @@ public class PlayerManager : MonoBehaviour
     public int startGameBuffer = 0;
     public bool isIntro;
     public bool isOutro;
-    
+
+    [SerializeField] private GameObject attackVFX;
+    [SerializeField] private GameObject attackVFXReverse;
+    [SerializeField] private GameObject cloudVFX;
+    [SerializeField] private GameObject hitVFX;
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
@@ -61,7 +66,8 @@ public class PlayerManager : MonoBehaviour
         if (isIntro || isOutro)
         {
             animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
-        } else
+        }
+        else
         {
             inputManager.HandleAllInputs();
             playerMovement.HandleAllMovement();
@@ -80,5 +86,29 @@ public class PlayerManager : MonoBehaviour
         transform.localScale = defScale;
         isIntro = true;
         isOutro = false;
+    }
+
+    public void LaunchAttackVFX()
+    {
+        GameObject clone = Instantiate(attackVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+
+    public void LaunchAttackVFX2()
+    {
+        GameObject clone = Instantiate(attackVFXReverse, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+    public void LaunchWalkVFX()
+    {
+        GameObject clone = Instantiate(cloudVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+    
+
+    public void LaunchHitVFX()
+    {
+        GameObject clone = Instantiate(hitVFX, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
     }
 }
