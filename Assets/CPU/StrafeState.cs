@@ -15,13 +15,13 @@ public class StrafeState : State
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         attackState.hasPerformedAttack = false;
-        float random = Random.Range(0, 3f);
-        if (framecount % 240 == 0)
+        float random = Random.Range(0, 4f);
+        if (framecount % 180 == 0)
         {
-            if (random < 1)
+            if (random < 1.6f)
             {
                 return attackState;
-            } else if (random >= 1 && random < 2)
+            } else if (random >= 1.6f && random < 2f)
             {
                 return walkbackState;
             } else

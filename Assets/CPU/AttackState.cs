@@ -26,7 +26,7 @@ public class AttackState : State
             }
             else
             {
-                if (framecount < 60)
+                if (framecount < 80)
                 {
                     enemyManager.transform.rotation = Quaternion.LookRotation(targetDirection);
                     enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
