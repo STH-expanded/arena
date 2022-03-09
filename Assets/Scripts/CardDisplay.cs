@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CardDisplay : MonoBehaviour
 {
+    [SerializeField] public Animator cardAnimationController;
+    
     [SerializeField] public TextMeshPro levelText;
     [SerializeField] public TextMeshPro nameText;
 
@@ -40,15 +42,18 @@ public class CardDisplay : MonoBehaviour
             RaycastHit hit;  
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.transform.name);
+                StartCoroutine(SelectActionCoroutine());
             }
         }
     }
 
     void Start()
     {
-        /*Button btn = selectButton.GetComponent<Button>();
-        btn.onClick.AddListener(SelectAction);*/
+        cardAnimationController.speed = 0;
+        StartCoroutine(AnimateCard());
+        
+        Debug.Log("Passed #1");
+        cardManager.isActive = false;
     }
 
     public void SetCardValues(int level, string enemyName)
@@ -63,6 +68,18 @@ public class CardDisplay : MonoBehaviour
         defenseText.text = stats.Defense.ToString();
         speedText.text = stats.Speed.ToString();
         // rewardText.text = reward.name;
+    }
+    
+    IEnumerator AnimateCard()
+    {
+        yield return new WaitForSeconds(0.1F);
+        cardAnimationController.speed = 0.6F;
+    }
+    
+    IEnumerator SelectActionCoroutine()
+    {
+        yield return new WaitForSeconds(0.3F);
+        SelectAction();
     }
 
     private void SelectAction()

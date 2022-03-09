@@ -924,8 +924,8 @@ Transform:
   - {fileID: 1953394219}
   - {fileID: 1063591959}
   - {fileID: 527188483}
-  - {fileID: 1906506772}
   - {fileID: 448227217}
+  - {fileID: 1906506772}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1460,6 +1460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834ff889f74b343d59a1f6814b97a6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardAnimationController: {fileID: 991458450}
   levelText: {fileID: 1323685194}
   nameText: {fileID: 869606434}
   healthText: {fileID: 45974307}
@@ -1504,13 +1505,26 @@ MonoBehaviour:
   inDuration: 0.5
   outDelay: 0.35
   outDuration: 0.5
-  inType: 0
-  outType: 0
+  inType: 15
+  outType: 15
   unselectedCard1: {fileID: 1972456594}
   unselectedCard2: {fileID: 484754928}
   onCompleteCallback:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &244496802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244496797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.5, y: 1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &250787250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,7 +2575,7 @@ RectTransform:
   - {fileID: 572281590}
   - {fileID: 1945997658}
   m_Father: {fileID: 104319411}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2855,6 +2869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834ff889f74b343d59a1f6814b97a6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardAnimationController: {fileID: 580130393}
   levelText: {fileID: 1302270678}
   nameText: {fileID: 1011344867}
   healthText: {fileID: 1190985541}
@@ -2899,13 +2914,26 @@ MonoBehaviour:
   inDuration: 0.5
   outDelay: 0.35
   outDuration: 0.5
-  inType: 0
-  outType: 0
+  inType: 15
+  outType: 15
   unselectedCard1: {fileID: 244496797}
   unselectedCard2: {fileID: 1972456594}
   onCompleteCallback:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &484754933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484754928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.5, y: 1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &490422163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3418,6 +3446,7 @@ MonoBehaviour:
   card2: {fileID: 727288948}
   card3: {fileID: 1615225889}
   isActive: 1
+  prevSpeed: 0
   player: {fileID: 262174266}
   enemy: {fileID: 10881299}
 --- !u!1 &564888582
@@ -3716,6 +3745,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b21ca1ad50c0134296f5968e232819f, type: 2}
   - {fileID: 11400000, guid: 1bbba39cca344c84a9c4c872c9e0979f, type: 2}
   pursueTargetState: {fileID: 2132931909}
+--- !u!95 &580130393 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2261229585765743298, guid: 50b07329f011ac943b48e5332a886061, type: 3}
+  m_PrefabInstance: {fileID: 2077838995}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &581570121
 GameObject:
   m_ObjectHideFlags: 0
@@ -5068,6 +5102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834ff889f74b343d59a1f6814b97a6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardAnimationController: {fileID: 0}
   levelText: {fileID: 0}
   nameText: {fileID: 0}
   healthText: {fileID: 0}
@@ -6453,6 +6488,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991111664}
   m_CullTransparentMesh: 1
+--- !u!95 &991458450 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2261229585765743298, guid: 50b07329f011ac943b48e5332a886061, type: 3}
+  m_PrefabInstance: {fileID: 943228177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1011344867 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7823707984378502644, guid: 50b07329f011ac943b48e5332a886061, type: 3}
@@ -10055,6 +10095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834ff889f74b343d59a1f6814b97a6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardAnimationController: {fileID: 0}
   levelText: {fileID: 0}
   nameText: {fileID: 0}
   healthText: {fileID: 0}
@@ -11553,7 +11594,7 @@ Transform:
   - {fileID: 1972456595}
   - {fileID: 484754929}
   m_Father: {fileID: 104319411}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1906506773
 MonoBehaviour:
@@ -11571,6 +11612,7 @@ MonoBehaviour:
   card2: {fileID: 1972456594}
   card3: {fileID: 484754928}
   isActive: 1
+  prevSpeed: 0
   player: {fileID: 262174266}
   enemy: {fileID: 10881299}
 --- !u!1 &1910032212
@@ -12451,6 +12493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834ff889f74b343d59a1f6814b97a6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardAnimationController: {fileID: 0}
   levelText: {fileID: 0}
   nameText: {fileID: 0}
   healthText: {fileID: 0}
@@ -12650,6 +12693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834ff889f74b343d59a1f6814b97a6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardAnimationController: {fileID: 2024260408}
   levelText: {fileID: 502137473}
   nameText: {fileID: 647847447}
   healthText: {fileID: 12565450}
@@ -12694,13 +12738,26 @@ MonoBehaviour:
   inDuration: 0.5
   outDelay: 0.35
   outDuration: 0.5
-  inType: 0
-  outType: 0
+  inType: 15
+  outType: 15
   unselectedCard1: {fileID: 244496797}
   unselectedCard2: {fileID: 484754928}
   onCompleteCallback:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1972456599
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972456594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.5, y: 1, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1979593868
 GameObject:
   m_ObjectHideFlags: 0
@@ -13073,6 +13130,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!95 &2024260408 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2261229585765743298, guid: 50b07329f011ac943b48e5332a886061, type: 3}
+  m_PrefabInstance: {fileID: 1541067153}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027573304
 GameObject:
   m_ObjectHideFlags: 0
