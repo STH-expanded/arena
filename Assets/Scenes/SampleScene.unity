@@ -7129,7 +7129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 576277527}
   pursueTargetState: {fileID: 2132931909}
-  currentAttack: {fileID: 11400000, guid: 4b21ca1ad50c0134296f5968e232819f, type: 2}
+  enemyAttacks:
+  - {fileID: 11400000, guid: 4b21ca1ad50c0134296f5968e232819f, type: 2}
+  - {fileID: 11400000, guid: 1bbba39cca344c84a9c4c872c9e0979f, type: 2}
+  - {fileID: 11400000, guid: 1bbba39cca344c84a9c4c872c9e0979f, type: 2}
+  currentAttack: {fileID: 0}
   strafeState: {fileID: 1453107237}
   walkbackState: {fileID: 1718479258}
   framecount: 0

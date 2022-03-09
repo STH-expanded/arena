@@ -6,6 +6,7 @@ public class AttackState : State
 {
     public CombatStanceState combatStanceState;
     public PursueTargetState pursueTargetState;
+    public EnemyAttackAction[] enemyAttacks;
     public EnemyAttackAction currentAttack;
     public StrafeState strafeState;
     public WalkbackState walkbackState;
@@ -25,6 +26,7 @@ public class AttackState : State
                 enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.Normalize(targetDirection) * 10f * Time.deltaTime);
                 enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 AttackTarget(enemyAnimatorManager, enemyManager);
+                currentAttack = null;
             }
             else
             {
@@ -49,6 +51,17 @@ public class AttackState : State
 
     private void AttackTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)
     {
+        float random = Random.Range(0, 3f);
+        if (random <= 1)
+        {
+            currentAttack = enemyAttacks[0];
+        } else if (random > 1 && random <= 2)
+        {
+            currentAttack = enemyAttacks[1];
+        } else
+        {
+            currentAttack = enemyAttacks[2];
+        }
         enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
         enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
         hasPerformedAttack = true;
