@@ -60,6 +60,7 @@ public class GameLoop : MonoBehaviour
         }
         else if (enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {
+            enemyManager.enemyAnimationManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
             cameraHandle.isEnemyDead = true;
             playerManager.isOutro = true;
             if (winBuffer < 620)
