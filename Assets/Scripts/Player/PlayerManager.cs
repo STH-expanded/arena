@@ -87,7 +87,6 @@ public class PlayerManager : MonoBehaviour
 
     public void LaunchAttackVFX()
     {
-        Debug.Log(transform.localRotation);
         GameObject clone = Instantiate(attackVFX, transform.position, transform.localRotation);
         Destroy(clone, 1.0f);
     }

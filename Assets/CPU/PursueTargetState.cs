@@ -11,19 +11,19 @@ public class PursueTargetState : State
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         //float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
-        bool isStraph = distanceFromTarget <= enemyManager.maximumAggroRadius + 3 && distanceFromTarget > enemyManager.maximumAggroRadius;
+        bool isStraph = distanceFromTarget <= enemyManager.maximumAggroRadius + 5 && distanceFromTarget > enemyManager.maximumAggroRadius;
 
         HandleRotateTowardsTarget(enemyManager);
 
         if (enemyManager.isPreformingAction)
         {
-            //enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+            enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
             return this;
         }
 
-        if (distanceFromTarget > 4)
+        if (distanceFromTarget > 5)
         {
-            //enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+            enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
             enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.Normalize(targetDirection) * 10f * Time.deltaTime);
         } else if (isStraph)
         {
