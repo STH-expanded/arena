@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed;
     public string lastAttack;
 
+
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
