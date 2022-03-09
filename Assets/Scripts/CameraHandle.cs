@@ -53,12 +53,10 @@ public class CameraHandle : MonoBehaviour
 
     private void EntryCinematic()
     {
-        Debug.Log("Entry cinematic start");
         var center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -7, 0.05f);
         transform.rotation = Quaternion.Euler(20, 0, 0);
         _currentView = transform;
-        Debug.Log("Entry cinematic end");
     }
 
     private void ZoomOnEnemy()

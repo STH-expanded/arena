@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class CardDisplay : MonoBehaviour
 {
+    
+    [SerializeField] public MainCardTween mainCardTween;
     [SerializeField] public Animator cardAnimationController;
+    [SerializeField] public Animator playerAnimatorController;
+    [SerializeField] public Animator enemyAnimatorController;
+
+    [SerializeField] public GameObject healthBarsCanvas;
     
     [SerializeField] public TextMeshPro levelText;
     [SerializeField] public TextMeshPro nameText;
@@ -36,14 +42,12 @@ public class CardDisplay : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  
-            RaycastHit hit;  
-            if (Physics.Raycast(ray, out hit))
-            {
-                StartCoroutine(SelectActionCoroutine());
-            }
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0) && 
+            Physics.Raycast(ray, out var hit) && 
+            (hit.transform.name == "Card1" || hit.transform.name == "Card2" || hit.transform.name == "Card3"))
+        { 
+            StartCoroutine(SelectActionCoroutine());
         }
     }
 
@@ -51,9 +55,6 @@ public class CardDisplay : MonoBehaviour
     {
         cardAnimationController.speed = 0;
         StartCoroutine(AnimateCard());
-        
-        Debug.Log("Passed #1");
-        cardManager.isActive = false;
     }
 
     public void SetCardValues(int level, string enemyName)
@@ -70,18 +71,6 @@ public class CardDisplay : MonoBehaviour
         // rewardText.text = reward.name;
     }
     
-    IEnumerator AnimateCard()
-    {
-        yield return new WaitForSeconds(0.1F);
-        cardAnimationController.speed = 0.6F;
-    }
-    
-    IEnumerator SelectActionCoroutine()
-    {
-        yield return new WaitForSeconds(0.3F);
-        SelectAction();
-    }
-
     private void SelectAction()
     {
         Debug.Log("Start fight");
@@ -95,5 +84,21 @@ public class CardDisplay : MonoBehaviour
         playerManager.rewardGame = reward;
 
         cardManager.ResetUnits();
+    }
+    
+    IEnumerator AnimateCard()
+    {
+        yield return new WaitForSeconds(0.05F);
+        cardAnimationController.speed = 0.65F;
+    }
+    
+    IEnumerator SelectActionCoroutine()
+    {
+        yield return new WaitForSeconds(0.3F);
+        SelectAction();
+        healthBarsCanvas.SetActive(true);
+        playerAnimatorController.speed = 1;
+        enemyAnimatorController.speed = 1;
+        mainCardTween.OnClose();
     }
 }
