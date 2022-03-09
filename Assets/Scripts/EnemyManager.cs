@@ -54,7 +54,8 @@ public class EnemyManager : MonoBehaviour
         
         if (isIntro)
         {
-            enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // move forward
+            //enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // move forward
+            enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.forward * -10f * Time.deltaTime);
         } else if (isOutro)
         {
             enemyAnimationManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still

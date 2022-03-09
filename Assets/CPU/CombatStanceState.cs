@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatStanceState : State
@@ -7,10 +5,6 @@ public class CombatStanceState : State
     public AttackState attackState;
     public EnemyAttackAction[] enemyAttacks;
     public PursueTargetState pursueTargetState;
-
-    bool randomDestinationSet = false;
-    float verticalMovementValue = 0;
-    float horizontalMovementValue = 0;
 
     public override State Tick(EnemyManager enemyManager, UnitStatistics enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
