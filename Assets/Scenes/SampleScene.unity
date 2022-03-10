@@ -668,12 +668,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67692711}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 10.46, z: -4.7900004}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.216574, y: 3.06, z: 3.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2104345189}
-  m_RootOrder: 0
+  m_Father: {fileID: 1107243425}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &67692713
 Light:
@@ -687,7 +687,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.817002, b: 0.19339621, a: 1}
-  m_Intensity: 15
+  m_Intensity: 12
   m_Range: 6.62
   m_SpotAngle: 97.44112
   m_InnerSpotAngle: 39.56351
@@ -1589,9 +1589,6 @@ MonoBehaviour:
   speedText: {fileID: 594201709}
   attackText: {fileID: 1031507388}
   defenseText: {fileID: 1024712214}
-  rewardText: {fileID: 0}
-  rewardImage: {fileID: 0}
-  artwork: {fileID: 0}
   cardManager: {fileID: 1107243424}
   cameraHandle: {fileID: 963194229}
   userInterface: {fileID: 104319412}
@@ -1965,9 +1962,6 @@ MonoBehaviour:
   speedText: {fileID: 1638462473}
   attackText: {fileID: 358904350}
   defenseText: {fileID: 106339991}
-  rewardText: {fileID: 0}
-  rewardImage: {fileID: 0}
-  artwork: {fileID: 0}
   cardManager: {fileID: 1107243424}
   cameraHandle: {fileID: 963194229}
   userInterface: {fileID: 104319412}
@@ -3259,7 +3253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &525978480
 Light:
@@ -3841,7 +3835,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5322,9 +5316,6 @@ MonoBehaviour:
   speedText: {fileID: 0}
   attackText: {fileID: 0}
   defenseText: {fileID: 0}
-  rewardText: {fileID: 0}
-  rewardImage: {fileID: 1729037102}
-  artwork: {fileID: 634450546}
   cardManager: {fileID: 527188487}
   cameraHandle: {fileID: 963194229}
   userInterface: {fileID: 104319412}
@@ -5880,7 +5871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!108 &815328593
 Light:
@@ -9639,12 +9630,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107243423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -3}
+  m_LocalPosition: {x: 2.5, y: 1.74, z: -7.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 244496798}
   - {fileID: 1972456595}
   - {fileID: 294596483}
+  - {fileID: 67692712}
+  - {fileID: 1279781494}
+  - {fileID: 1227042096}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10524,12 +10518,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227042095}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.32, y: 10.46, z: -4.7900004}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.7834263, y: 3.0600002, z: 3.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2104345189}
-  m_RootOrder: 2
+  m_Father: {fileID: 1107243425}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1227042097
 Light:
@@ -10543,7 +10537,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.817002, b: 0.19339621, a: 1}
-  m_Intensity: 15
+  m_Intensity: 12
   m_Range: 6.62
   m_SpotAngle: 97.44112
   m_InnerSpotAngle: 39.56351
@@ -10958,7 +10952,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!215 &1256370007
 ReflectionProbe:
@@ -11093,12 +11087,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279781493}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8200002, y: 10.46, z: -4.79}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.7165737, y: 3.0600002, z: 3.4900005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2104345189}
-  m_RootOrder: 1
+  m_Father: {fileID: 1107243425}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1279781495
 Light:
@@ -11112,7 +11106,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.817002, b: 0.19339621, a: 1}
-  m_Intensity: 15
+  m_Intensity: 12
   m_Range: 6.62
   m_SpotAngle: 97.44112
   m_InnerSpotAngle: 39.56351
@@ -12433,7 +12427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4987602723854875578, guid: 50b07329f011ac943b48e5332a886061, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4987602723854875578, guid: 50b07329f011ac943b48e5332a886061, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13154,9 +13148,6 @@ MonoBehaviour:
   speedText: {fileID: 0}
   attackText: {fileID: 0}
   defenseText: {fileID: 0}
-  rewardText: {fileID: 0}
-  rewardImage: {fileID: 1590794641}
-  artwork: {fileID: 295834732}
   cardManager: {fileID: 527188487}
   cameraHandle: {fileID: 963194229}
   userInterface: {fileID: 104319412}
@@ -13313,7 +13304,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1638462473 stripped
 MonoBehaviour:
@@ -15427,9 +15418,6 @@ MonoBehaviour:
   speedText: {fileID: 0}
   attackText: {fileID: 0}
   defenseText: {fileID: 0}
-  rewardText: {fileID: 0}
-  rewardImage: {fileID: 1388958556}
-  artwork: {fileID: 954385932}
   cardManager: {fileID: 527188487}
   cameraHandle: {fileID: 963194229}
   userInterface: {fileID: 104319412}
@@ -15633,9 +15621,6 @@ MonoBehaviour:
   speedText: {fileID: 1779454807}
   attackText: {fileID: 2040973724}
   defenseText: {fileID: 9080145}
-  rewardText: {fileID: 0}
-  rewardImage: {fileID: 0}
-  artwork: {fileID: 0}
   cardManager: {fileID: 1107243424}
   cameraHandle: {fileID: 963194229}
   userInterface: {fileID: 104319412}
@@ -15903,7 +15888,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 75, y: 90, z: 0}
 --- !u!108 &1993394917
 Light:
@@ -15996,7 +15981,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &2002571135
 Light:
@@ -16242,7 +16227,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &2044308971
 Light:
@@ -16359,7 +16344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4987602723854875578, guid: 50b07329f011ac943b48e5332a886061, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4987602723854875578, guid: 50b07329f011ac943b48e5332a886061, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16567,7 +16552,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2104345189}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 75, y: -90, z: 0}
 --- !u!108 &2095302638
 Light:
@@ -16658,9 +16643,6 @@ Transform:
   m_LocalPosition: {x: -0.9565735, y: -5.0409355, z: 0.025559425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 67692712}
-  - {fileID: 1279781494}
-  - {fileID: 1227042096}
   - {fileID: 1637804375}
   - {fileID: 1256370006}
   - {fileID: 2044308970}

@@ -20,9 +20,8 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] public TextMeshPro speedText;
     [SerializeField] public TextMeshPro attackText;
     [SerializeField] public TextMeshPro defenseText;
-    [SerializeField] public TextMeshPro rewardText;
-    [SerializeField] public Image rewardImage;
-    [SerializeField] public Image artwork;
+    // [SerializeField] public TextMeshPro rewardText;
+    // [SerializeField] public Image rewardImage;
 
 
     public CardManager cardManager;
@@ -70,9 +69,9 @@ public class CardDisplay : MonoBehaviour
         attackText.text = stats.Attack.ToString();
         defenseText.text = stats.Defense.ToString();
         speedText.text = stats.Speed.ToString();
-        rewardText.text = reward.name;
-        Debug.Log(reward.srcIcon);
-        rewardImage.sprite = Resources.Load<Sprite>(reward.srcIcon);
+        //rewardText.text = reward.name;
+        //Debug.Log(reward.srcIcon);
+        //rewardImage.sprite = Resources.Load<Sprite>(reward.srcIcon);
     }
     
     private void SelectAction()
