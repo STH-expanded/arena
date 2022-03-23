@@ -42,10 +42,6 @@ public class CameraHandle : MonoBehaviour
             {
                 ZoomOnEnemy();
             }
-            else if (isPlayerDead)
-            {
-                
-            }
             else
             {
                 var center = (player.transform.position + enemy.transform.position) / 2;
