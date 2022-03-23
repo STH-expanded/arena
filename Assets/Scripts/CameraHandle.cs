@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +11,14 @@ public class CameraHandle : MonoBehaviour
     public bool isPlayerDead;
     public bool isIntro;
 
+    Vector3 _initialCameraPosition;
     Transform _currentView;
+
+    private void Start()
+    {
+        _initialCameraPosition = transform.position;
+    }
+    
 
     private void Awake()
     {
@@ -26,13 +35,17 @@ public class CameraHandle : MonoBehaviour
         {
             if (isEnemyDead)
             {
-                ZoomOnEnemy();
+                // ZoomOnEnemy();
+                FocusCameraOnMenuCards();
+                // StartCoroutine(FocusCameraOnMenuCards());
             }
-            else if (isPlayerDead) {
-            
+            else if (isPlayerDead)
+            {
+                
             }
             else
             {
+                Debug.Log("I'm here!");
                 var center = (player.transform.position + enemy.transform.position) / 2;
                 var dist = Vector3.Distance(player.transform.position, enemy.transform.position) + 2;
                 if (dist < 8) dist = 8;
@@ -49,6 +62,7 @@ public class CameraHandle : MonoBehaviour
 
     private void EntryCinematic()
     {
+        Debug.Log("I'm in entry cinematic!");
         var center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -7, 0.05f);
         transform.rotation = Quaternion.Euler(20, 0, 0);
@@ -59,5 +73,17 @@ public class CameraHandle : MonoBehaviour
     {
         var center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.01f);
+        Debug.Log("Zoom on enemy func!");
+    }
+
+    private void FocusCameraOnMenuCards()
+    {
+        transform.position = new Vector3(0, 14.74474F, -10.32438F); //_initialCameraPosition; //Vector3.Lerp(transform.position, _initialCameraPosition, 0.05f);
+    }
+    IEnumerator FocusCameraOnMenuCards1()
+    {
+        Debug.Log("Focus camera func!");
+        yield return new WaitForSeconds(0.2F);
+        transform.position = _initialCameraPosition; //Vector3.Lerp(transform.position, _initialCameraPosition, 0.05f);
     }
 }

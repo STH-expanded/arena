@@ -78,9 +78,9 @@ public class GameLoop : MonoBehaviour
 
     void Win()
     {
-        Debug.Log("Win");
+        //Debug.Log("Win");
         // Result Reward
-        Debug.Log(playerManager.rewardGame.applyReward(playerManager));
+        //Debug.Log(playerManager.rewardGame.applyReward(playerManager));
         
         gameData.numberOfGamePlayed += 1;
         gameData.score += 1;
@@ -127,7 +127,7 @@ public class GameLoop : MonoBehaviour
 
         }
 
-        Debug.Log("Lose");
+        //Debug.Log("Lose");
         
         gameData.score = 0;
         gameData.level = 1;
