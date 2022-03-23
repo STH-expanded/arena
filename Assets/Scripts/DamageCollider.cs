@@ -41,6 +41,8 @@ public class DamageCollider : MonoBehaviour
 
         if (other.tag == "Enemy")
         {
+            var hitMonsterSound = GameObject.Find("HitMonster");
+            hitMonsterSound.GetComponent<AudioSource>().Play();
             UnitStatisticsManager unitStatisticsManager = other.GetComponent<EnemyManager>().unitStatisticsManager;
 
             if (unitStatisticsManager != null)
