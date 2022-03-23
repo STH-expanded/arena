@@ -12,6 +12,11 @@ public class CardManager : MonoBehaviour
     public GameObject card2;
     public GameObject card3;
 
+    public GameObject card1Light;
+    public GameObject card2Light;
+    public GameObject card3Light;
+    public GameObject mainSceneLight;
+
     public bool isActive;
     public float prevSpeed;
     
@@ -38,6 +43,7 @@ public class CardManager : MonoBehaviour
     public void InitCards(int level)
     {
         Debug.Log("Init cards");
+        mainSceneLight.SetActive(false);
         card1.SetActive(true);
         card2.SetActive(true);
         card3.SetActive(true);
@@ -57,6 +63,12 @@ public class CardManager : MonoBehaviour
             var opponentFullName = $"{opponentTitle} {opponentName}";
             cardDisplay.SetCardValues(enemyLevel, opponentFullName);
             i++;
+        }
+        
+        GameObject[] cardsLights = { card1Light, card2Light, card3Light };
+        foreach (var cardLight in cardsLights)
+        {
+            cardLight.SetActive(true);
         }
         
         gameObject.SetActive(true);

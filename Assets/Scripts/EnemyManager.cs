@@ -114,6 +114,8 @@ public class EnemyManager : MonoBehaviour
 
         if (playerManager != null && unitStatisticsManager.unitStatistics.CurrentHealth > 0)
         {
+            var hitPlayerSound = GameObject.Find("HitPlayer");
+            hitPlayerSound.GetComponent<AudioSource>().Play();
             playerManager.unitStatisticsManager.TakeDamage(4);
         }
     }

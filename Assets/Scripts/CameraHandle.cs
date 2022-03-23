@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,8 +10,16 @@ public class CameraHandle : MonoBehaviour
     public bool isEnemyDead;
     public bool isPlayerDead;
     public bool isIntro;
+    public bool isCardSelectionActive;
 
+    public Vector3 initialCameraPosition;
     Transform _currentView;
+
+    private void Start()
+    {
+        initialCameraPosition = transform.position;
+    }
+    
 
     private void Awake()
     {
@@ -24,12 +34,13 @@ public class CameraHandle : MonoBehaviour
         }
         else
         {
-            if (isEnemyDead)
+            if (isCardSelectionActive)
+            {
+                transform.position = initialCameraPosition;
+            } 
+            else if (isEnemyDead)
             {
                 ZoomOnEnemy();
-            }
-            else if (isPlayerDead) {
-            
             }
             else
             {
