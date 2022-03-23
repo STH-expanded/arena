@@ -48,7 +48,6 @@ public class CameraHandle : MonoBehaviour
             }
             else
             {
-                Debug.Log("I'm here!");
                 var center = (player.transform.position + enemy.transform.position) / 2;
                 var dist = Vector3.Distance(player.transform.position, enemy.transform.position) + 2;
                 if (dist < 8) dist = 8;
@@ -65,7 +64,6 @@ public class CameraHandle : MonoBehaviour
 
     private void EntryCinematic()
     {
-        Debug.Log("I'm in entry cinematic!");
         var center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -7, 0.05f);
         transform.rotation = Quaternion.Euler(20, 0, 0);
@@ -76,6 +74,5 @@ public class CameraHandle : MonoBehaviour
     {
         var center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.01f);
-        Debug.Log("Zoom on enemy func!");
     }
 }
