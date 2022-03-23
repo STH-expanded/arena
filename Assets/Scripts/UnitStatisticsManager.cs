@@ -25,7 +25,7 @@ public class UnitStatisticsManager : MonoBehaviour
     {
         unitStatistics = stats;
         unitStatistics.CurrentHealth = unitStatistics.Health;
-        // Debug.Log(unitStatistics);
+        Debug.Log(unitStatistics);
     }
 
     public void LevelUp()

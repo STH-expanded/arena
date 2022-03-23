@@ -10,13 +10,14 @@ public class CameraHandle : MonoBehaviour
     public bool isEnemyDead;
     public bool isPlayerDead;
     public bool isIntro;
+    public bool isCardSelectionActive;
 
-    Vector3 _initialCameraPosition;
+    public Vector3 initialCameraPosition;
     Transform _currentView;
 
     private void Start()
     {
-        _initialCameraPosition = transform.position;
+        initialCameraPosition = transform.position;
     }
     
 
@@ -33,11 +34,13 @@ public class CameraHandle : MonoBehaviour
         }
         else
         {
-            if (isEnemyDead)
+            if (isCardSelectionActive)
             {
-                // ZoomOnEnemy();
-                FocusCameraOnMenuCards();
-                // StartCoroutine(FocusCameraOnMenuCards());
+                transform.position = initialCameraPosition;
+            } 
+            else if (isEnemyDead)
+            {
+                ZoomOnEnemy();
             }
             else if (isPlayerDead)
             {
@@ -74,16 +77,5 @@ public class CameraHandle : MonoBehaviour
         var center = (enemy.transform.position);
         transform.position = Vector3.Lerp(transform.position, center + transform.forward * -4, 0.01f);
         Debug.Log("Zoom on enemy func!");
-    }
-
-    private void FocusCameraOnMenuCards()
-    {
-        transform.position = new Vector3(0, 14.74474F, -10.32438F); //_initialCameraPosition; //Vector3.Lerp(transform.position, _initialCameraPosition, 0.05f);
-    }
-    IEnumerator FocusCameraOnMenuCards1()
-    {
-        Debug.Log("Focus camera func!");
-        yield return new WaitForSeconds(0.2F);
-        transform.position = _initialCameraPosition; //Vector3.Lerp(transform.position, _initialCameraPosition, 0.05f);
     }
 }

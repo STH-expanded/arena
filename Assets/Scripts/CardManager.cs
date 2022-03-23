@@ -42,7 +42,7 @@ public class CardManager : MonoBehaviour
     
     public void InitCards(int level)
     {
-        // Debug.Log("Init cards");
+        Debug.Log("Init cards");
         mainSceneLight.SetActive(false);
         card1.SetActive(true);
         card2.SetActive(true);
