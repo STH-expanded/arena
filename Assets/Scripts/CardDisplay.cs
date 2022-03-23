@@ -77,9 +77,11 @@ public class CardDisplay : MonoBehaviour
     private void SelectAction()
     {
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
+        cameraHandle.isCardSelectionActive = false;
         cameraHandle.isIntro = true;
         userInterface.InitHealthBars();
 
+        cardManager.mainSceneLight.SetActive(true);
         cardManager.isActive = false;
         statsManager.isActive = false;
         statsManager.statsCard.SetActive(false);
@@ -96,7 +98,7 @@ public class CardDisplay : MonoBehaviour
     
     IEnumerator SelectActionCoroutine()
     {
-        yield return new WaitForSeconds(0.3F);
+        yield return new WaitForSeconds(0.05F);
         SelectAction();
         healthBarsCanvas.SetActive(true);
         playerAnimatorController.speed = 1;
