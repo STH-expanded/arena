@@ -115990,6 +115990,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.41666666
+    functionName: LaunchAttackVFX
   - time: 0.5
     functionName: OpenDamageCollider
     data: 

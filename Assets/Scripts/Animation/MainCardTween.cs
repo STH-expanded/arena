@@ -24,7 +24,7 @@ public class MainCardTween : MonoBehaviour
         LeanTween.scale(gameObject, new Vector3(1, 1, 1), inDuration).setDelay(inDelay).setOnComplete(OnComplete).setEase(inType);
     }
 
-    public void OnComplete()
+    private void OnComplete()
     {
         if (onCompleteCallback != null)
         {

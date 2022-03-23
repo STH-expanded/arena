@@ -1,6 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+
 public class UnitStatisticsManager : MonoBehaviour
 {
     public UnitStatistics unitStatistics;
@@ -8,7 +9,6 @@ public class UnitStatisticsManager : MonoBehaviour
     public CameraHandle cameraHandle;
 
     [SerializeField] private GameObject player;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -25,6 +25,7 @@ public class UnitStatisticsManager : MonoBehaviour
     {
         unitStatistics = stats;
         unitStatistics.CurrentHealth = unitStatistics.Health;
+        Debug.Log(unitStatistics);
     }
 
     public void LevelUp()
@@ -51,7 +52,8 @@ public class UnitStatisticsManager : MonoBehaviour
         unitStatistics.CurrentHealth -= damage;
         cameraHandle.Shake();
 
-        if (unitStatistics.CurrentHealth <= 0) {
+        if (unitStatistics.CurrentHealth <= 0)
+        {
             unitStatistics.CurrentHealth = 0;
             animator.Play("Death");
         }
@@ -60,4 +62,5 @@ public class UnitStatisticsManager : MonoBehaviour
             animator.Play("Hit");
         }
     }
+
 }
