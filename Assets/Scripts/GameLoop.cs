@@ -18,7 +18,7 @@ public class GameLoop : MonoBehaviour
     void Start()
     {
         hasToExecuteOnlyOnce = true;
-        
+
         string path = Application.persistentDataPath + "/gameData.save";
         if (File.Exists(path))
         {
@@ -48,7 +48,7 @@ public class GameLoop : MonoBehaviour
             enemyManager.isIntro = false;
             playerManager.isIntro = false;
         }
-        
+
         if (cardManager.isActive)
             return;
 
@@ -56,7 +56,7 @@ public class GameLoop : MonoBehaviour
         {
             cameraHandle.isPlayerDead = true;
             enemyManager.isOutro = true;
-            
+
             Lose();
         }
         else if (enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
@@ -82,8 +82,8 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("Win");
         // Result Reward
-        //Debug.Log(playerManager.rewardGame.applyReward(playerManager));
-        
+        playerManager.rewardGame.applyReward(playerManager);
+
         gameData.numberOfGamePlayed += 1;
         gameData.score += 1;
         gameData.level += 1;
@@ -101,7 +101,7 @@ public class GameLoop : MonoBehaviour
             if (gameData.score == 5) gameData.achievements[5] = true;
             if (gameData.score == 10) gameData.achievements[6] = true;
         }
-        
+
         SaveLoad.SaveData(gameData);
 
         cardManager.InitCards(gameData.level);
@@ -121,7 +121,7 @@ public class GameLoop : MonoBehaviour
             if (gameData.numberOfGamePlayed == 1) gameData.achievements[0] = true;
             if (gameData.numberOfGamePlayed == 5) gameData.achievements[1] = true;
             if (gameData.numberOfGamePlayed == 10) gameData.achievements[2] = true;
-            
+
             if (hasToExecuteOnlyOnce)
             {
                 gameData.numberOfGamePlayed += 1;
@@ -131,16 +131,16 @@ public class GameLoop : MonoBehaviour
         }
 
         Debug.Log("Lose");
-        
+
         gameData.score = 0;
         gameData.level = 1;
         gameData.unitStatistics = new UnitStatistics();
 
         SaveLoad.SaveData(gameData);
-        
+
         Invoke("DeathCountdown", 5);
     }
-    
+
     private void DeathCountdown()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
