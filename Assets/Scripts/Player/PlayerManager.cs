@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private GameObject attackVFX;
     [SerializeField] private GameObject attackVFXReverse;
+    [SerializeField] private GameObject attackVFXDash;
     [SerializeField] private GameObject cloudVFX;
     [SerializeField] private GameObject hitVFX;
 
@@ -97,6 +98,11 @@ public class PlayerManager : MonoBehaviour
     public void LaunchAttackVFX2()
     {
         GameObject clone = Instantiate(attackVFXReverse, transform.position, transform.localRotation);
+        Destroy(clone, 1.0f);
+    }
+    public void LaunchAttackVFX3()
+    {
+        GameObject clone = Instantiate(attackVFXDash, transform.position, transform.localRotation);
         Destroy(clone, 1.0f);
     }
     public void LaunchWalkVFX()

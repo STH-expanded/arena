@@ -35,6 +35,7 @@ public class GameLoop : MonoBehaviour
         playerManager.isOutro = false;
 
         playerManager.unitStatisticsManager.InitStats(gameData.unitStatistics);
+        cameraHandle.isCardSelectionActive = true;
         cardManager.InitCards(gameData.level);
         statsPlayers.InitStats(playerManager);
     }
@@ -60,6 +61,7 @@ public class GameLoop : MonoBehaviour
         }
         else if (enemyManager.unitStatisticsManager.unitStatistics.CurrentHealth == 0)
         {
+            enemyManager.enemyAnimationManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
             cameraHandle.isEnemyDead = true;
             playerManager.isOutro = true;
             if (winBuffer < 620)
@@ -80,7 +82,7 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("Win");
         // Result Reward
-        Debug.Log(playerManager.rewardGame.applyReward(playerManager));
+        //Debug.Log(playerManager.rewardGame.applyReward(playerManager));
         
         gameData.numberOfGamePlayed += 1;
         gameData.score += 1;
@@ -101,9 +103,10 @@ public class GameLoop : MonoBehaviour
         }
         
         SaveLoad.SaveData(gameData);
-        
+
         cardManager.InitCards(gameData.level);
         // reset for the next game :
+        cameraHandle.isCardSelectionActive = true;
         cameraHandle.isEnemyDead = false;
         enemyManager.isIntro = true;
         playerManager.isOutro = true;

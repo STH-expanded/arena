@@ -1,36 +1,38 @@
 ﻿using UnityEngine;
+using System.Collections;
+using TMPro;
 using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
-    [SerializeField] public Text levelText;
-    [SerializeField] public Text nameText;
-    [SerializeField] public Image artwork;
+    
+    [SerializeField] public MainCardTween mainCardTween;
+    [SerializeField] public Animator cardAnimationController;
+    [SerializeField] public Animator playerAnimatorController;
+    [SerializeField] public Animator enemyAnimatorController;
 
-    [SerializeField] public Text healthText;
-    [SerializeField] public Text speedText;
-    [SerializeField] public Text attackText;
-    [SerializeField] public Text defenseText;
-    [SerializeField] public Text rewardText;
-    [SerializeField] public Image rewardImage;
+    [SerializeField] public GameObject healthBarsCanvas;
+    
+    [SerializeField] public TextMeshPro levelText;
+    [SerializeField] public TextMeshPro nameText;
+
+    [SerializeField] public TextMeshPro healthText;
+    [SerializeField] public TextMeshPro speedText;
+    [SerializeField] public TextMeshPro attackText;
+    [SerializeField] public TextMeshPro defenseText;
+    [SerializeField] public TextMeshPro rewardText;
+    // [SerializeField] public Image rewardImage;
+
 
     public CardManager cardManager;
     public CameraHandle cameraHandle;
-
-    public Slider healthSlider;
-    public Slider speedSlider;
-    public Slider attackSlider;
-    public Slider defenseSlider;
-
+    
     public UserInterface userInterface;
 
     public UnitStatisticsManager unitStatisticsManager;
     public UnitStatisticsManager enemyStatsManager;
     public Stats statsManager;
-
-
-    public Button selectButton;
-
+    
     public Reward reward;
     public PlayerManager playerManager;
 
@@ -38,48 +40,69 @@ public class CardDisplay : MonoBehaviour
     {
         unitStatisticsManager = GetComponent<UnitStatisticsManager>();
     }
+    
+    void Update()
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0) && 
+            Physics.Raycast(ray, out var hit) && 
+            (hit.transform.name == "Card1" || hit.transform.name == "Card2" || hit.transform.name == "Card3"))
+        { 
+            StartCoroutine(SelectActionCoroutine());
+        }
+    }
 
     void Start()
     {
-        Button btn = selectButton.GetComponent<Button>();
-        btn.onClick.AddListener(SelectAction);
+        cardAnimationController.speed = 0;
+        StartCoroutine(AnimateCard());
     }
 
-    public void setCardValues(int level, string enemyName)
+    public void SetCardValues(int level, string enemyName)
     {
         unitStatisticsManager.InitLevel(level);
         UnitStatistics stats = unitStatisticsManager.unitStatistics;
 
-        levelText.text = string.Format("Level {0}", level);
+        levelText.text = $"LVL {level}";
         nameText.text = enemyName;
-
-        healthSlider.value = stats.Health;
         healthText.text = stats.Health.ToString();
-
-        attackSlider.value = stats.Attack;
         attackText.text = stats.Attack.ToString();
-
-        defenseSlider.value = stats.Defense;
         defenseText.text = stats.Defense.ToString();
-
-        speedSlider.value = stats.Speed;
         speedText.text = stats.Speed.ToString();
         rewardText.text = reward.name;
-        Debug.Log(reward.srcIcon);
-        rewardImage.sprite = Resources.Load<Sprite>(reward.srcIcon);
+        //Debug.Log(reward.srcIcon);
+        //rewardImage.sprite = Resources.Load<Sprite>(reward.srcIcon);
     }
-
-    void SelectAction()
+    
+    private void SelectAction()
     {
         enemyStatsManager.InitStats(unitStatisticsManager.unitStatistics);
+        cameraHandle.isCardSelectionActive = false;
         cameraHandle.isIntro = true;
         userInterface.InitHealthBars();
 
+        cardManager.mainSceneLight.SetActive(true);
         cardManager.isActive = false;
         statsManager.isActive = false;
         statsManager.statsCard.SetActive(false);
         playerManager.rewardGame = reward;
 
         cardManager.ResetUnits();
+    }
+    
+    IEnumerator AnimateCard()
+    {
+        yield return new WaitForSeconds(0.05F);
+        cardAnimationController.speed = 0.65F;
+    }
+    
+    IEnumerator SelectActionCoroutine()
+    {
+        yield return new WaitForSeconds(0.05F);
+        SelectAction();
+        healthBarsCanvas.SetActive(true);
+        playerAnimatorController.speed = 1;
+        enemyAnimatorController.speed = 1;
+        mainCardTween.OnClose();
     }
 }

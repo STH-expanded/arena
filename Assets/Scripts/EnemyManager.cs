@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EnemyManager : MonoBehaviour
 {
     EnemyLocomotionManager enemyLocomotionManager;
-    EnemyAnimatorManager enemyAnimationManager;
+    public EnemyAnimatorManager enemyAnimationManager;
     public NavMeshAgent navMeshAgent;
 
     public State currentState;
@@ -61,8 +61,8 @@ public class EnemyManager : MonoBehaviour
         {
             //enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // move forward
             enemyManager.enemyRigidBody.MovePosition(enemyManager.transform.position + Vector3.forward * -10f * Time.deltaTime);
-        }
-        else if (isOutro)
+            enemyAnimationManager.animator.SetFloat("Vertical", 1, 0.01f, Time.deltaTime); // stand still
+        } else if (isOutro)
         {
             enemyAnimationManager.animator.SetFloat("Vertical", 0, 0.01f, Time.deltaTime); // stand still
 
@@ -114,6 +114,8 @@ public class EnemyManager : MonoBehaviour
 
         if (playerManager != null && unitStatisticsManager.unitStatistics.CurrentHealth > 0)
         {
+            var hitPlayerSound = GameObject.Find("HitPlayer");
+            hitPlayerSound.GetComponent<AudioSource>().Play();
             playerManager.unitStatisticsManager.TakeDamage(4);
         }
     }

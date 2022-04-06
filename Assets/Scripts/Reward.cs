@@ -18,9 +18,5 @@ public class Reward
 		name = nameReward;
 		srcIcon = srcIconReward;
 		applyReward = applyRewardFunction;
-		
-
 	}
-
-
 }
